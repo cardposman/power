@@ -29,7 +29,7 @@ for (const page of manifest.pages) copy(path.join(ROOT, page.file), path.join(di
 copyTree(path.join(ROOT, 'assets'), path.join(dist, 'assets'));
 const siteOrigin = origin();
 if (siteOrigin) {
-  const urls = manifest.pages.filter((page) => page.kind !== 'sample');
+  const urls = manifest.pages;
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((page) => `  <url><loc>${escapeHtml(siteOrigin + page.url)}</loc></url>`).join('\n')}\n</urlset>\n`;
   fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
   fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${siteOrigin}/sitemap.xml\n`);

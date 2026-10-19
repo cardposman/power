@@ -4,10 +4,9 @@
   "titleProduct": "맨투맨 일본어회화 일대일 과외수업",
   "counselUrl": "https://naver.me/52c74Jj4",
   "origin": "",
-  "sample": {
-    "label": "홍은동",
-    "key": "seoul/hongeun-dong",
-    "schools": ["홍연초등학교", "홍제초등학교", "홍은중학교", "명지중학교", "명지고등학교"]
+  "home": {
+    "key": "home",
+    "thumbnail": 4
   },
   "groups": {
     "1100000000": {"slug": "seoul", "label": "서울"},

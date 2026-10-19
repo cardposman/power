@@ -28,7 +28,7 @@ The HowCoding reference (`C:/GitHub/HowCoding/region/seoul/11410/index.html`) us
 
 ## Criteria for later regional pages
 
-The approved HowCoding list has now been used for 269 district pages. The original Hongeun-dong sample remains at the root. Current implementation criteria:
+The approved HowCoding list has now been used for 269 district pages. The root now contains a region-neutral TS Japan main page instead of the original Hongeun-dong sample. The sample-specific descriptions above document the earlier design work. Current implementation criteria:
 
 1. Verify the region and any school names actually needed by the consultation text. Do not invent school affiliations or exam expertise.
 2. Keep local supporting text concise. Do not repeat the location in every heading, CTA, product description, or FAQ.

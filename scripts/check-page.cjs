@@ -43,8 +43,11 @@ const { pathToFileURL } = require('node:url');
       assert.equal(fixedBar.x, shell.x, `Fixed CTA alignment at ${width}`);
       const columnCount = await page.locator('.course-panel').evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' ').length);
       assert.equal(columnCount, 1, `Multiple content columns at ${width}`);
-      const regionalCopy = await page.locator('#local-guide').innerText();
-      for (const phrase of ['홍연초등학교', '홍제초등학교', '홍은중학교', '명지중학교', '명지고등학교']) assert(regionalCopy.includes(phrase));
+      assert.equal(await page.title(), '맨투맨 일본어회화 일대일 과외수업');
+      assert((await page.locator('#hero-title').innerText()).includes('맨투맨 일본어과외'));
+      assert(!(await page.locator('body').innerText()).includes('TS재팬'));
+      assert(!(await page.locator('body').innerText()).includes('홍은동'));
+      assert.equal(await page.locator('.hero-actions .text-link').getAttribute('href'), 'region/index.html');
       for (const image of await page.locator('img').all()) await image.scrollIntoViewIfNeeded();
       await page.evaluate(async () => {
         await Promise.all([...document.images].map((image) => image.decode()));

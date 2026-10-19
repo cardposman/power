@@ -73,9 +73,14 @@ def main():
         assert title not in titles, f"Duplicate page title: {title}"
         titles.add(title)
         assert "{{" not in path.read_text(encoding="utf-8"), path
-        expected_robots = "noindex,nofollow" if entry["kind"] == "sample" or not manifest["origin"] else "index,follow"
+        expected_robots = "noindex,nofollow" if not manifest["origin"] else "index,follow"
         robots = next(attrs["content"] for attrs in page.select("meta") if attrs.get("name") == "robots")
         assert robots == expected_robots, path
+        if entry["kind"] == "home":
+            assert "홍은동" not in path.read_text(encoding="utf-8"), path
+            assert "TS재팬" not in path.read_text(encoding="utf-8"), path
+            assert "맨투맨 일본어과외" in "".join(page.text["hero-title"]), path
+            assert not entry["schools"], path
         if entry["kind"] == "district":
             assert len(entry["schools"]) == 5, path
             paragraph = "".join(page.text["local-guide"])

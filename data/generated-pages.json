@@ -25,21 +25,15 @@
   },
   "pages": [
     {
-      "kind": "sample",
+      "kind": "home",
       "file": "index.html",
       "url": "/",
-      "title": "홍은동 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
-      "label": "홍은동",
-      "key": "seoul/hongeun-dong",
+      "title": "맨투맨 일본어회화 일대일 과외수업",
+      "label": "맨투맨 일본어과외",
+      "key": "home",
       "code": "",
-      "schools": [
-        "홍연초등학교",
-        "홍제초등학교",
-        "홍은중학교",
-        "명지중학교",
-        "명지고등학교"
-      ],
-      "thumbnail": 3,
+      "schools": [],
+      "thumbnail": 4,
       "variant": 0
     },
     {
