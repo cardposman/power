@@ -1,0 +1,5024 @@
+{
+  "origin": "",
+  "districtCount": 269,
+  "groupCount": 16,
+  "sources": {
+    "regions": {
+      "name": "행정표준코드관리시스템 법정동코드 전체자료",
+      "url": "https://www.code.go.kr/stdcode/regCodeL.do",
+      "downloadedFrom": "https://www.code.go.kr/etc/codeFullDown.do",
+      "sourceFile": "data/source/code-go-kr-regcode-full/법정동코드 전체자료.txt",
+      "extractedAt": "2026-08-21T08:16:18.067Z",
+      "rule": "현존 법정동코드 중 시도 2자리 + 시군구 3자리 + 00000 형식",
+      "count": 269
+    },
+    "schools": {
+      "name": "학구도안내서비스 한국교육시설안전원 초중고 학교 위치",
+      "url": "https://schoolzone.emac.kr/publicData/publicDataList.do",
+      "sourceFile": "data/source/schoolzone-schools-20260320-unpacked/�ѱ������ü�������_���ߵ��б���ġ_20260320.csv",
+      "builtAt": "2026-09-15T05:45:35.738Z",
+      "matchedRows": 12011,
+      "districtCount": 269,
+      "emptyDistricts": 0
+    },
+    "supplements": "data/school-supplements.json"
+  },
+  "pages": [
+    {
+      "kind": "sample",
+      "file": "index.html",
+      "url": "/",
+      "title": "홍은동 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "홍은동",
+      "key": "seoul/hongeun-dong",
+      "code": "",
+      "schools": [
+        "홍연초등학교",
+        "홍제초등학교",
+        "홍은중학교",
+        "명지중학교",
+        "명지고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 0
+    },
+    {
+      "kind": "directory",
+      "file": "region/index.html",
+      "url": "/region/",
+      "title": "지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "지역별 상담",
+      "districtCount": 269
+    },
+    {
+      "kind": "province",
+      "file": "region/seoul/index.html",
+      "url": "/region/seoul/",
+      "title": "서울 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "서울 지역별 상담",
+      "districtCount": 25
+    },
+    {
+      "kind": "province",
+      "file": "region/gwangju-jeonnam/index.html",
+      "url": "/region/gwangju-jeonnam/",
+      "title": "광주·전남 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "광주·전남 지역별 상담",
+      "districtCount": 27
+    },
+    {
+      "kind": "province",
+      "file": "region/busan/index.html",
+      "url": "/region/busan/",
+      "title": "부산 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "부산 지역별 상담",
+      "districtCount": 16
+    },
+    {
+      "kind": "province",
+      "file": "region/daegu/index.html",
+      "url": "/region/daegu/",
+      "title": "대구 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "대구 지역별 상담",
+      "districtCount": 9
+    },
+    {
+      "kind": "province",
+      "file": "region/incheon/index.html",
+      "url": "/region/incheon/",
+      "title": "인천 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "인천 지역별 상담",
+      "districtCount": 11
+    },
+    {
+      "kind": "province",
+      "file": "region/daejeon/index.html",
+      "url": "/region/daejeon/",
+      "title": "대전 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "대전 지역별 상담",
+      "districtCount": 5
+    },
+    {
+      "kind": "province",
+      "file": "region/ulsan/index.html",
+      "url": "/region/ulsan/",
+      "title": "울산 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "울산 지역별 상담",
+      "districtCount": 5
+    },
+    {
+      "kind": "province",
+      "file": "region/sejong/index.html",
+      "url": "/region/sejong/",
+      "title": "세종 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "세종 지역별 상담",
+      "districtCount": 1
+    },
+    {
+      "kind": "province",
+      "file": "region/gyeonggi-do/index.html",
+      "url": "/region/gyeonggi-do/",
+      "title": "경기 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "경기 지역별 상담",
+      "districtCount": 55
+    },
+    {
+      "kind": "province",
+      "file": "region/chungcheongbuk-do/index.html",
+      "url": "/region/chungcheongbuk-do/",
+      "title": "충북 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "충북 지역별 상담",
+      "districtCount": 15
+    },
+    {
+      "kind": "province",
+      "file": "region/chungcheongnam-do/index.html",
+      "url": "/region/chungcheongnam-do/",
+      "title": "충남 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "충남 지역별 상담",
+      "districtCount": 17
+    },
+    {
+      "kind": "province",
+      "file": "region/gyeongsangbuk-do/index.html",
+      "url": "/region/gyeongsangbuk-do/",
+      "title": "경북 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "경북 지역별 상담",
+      "districtCount": 24
+    },
+    {
+      "kind": "province",
+      "file": "region/gyeongsangnam-do/index.html",
+      "url": "/region/gyeongsangnam-do/",
+      "title": "경남 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "경남 지역별 상담",
+      "districtCount": 23
+    },
+    {
+      "kind": "province",
+      "file": "region/jeju/index.html",
+      "url": "/region/jeju/",
+      "title": "제주 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "제주 지역별 상담",
+      "districtCount": 2
+    },
+    {
+      "kind": "province",
+      "file": "region/gangwon/index.html",
+      "url": "/region/gangwon/",
+      "title": "강원 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "강원 지역별 상담",
+      "districtCount": 18
+    },
+    {
+      "kind": "province",
+      "file": "region/jeonbuk/index.html",
+      "url": "/region/jeonbuk/",
+      "title": "전북 지역별 상담 | TS재팬 맨투맨 일본어회화 일대일 과외수업",
+      "label": "전북 지역별 상담",
+      "districtCount": 16
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11110/index.html",
+      "url": "/region/seoul/11110/",
+      "title": "서울 종로구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 종로구",
+      "key": "seoul/11110",
+      "code": "11110",
+      "schools": [
+        "경기상업고등학교",
+        "경신중학교",
+        "상명대학교사범대학부속초등학교",
+        "경복고등학교",
+        "경신고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11140/index.html",
+      "url": "/region/seoul/11140/",
+      "title": "서울 중구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 중구",
+      "key": "seoul/11140",
+      "code": "11140",
+      "schools": [
+        "대경생활과학고등학교",
+        "금호중학교",
+        "동산초등학교",
+        "리라아트고등학교",
+        "서울의료보건고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11170/index.html",
+      "url": "/region/seoul/11170/",
+      "title": "서울 용산구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 용산구",
+      "key": "seoul/11170",
+      "code": "11170",
+      "schools": [
+        "배문고등학교",
+        "배문중학교",
+        "서울금양초등학교",
+        "보성여자고등학교",
+        "서울디지텍고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11200/index.html",
+      "url": "/region/seoul/11200/",
+      "title": "서울 성동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 성동구",
+      "key": "seoul/11200",
+      "code": "11200",
+      "schools": [
+        "경일고등학교",
+        "경수중학교",
+        "서울경동초등학교",
+        "금호고등학교",
+        "도선고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11215/index.html",
+      "url": "/region/seoul/11215/",
+      "title": "서울 광진구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 광진구",
+      "key": "seoul/11215",
+      "code": "11215",
+      "schools": [
+        "건국대학교사범대학부속고등학교",
+        "건국대학교사범대학부속중학교",
+        "경복초등학교",
+        "광남고등학교",
+        "광양고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11230/index.html",
+      "url": "/region/seoul/11230/",
+      "title": "서울 동대문구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 동대문구",
+      "key": "seoul/11230",
+      "code": "11230",
+      "schools": [
+        "경희고등학교",
+        "경희여자중학교",
+        "경희초등학교",
+        "경희여자고등학교",
+        "대광고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11260/index.html",
+      "url": "/region/seoul/11260/",
+      "title": "서울 중랑구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 중랑구",
+      "key": "seoul/11260",
+      "code": "11260",
+      "schools": [
+        "면목고등학교",
+        "동원중학교",
+        "금성초등학교",
+        "송곡고등학교",
+        "송곡관광고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11290/index.html",
+      "url": "/region/seoul/11290/",
+      "title": "서울 성북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 성북구",
+      "key": "seoul/11290",
+      "code": "11290",
+      "schools": [
+        "경동고등학교",
+        "개운중학교",
+        "광운초등학교",
+        "계성고등학교",
+        "고려대학교사범대학부속고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11305/index.html",
+      "url": "/region/seoul/11305/",
+      "title": "서울 강북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 강북구",
+      "key": "seoul/11305",
+      "code": "11305",
+      "schools": [
+        "삼각산고등학교",
+        "강북중학교",
+        "서울미양초등학교",
+        "성암국제무역고등학교",
+        "솔샘고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11320/index.html",
+      "url": "/region/seoul/11320/",
+      "title": "서울 도봉구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 도봉구",
+      "key": "seoul/11320",
+      "code": "11320",
+      "schools": [
+        "누원고등학교",
+        "노곡중학교",
+        "동북초등학교",
+        "서울문화고등학교",
+        "서울외국어고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11350/index.html",
+      "url": "/region/seoul/11350/",
+      "title": "서울 노원구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 노원구",
+      "key": "seoul/11350",
+      "code": "11350",
+      "schools": [
+        "경기기계공업고등학교",
+        "공릉중학교",
+        "상명초등학교",
+        "광운인공지능고등학교",
+        "노원고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11380/index.html",
+      "url": "/region/seoul/11380/",
+      "title": "서울 은평구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 은평구",
+      "key": "seoul/11380",
+      "code": "11380",
+      "schools": [
+        "대성고등학교",
+        "구산중학교",
+        "서울갈현초등학교",
+        "동명생활경영고등학교",
+        "동명여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11410/index.html",
+      "url": "/region/seoul/11410/",
+      "title": "서울 서대문구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 서대문구",
+      "key": "seoul/11410",
+      "code": "11410",
+      "schools": [
+        "가재울고등학교",
+        "가재울중학교",
+        "경기초등학교",
+        "명지고등학교",
+        "이화여자대학교사범대학부속이화금란고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11440/index.html",
+      "url": "/region/seoul/11440/",
+      "title": "서울 마포구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 마포구",
+      "key": "seoul/11440",
+      "code": "11440",
+      "schools": [
+        "경성고등학교",
+        "경성중학교",
+        "서울공덕초등학교",
+        "광성고등학교",
+        "상암고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11470/index.html",
+      "url": "/region/seoul/11470/",
+      "title": "서울 양천구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 양천구",
+      "key": "seoul/11470",
+      "code": "11470",
+      "schools": [
+        "강서고등학교",
+        "강신중학교",
+        "서울갈산초등학교",
+        "광영고등학교",
+        "광영여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11500/index.html",
+      "url": "/region/seoul/11500/",
+      "title": "서울 강서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 강서구",
+      "key": "seoul/11500",
+      "code": "11500",
+      "schools": [
+        "강서공업고등학교",
+        "경서중학교",
+        "서울가곡초등학교",
+        "경복비즈니스고등학교",
+        "경복여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11530/index.html",
+      "url": "/region/seoul/11530/",
+      "title": "서울 구로구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 구로구",
+      "key": "seoul/11530",
+      "code": "11530",
+      "schools": [
+        "경인고등학교",
+        "개봉중학교",
+        "서울개명초등학교",
+        "고척고등학교",
+        "구로고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11545/index.html",
+      "url": "/region/seoul/11545/",
+      "title": "서울 금천구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 금천구",
+      "key": "seoul/11545",
+      "code": "11545",
+      "schools": [
+        "국립전통예술고등학교",
+        "가산중학교",
+        "동광초등학교",
+        "금천고등학교",
+        "독산고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11560/index.html",
+      "url": "/region/seoul/11560/",
+      "title": "서울 영등포구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 영등포구",
+      "key": "seoul/11560",
+      "code": "11560",
+      "schools": [
+        "관악고등학교",
+        "당산서중학교",
+        "서울당산초등학교",
+        "대영고등학교",
+        "선유고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11590/index.html",
+      "url": "/region/seoul/11590/",
+      "title": "서울 동작구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 동작구",
+      "key": "seoul/11590",
+      "code": "11590",
+      "schools": [
+        "경문고등학교",
+        "강남중학교",
+        "서울강남초등학교",
+        "동작고등학교",
+        "서울공업고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11620/index.html",
+      "url": "/region/seoul/11620/",
+      "title": "서울 관악구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 관악구",
+      "key": "seoul/11620",
+      "code": "11620",
+      "schools": [
+        "광신고등학교",
+        "관악중학교",
+        "서울관악초등학교",
+        "광신방송예술고등학교",
+        "구암고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11650/index.html",
+      "url": "/region/seoul/11650/",
+      "title": "서울 서초구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 서초구",
+      "key": "seoul/11650",
+      "code": "11650",
+      "schools": [
+        "동덕여자고등학교",
+        "경원중학교",
+        "계성초등학교",
+        "반포고등학교",
+        "상문고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11680/index.html",
+      "url": "/region/seoul/11680/",
+      "title": "서울 강남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 강남구",
+      "key": "seoul/11680",
+      "code": "11680",
+      "schools": [
+        "개포고등학교",
+        "개원중학교",
+        "서울개원초등학교",
+        "경기고등학교",
+        "경기여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11710/index.html",
+      "url": "/region/seoul/11710/",
+      "title": "서울 송파구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 송파구",
+      "key": "seoul/11710",
+      "code": "11710",
+      "schools": [
+        "가락고등학교",
+        "가락중학교",
+        "서울가동초등학교",
+        "덕수고등학교",
+        "문정고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/seoul/11740/index.html",
+      "url": "/region/seoul/11740/",
+      "title": "서울 강동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "서울 강동구",
+      "key": "seoul/11740",
+      "code": "11740",
+      "schools": [
+        "강동고등학교",
+        "강동중학교",
+        "서울강덕초등학교",
+        "강일고등학교",
+        "광문고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12110/index.html",
+      "url": "/region/gwangju-jeonnam/12110/",
+      "title": "광주·전남 목포시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 목포시",
+      "key": "gwangju-jeonnam/12110",
+      "code": "12110",
+      "schools": [
+        "목상고등학교",
+        "목포덕인중학교",
+        "광주교육대학교목포부설초등학교",
+        "목포고등학교",
+        "목포공업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12130/index.html",
+      "url": "/region/gwangju-jeonnam/12130/",
+      "title": "광주·전남 여수시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 여수시",
+      "key": "gwangju-jeonnam/12130",
+      "code": "12130",
+      "schools": [
+        "부영여자고등학교",
+        "거문중학교",
+        "거문초등학교",
+        "여남고등학교",
+        "여수고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12150/index.html",
+      "url": "/region/gwangju-jeonnam/12150/",
+      "title": "광주·전남 순천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 순천시",
+      "key": "gwangju-jeonnam/12150",
+      "code": "12150",
+      "schools": [
+        "순천강남여자고등학교",
+        "순천금당중학교",
+        "낙안초등학교",
+        "순천고등학교",
+        "순천공업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12170/index.html",
+      "url": "/region/gwangju-jeonnam/12170/",
+      "title": "광주·전남 나주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 나주시",
+      "key": "gwangju-jeonnam/12170",
+      "code": "12170",
+      "schools": [
+        "광남고등학교",
+        "금성중학교",
+        "공산초등학교",
+        "금성고등학교",
+        "나주고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12190/index.html",
+      "url": "/region/gwangju-jeonnam/12190/",
+      "title": "광주·전남 광양시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 광양시",
+      "key": "gwangju-jeonnam/12190",
+      "code": "12190",
+      "schools": [
+        "광양고등학교",
+        "광양골약중학교",
+        "골약초등학교",
+        "광양백운고등학교",
+        "광양여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12210/index.html",
+      "url": "/region/gwangju-jeonnam/12210/",
+      "title": "광주·전남 동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 동구",
+      "key": "gwangju-jeonnam/12210",
+      "code": "12210",
+      "schools": [
+        "광주고등학교",
+        "광주충장중학교",
+        "광주계림초등학교",
+        "살레시오여자고등학교",
+        "전남여자고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12240/index.html",
+      "url": "/region/gwangju-jeonnam/12240/",
+      "title": "광주·전남 서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 서구",
+      "key": "gwangju-jeonnam/12240",
+      "code": "12240",
+      "schools": [
+        "광덕고등학교",
+        "광덕중학교",
+        "계수초등학교",
+        "광주대동고등학교",
+        "광주서석고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12270/index.html",
+      "url": "/region/gwangju-jeonnam/12270/",
+      "title": "광주·전남 남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 남구",
+      "key": "gwangju-jeonnam/12270",
+      "code": "12270",
+      "schools": [
+        "광주동성고등학교",
+        "광주동성여자중학교",
+        "광주농성초등학교",
+        "광주석산고등학교",
+        "광주수피아여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12300/index.html",
+      "url": "/region/gwangju-jeonnam/12300/",
+      "title": "광주·전남 북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 북구",
+      "key": "gwangju-jeonnam/12300",
+      "code": "12300",
+      "schools": [
+        "고려고등학교",
+        "각화중학교",
+        "각화초등학교",
+        "광주경신여자고등학교",
+        "광주공업고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12330/index.html",
+      "url": "/region/gwangju-jeonnam/12330/",
+      "title": "광주·전남 광산구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 광산구",
+      "key": "gwangju-jeonnam/12330",
+      "code": "12330",
+      "schools": [
+        "광일고등학교",
+        "고실중학교",
+        "고실초등학교",
+        "광주소프트웨어마이스터고등학교",
+        "광주자동화설비마이스터고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12710/index.html",
+      "url": "/region/gwangju-jeonnam/12710/",
+      "title": "광주·전남 담양군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 담양군",
+      "key": "gwangju-jeonnam/12710",
+      "code": "12710",
+      "schools": [
+        "담양고등학교",
+        "담양고서중학교",
+        "가사문학초등학교",
+        "담양공업고등학교",
+        "창평고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12720/index.html",
+      "url": "/region/gwangju-jeonnam/12720/",
+      "title": "광주·전남 곡성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 곡성군",
+      "key": "gwangju-jeonnam/12720",
+      "code": "12720",
+      "schools": [
+        "곡성고등학교",
+        "곡성중학교",
+        "고달초등학교",
+        "옥과고등학교",
+        "전남조리과학고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12730/index.html",
+      "url": "/region/gwangju-jeonnam/12730/",
+      "title": "광주·전남 구례군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 구례군",
+      "key": "gwangju-jeonnam/12730",
+      "code": "12730",
+      "schools": [
+        "구례고등학교",
+        "구례동중학교",
+        "간문초등학교",
+        "전남자연과학고등학교",
+        "구례북중학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12740/index.html",
+      "url": "/region/gwangju-jeonnam/12740/",
+      "title": "광주·전남 고흥군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 고흥군",
+      "key": "gwangju-jeonnam/12740",
+      "code": "12740",
+      "schools": [
+        "고흥고등학교",
+        "고흥과역중학교",
+        "고흥동초등학교",
+        "고흥도화고등학교",
+        "고흥산업과학고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12750/index.html",
+      "url": "/region/gwangju-jeonnam/12750/",
+      "title": "광주·전남 보성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 보성군",
+      "key": "gwangju-jeonnam/12750",
+      "code": "12750",
+      "schools": [
+        "다향고등학교",
+        "득량중학교",
+        "겸백초등학교",
+        "벌교고등학교",
+        "벌교상업고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12760/index.html",
+      "url": "/region/gwangju-jeonnam/12760/",
+      "title": "광주·전남 화순군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 화순군",
+      "key": "gwangju-jeonnam/12760",
+      "code": "12760",
+      "schools": [
+        "능주고등학교",
+        "능주중학교",
+        "능주초등학교",
+        "전남기술과학고등학교",
+        "화순고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12770/index.html",
+      "url": "/region/gwangju-jeonnam/12770/",
+      "title": "광주·전남 장흥군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 장흥군",
+      "key": "gwangju-jeonnam/12770",
+      "code": "12770",
+      "schools": [
+        "장흥고등학교",
+        "대덕중학교",
+        "관산남초등학교",
+        "장흥관산고등학교",
+        "전남미래자동차고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12780/index.html",
+      "url": "/region/gwangju-jeonnam/12780/",
+      "title": "광주·전남 강진군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 강진군",
+      "key": "gwangju-jeonnam/12780",
+      "code": "12780",
+      "schools": [
+        "강진고등학교",
+        "강진대구중학교",
+        "강진동초등학교",
+        "병영상업고등학교",
+        "성전고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12790/index.html",
+      "url": "/region/gwangju-jeonnam/12790/",
+      "title": "광주·전남 해남군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 해남군",
+      "key": "gwangju-jeonnam/12790",
+      "code": "12790",
+      "schools": [
+        "송지고등학교",
+        "두륜중학교",
+        "계곡초등학교",
+        "해남고등학교",
+        "해남공업고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12800/index.html",
+      "url": "/region/gwangju-jeonnam/12800/",
+      "title": "광주·전남 영암군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 영암군",
+      "key": "gwangju-jeonnam/12800",
+      "code": "12800",
+      "schools": [
+        "구림공업고등학교",
+        "구림중학교",
+        "구림초등학교",
+        "삼호고등학교",
+        "영암고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12810/index.html",
+      "url": "/region/gwangju-jeonnam/12810/",
+      "title": "광주·전남 무안군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 무안군",
+      "key": "gwangju-jeonnam/12810",
+      "code": "12810",
+      "schools": [
+        "남악고등학교",
+        "남악중학교",
+        "남악초등학교",
+        "무안고등학교",
+        "백제고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12820/index.html",
+      "url": "/region/gwangju-jeonnam/12820/",
+      "title": "광주·전남 함평군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 함평군",
+      "key": "gwangju-jeonnam/12820",
+      "code": "12820",
+      "schools": [
+        "전남보건고등학교",
+        "나산실용예술중학교",
+        "기산초등학교",
+        "함평고등학교",
+        "함평골프고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12830/index.html",
+      "url": "/region/gwangju-jeonnam/12830/",
+      "title": "광주·전남 영광군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 영광군",
+      "key": "gwangju-jeonnam/12830",
+      "code": "12830",
+      "schools": [
+        "법성고등학교",
+        "법성중학교",
+        "군남초등학교",
+        "영광고등학교",
+        "영광공업고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12840/index.html",
+      "url": "/region/gwangju-jeonnam/12840/",
+      "title": "광주·전남 장성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 장성군",
+      "key": "gwangju-jeonnam/12840",
+      "code": "12840",
+      "schools": [
+        "문향고등학교",
+        "삼계중학교",
+        "동화초등학교",
+        "삼계부사관고등학교",
+        "장성고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12850/index.html",
+      "url": "/region/gwangju-jeonnam/12850/",
+      "title": "광주·전남 완도군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 완도군",
+      "key": "gwangju-jeonnam/12850",
+      "code": "12850",
+      "schools": [
+        "고금고등학교",
+        "고금중학교",
+        "고금초등학교",
+        "노화고등학교",
+        "약산고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12860/index.html",
+      "url": "/region/gwangju-jeonnam/12860/",
+      "title": "광주·전남 진도군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 진도군",
+      "key": "gwangju-jeonnam/12860",
+      "code": "12860",
+      "schools": [
+        "조도고등학교",
+        "고성중학교",
+        "고성초등학교",
+        "진도고등학교",
+        "진도국악고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gwangju-jeonnam/12870/index.html",
+      "url": "/region/gwangju-jeonnam/12870/",
+      "title": "광주·전남 신안군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "광주·전남 신안군",
+      "key": "gwangju-jeonnam/12870",
+      "code": "12870",
+      "schools": [
+        "도초고등학교",
+        "가거도초등학교신안흑산중학교가거도분교장",
+        "가거도초등학교",
+        "신안해양과학고등학교",
+        "안좌고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26110/index.html",
+      "url": "/region/busan/26110/",
+      "title": "부산 중구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 중구",
+      "key": "busan/26110",
+      "code": "26110",
+      "schools": [
+        "남성여자고등학교",
+        "덕원중학교",
+        "광일초등학교",
+        "동주여자고등학교",
+        "부산디지털고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26140/index.html",
+      "url": "/region/busan/26140/",
+      "title": "부산 서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 서구",
+      "key": "busan/26140",
+      "code": "26140",
+      "schools": [
+        "경남고등학교",
+        "경남중학교",
+        "구덕초등학교",
+        "경성전자고등학교",
+        "부경고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26170/index.html",
+      "url": "/region/busan/26170/",
+      "title": "부산 동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 동구",
+      "key": "busan/26170",
+      "code": "26170",
+      "schools": [
+        "경남여자고등학교",
+        "경남여자중학교",
+        "동일중앙초등학교",
+        "금성고등학교",
+        "데레사여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26200/index.html",
+      "url": "/region/busan/26200/",
+      "title": "부산 영도구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 영도구",
+      "key": "busan/26200",
+      "code": "26200",
+      "schools": [
+        "광명고등학교",
+        "남도여자중학교",
+        "남항초등학교",
+        "부산보건고등학교",
+        "부산영상예술고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26230/index.html",
+      "url": "/region/busan/26230/",
+      "title": "부산 부산진구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 부산진구",
+      "key": "busan/26230",
+      "code": "26230",
+      "schools": [
+        "가야고등학교",
+        "가야여자중학교",
+        "가남초등학교",
+        "개금고등학교",
+        "개성고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26260/index.html",
+      "url": "/region/busan/26260/",
+      "title": "부산 동래구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 동래구",
+      "key": "busan/26260",
+      "code": "26260",
+      "schools": [
+        "금정고등학교",
+        "남일중학교",
+        "교동초등학교",
+        "대명여자고등학교",
+        "동래고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26290/index.html",
+      "url": "/region/busan/26290/",
+      "title": "부산 남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 남구",
+      "key": "busan/26290",
+      "code": "26290",
+      "schools": [
+        "대양고등학교",
+        "감만중학교",
+        "대남초등학교",
+        "대연고등학교",
+        "동명공업고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26320/index.html",
+      "url": "/region/busan/26320/",
+      "title": "부산 북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 북구",
+      "key": "busan/26320",
+      "code": "26320",
+      "schools": [
+        "경혜여자고등학교",
+        "가람중학교",
+        "구남초등학교",
+        "금곡고등학교",
+        "금명여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26350/index.html",
+      "url": "/region/busan/26350/",
+      "title": "부산 해운대구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 해운대구",
+      "key": "busan/26350",
+      "code": "26350",
+      "schools": [
+        "반여고등학교",
+        "동백중학교",
+        "강동초등학교",
+        "부산기계공업고등학교",
+        "부산문화여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26380/index.html",
+      "url": "/region/busan/26380/",
+      "title": "부산 사하구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 사하구",
+      "key": "busan/26380",
+      "code": "26380",
+      "schools": [
+        "건국고등학교",
+        "감천중학교",
+        "감천초등학교",
+        "다대고등학교",
+        "대광고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26410/index.html",
+      "url": "/region/busan/26410/",
+      "title": "부산 금정구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 금정구",
+      "key": "busan/26410",
+      "code": "26410",
+      "schools": [
+        "금샘고등학교",
+        "구서여자중학교",
+        "공덕초등학교",
+        "금정여자고등학교",
+        "남산고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26440/index.html",
+      "url": "/region/busan/26440/",
+      "title": "부산 강서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 강서구",
+      "key": "busan/26440",
+      "code": "26440",
+      "schools": [
+        "경일고등학교",
+        "가락중학교",
+        "가락초등학교",
+        "덕문고등학교",
+        "명호고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26470/index.html",
+      "url": "/region/busan/26470/",
+      "title": "부산 연제구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 연제구",
+      "key": "busan/26470",
+      "code": "26470",
+      "schools": [
+        "계성여자고등학교",
+        "거성중학교",
+        "거제초등학교",
+        "부산외국어고등학교",
+        "연제고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26500/index.html",
+      "url": "/region/busan/26500/",
+      "title": "부산 수영구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 수영구",
+      "key": "busan/26500",
+      "code": "26500",
+      "schools": [
+        "덕문여자고등학교",
+        "광안중학교",
+        "광남초등학교",
+        "부산남일고등학교",
+        "부산동여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26530/index.html",
+      "url": "/region/busan/26530/",
+      "title": "부산 사상구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 사상구",
+      "key": "busan/26530",
+      "code": "26530",
+      "schools": [
+        "구덕고등학교",
+        "덕포여자중학교",
+        "감전초등학교",
+        "대덕여자고등학교",
+        "부산항공고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/busan/26710/index.html",
+      "url": "/region/busan/26710/",
+      "title": "부산 기장군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "부산 기장군",
+      "key": "busan/26710",
+      "code": "26710",
+      "schools": [
+        "기장고등학교",
+        "기장중학교",
+        "가동초등학교",
+        "부산장안고등학교",
+        "신정고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27110/index.html",
+      "url": "/region/daegu/27110/",
+      "title": "대구 중구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 중구",
+      "key": "daegu/27110",
+      "code": "27110",
+      "schools": [
+        "경북공업고등학교",
+        "경구중학교",
+        "경북대학교사범대학부설초등학교",
+        "경북대학교사범대학부설고등학교",
+        "경북여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27140/index.html",
+      "url": "/region/daegu/27140/",
+      "title": "대구 동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 동구",
+      "key": "daegu/27140",
+      "code": "27140",
+      "schools": [
+        "강동고등학교",
+        "강동중학교",
+        "대구강동초등학교",
+        "달구벌고등학교",
+        "대구공업고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27170/index.html",
+      "url": "/region/daegu/27170/",
+      "title": "대구 서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 서구",
+      "key": "daegu/27170",
+      "code": "27170",
+      "schools": [
+        "경덕여자고등학교",
+        "경운중학교",
+        "대구경운초등학교",
+        "계성고등학교",
+        "달성고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27200/index.html",
+      "url": "/region/daegu/27200/",
+      "title": "대구 남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 남구",
+      "key": "daegu/27200",
+      "code": "27200",
+      "schools": [
+        "경북여자상업고등학교",
+        "경상중학교",
+        "남대구초등학교",
+        "경북예술고등학교",
+        "경상공업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27230/index.html",
+      "url": "/region/daegu/27230/",
+      "title": "대구 북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 북구",
+      "key": "daegu/27230",
+      "code": "27230",
+      "schools": [
+        "강북고등학교",
+        "강북중학교",
+        "대구강북초등학교",
+        "경명여자고등학교",
+        "경상고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27260/index.html",
+      "url": "/region/daegu/27260/",
+      "title": "대구 수성구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 수성구",
+      "key": "daegu/27260",
+      "code": "27260",
+      "schools": [
+        "경북고등학교",
+        "경신중학교",
+        "대구경동초등학교",
+        "경신고등학교",
+        "능인고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27290/index.html",
+      "url": "/region/daegu/27290/",
+      "title": "대구 달서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 달서구",
+      "key": "daegu/27290",
+      "code": "27290",
+      "schools": [
+        "경북기계공업고등학교",
+        "경암중학교",
+        "대구감삼초등학교",
+        "경원고등학교",
+        "경화여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27710/index.html",
+      "url": "/region/daegu/27710/",
+      "title": "대구 달성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 달성군",
+      "key": "daegu/27710",
+      "code": "27710",
+      "schools": [
+        "다사고등학교",
+        "가창중학교",
+        "대구가창초등학교",
+        "달서고등학교",
+        "대구공업고등학교 테크노폴리스 캠퍼스"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daegu/27720/index.html",
+      "url": "/region/daegu/27720/",
+      "title": "대구 군위군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대구 군위군",
+      "key": "daegu/27720",
+      "code": "27720",
+      "schools": [
+        "군위고등학교",
+        "군위중학교",
+        "대구고매초등학교",
+        "군위중학교우보분교장",
+        "부계중학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28125/index.html",
+      "url": "/region/incheon/28125/",
+      "title": "인천 제물포구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 제물포구",
+      "key": "incheon/28125",
+      "code": "28125",
+      "schools": [
+        "광성고등학교",
+        "광성중학교",
+        "영화초등학교",
+        "동산고등학교",
+        "영화국제관광고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28155/index.html",
+      "url": "/region/incheon/28155/",
+      "title": "인천 영종구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 영종구",
+      "key": "incheon/28155",
+      "code": "28155",
+      "schools": [
+        "영종국제물류고등학교",
+        "영종중학교",
+        "인천공항초등학교",
+        "인천공항고등학교",
+        "인천과학고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28177/index.html",
+      "url": "/region/incheon/28177/",
+      "title": "인천 미추홀구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 미추홀구",
+      "key": "incheon/28177",
+      "code": "28177",
+      "schools": [
+        "문학정보고등학교",
+        "관교여자중학교",
+        "인천경원초등학교",
+        "선인고등학교",
+        "인명여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28185/index.html",
+      "url": "/region/incheon/28185/",
+      "title": "인천 연수구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 연수구",
+      "key": "incheon/28185",
+      "code": "28185",
+      "schools": [
+        "박문여자고등학교",
+        "능허대중학교",
+        "인천능허대초등학교",
+        "송도고등학교",
+        "신송고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28200/index.html",
+      "url": "/region/incheon/28200/",
+      "title": "인천 남동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 남동구",
+      "key": "incheon/28200",
+      "code": "28200",
+      "schools": [
+        "도림고등학교",
+        "간석여자중학교",
+        "상인천초등학교",
+        "동인천고등학교",
+        "문일여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28237/index.html",
+      "url": "/region/incheon/28237/",
+      "title": "인천 부평구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 부평구",
+      "key": "incheon/28237",
+      "code": "28237",
+      "schools": [
+        "명신여자고등학교",
+        "갈산중학교",
+        "인천갈산초등학교",
+        "부개고등학교",
+        "부개여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28245/index.html",
+      "url": "/region/incheon/28245/",
+      "title": "인천 계양구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 계양구",
+      "key": "incheon/28245",
+      "code": "28245",
+      "schools": [
+        "계산고등학교",
+        "계산여자중학교",
+        "경인교육대학교부설초등학교",
+        "계산공업고등학교",
+        "계산여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28275/index.html",
+      "url": "/region/incheon/28275/",
+      "title": "인천 서해구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 서해구",
+      "key": "incheon/28275",
+      "code": "28275",
+      "schools": [
+        "가림고등학교",
+        "가정여자중학교",
+        "인천가림초등학교",
+        "가정고등학교",
+        "가좌고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28290/index.html",
+      "url": "/region/incheon/28290/",
+      "title": "인천 검단구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 검단구",
+      "key": "incheon/28290",
+      "code": "28290",
+      "schools": [
+        "검단고등학교",
+        "검단중학교",
+        "인천검단초등학교",
+        "문곡고등학교",
+        "인천마전고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28710/index.html",
+      "url": "/region/incheon/28710/",
+      "title": "인천 강화군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 강화군",
+      "key": "incheon/28710",
+      "code": "28710",
+      "schools": [
+        "강남영상미디어고등학교",
+        "강남중학교",
+        "갑룡초등학교",
+        "강화고등학교",
+        "강화여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/incheon/28720/index.html",
+      "url": "/region/incheon/28720/",
+      "title": "인천 옹진군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "인천 옹진군",
+      "key": "incheon/28720",
+      "code": "28720",
+      "schools": [
+        "대청고등학교",
+        "대청중학교",
+        "대청초등학교",
+        "덕적고등학교",
+        "백령고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/daejeon/30110/index.html",
+      "url": "/region/daejeon/30110/",
+      "title": "대전 동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대전 동구",
+      "key": "daejeon/30110",
+      "code": "30110",
+      "schools": [
+        "계룡디지텍고등학교",
+        "대전가양중학교",
+        "대전가양초등학교",
+        "대전가오고등학교",
+        "대전대성여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daejeon/30140/index.html",
+      "url": "/region/daejeon/30140/",
+      "title": "대전 중구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대전 중구",
+      "key": "daejeon/30140",
+      "code": "30140",
+      "schools": [
+        "남대전고등학교",
+        "대전글꽃중학교",
+        "대전글꽃초등학교",
+        "대전고등학교",
+        "대전국제통상고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/daejeon/30170/index.html",
+      "url": "/region/daejeon/30170/",
+      "title": "대전 서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대전 서구",
+      "key": "daejeon/30170",
+      "code": "30170",
+      "schools": [
+        "대전관저고등학교",
+        "가수원중학교",
+        "가수원초등학교",
+        "대전괴정고등학교",
+        "대전구봉고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daejeon/30200/index.html",
+      "url": "/region/daejeon/30200/",
+      "title": "대전 유성구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대전 유성구",
+      "key": "daejeon/30200",
+      "code": "30200",
+      "schools": [
+        "대덕고등학교",
+        "대덕중학교",
+        "구즉초등학교",
+        "대덕소프트웨어마이스터고등학교",
+        "대전과학고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/daejeon/30230/index.html",
+      "url": "/region/daejeon/30230/",
+      "title": "대전 대덕구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "대전 대덕구",
+      "key": "daejeon/30230",
+      "code": "30230",
+      "schools": [
+        "대전생활과학고등학교",
+        "대전경덕중학교",
+        "대전대양초등학교",
+        "대전송촌고등학교",
+        "대전이문고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/ulsan/31110/index.html",
+      "url": "/region/ulsan/31110/",
+      "title": "울산 중구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "울산 중구",
+      "key": "ulsan/31110",
+      "code": "31110",
+      "schools": [
+        "다운고등학교",
+        "가온중학교",
+        "남외초등학교",
+        "성신고등학교",
+        "약사고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/ulsan/31140/index.html",
+      "url": "/region/ulsan/31140/",
+      "title": "울산 남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "울산 남구",
+      "key": "ulsan/31140",
+      "code": "31140",
+      "schools": [
+        "대현고등학교",
+        "대현중학교",
+        "강남초등학교",
+        "무거고등학교",
+        "문수고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/ulsan/31170/index.html",
+      "url": "/region/ulsan/31170/",
+      "title": "울산 동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "울산 동구",
+      "key": "ulsan/31170",
+      "code": "31170",
+      "schools": [
+        "남목고등학교",
+        "남목중학교",
+        "남목초등학교",
+        "대송고등학교",
+        "문현고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/ulsan/31200/index.html",
+      "url": "/region/ulsan/31200/",
+      "title": "울산 북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "울산 북구",
+      "key": "ulsan/31200",
+      "code": "31200",
+      "schools": [
+        "강동고등학교",
+        "강동중학교",
+        "강동초등학교",
+        "달천고등학교",
+        "매곡고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/ulsan/31710/index.html",
+      "url": "/region/ulsan/31710/",
+      "title": "울산 울주군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "울산 울주군",
+      "key": "ulsan/31710",
+      "code": "31710",
+      "schools": [
+        "남창고등학교",
+        "구영중학교",
+        "구영초등학교",
+        "범서고등학교",
+        "언양고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/sejong/36110/index.html",
+      "url": "/region/sejong/36110/",
+      "title": "세종 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "세종",
+      "key": "sejong/36110",
+      "code": "36110",
+      "schools": [
+        "고운고등학교",
+        "고운중학교",
+        "가득초등학교",
+        "다정고등학교",
+        "도담고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41110/index.html",
+      "url": "/region/gyeonggi-do/41110/",
+      "title": "경기 수원시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 수원시",
+      "key": "gyeonggi-do/41110",
+      "code": "41110",
+      "schools": [
+        "경기과학고등학교",
+        "경기체육중학교",
+        "고색초등학교",
+        "경기대명고등학교",
+        "경기체육고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41111/index.html",
+      "url": "/region/gyeonggi-do/41111/",
+      "title": "경기 수원시 장안구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 수원시 장안구",
+      "key": "gyeonggi-do/41111",
+      "code": "41111",
+      "schools": [
+        "경기과학고등학교",
+        "경기체육중학교",
+        "다솔초등학교",
+        "경기체육고등학교",
+        "대평고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41113/index.html",
+      "url": "/region/gyeonggi-do/41113/",
+      "title": "경기 수원시 권선구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 수원시 권선구",
+      "key": "gyeonggi-do/41113",
+      "code": "41113",
+      "schools": [
+        "경기대명고등학교",
+        "고색중학교",
+        "고색초등학교",
+        "고색고등학교",
+        "곡정고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41115/index.html",
+      "url": "/region/gyeonggi-do/41115/",
+      "title": "경기 수원시 팔달구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 수원시 팔달구",
+      "key": "gyeonggi-do/41115",
+      "code": "41115",
+      "schools": [
+        "매향여자정보고등학교",
+        "동성중학교",
+        "남창초등학교",
+        "삼일고등학교",
+        "삼일공업고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41117/index.html",
+      "url": "/region/gyeonggi-do/41117/",
+      "title": "경기 수원시 영통구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 수원시 영통구",
+      "key": "gyeonggi-do/41117",
+      "code": "41117",
+      "schools": [
+        "광교고등학교",
+        "광교중학교",
+        "광교초등학교",
+        "망포고등학교",
+        "매원고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41130/index.html",
+      "url": "/region/gyeonggi-do/41130/",
+      "title": "경기 성남시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 성남시",
+      "key": "gyeonggi-do/41130",
+      "code": "41130",
+      "schools": [
+        "계원예술고등학교",
+        "구미중학교",
+        "검단초등학교",
+        "낙생고등학교",
+        "늘푸른고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41131/index.html",
+      "url": "/region/gyeonggi-do/41131/",
+      "title": "경기 성남시 수정구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 성남시 수정구",
+      "key": "gyeonggi-do/41131",
+      "code": "41131",
+      "schools": [
+        "복정고등학교",
+        "상원여자중학교",
+        "금빛초등학교",
+        "성보경영고등학교",
+        "위례한빛고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41133/index.html",
+      "url": "/region/gyeonggi-do/41133/",
+      "title": "경기 성남시 중원구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 성남시 중원구",
+      "key": "gyeonggi-do/41133",
+      "code": "41133",
+      "schools": [
+        "동광고등학교",
+        "금광중학교",
+        "검단초등학교",
+        "성남고등학교",
+        "성남여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41135/index.html",
+      "url": "/region/gyeonggi-do/41135/",
+      "title": "경기 성남시 분당구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 성남시 분당구",
+      "key": "gyeonggi-do/41135",
+      "code": "41135",
+      "schools": [
+        "계원예술고등학교",
+        "구미중학교",
+        "구미초등학교",
+        "낙생고등학교",
+        "늘푸른고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41150/index.html",
+      "url": "/region/gyeonggi-do/41150/",
+      "title": "경기 의정부시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 의정부시",
+      "key": "gyeonggi-do/41150",
+      "code": "41150",
+      "schools": [
+        "경기북과학고등학교",
+        "경민여자중학교",
+        "가능초등학교",
+        "경민고등학교",
+        "경민비즈니스고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41170/index.html",
+      "url": "/region/gyeonggi-do/41170/",
+      "title": "경기 안양시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안양시",
+      "key": "gyeonggi-do/41170",
+      "code": "41170",
+      "schools": [
+        "경기게임마이스터고등학교",
+        "관양중학교",
+        "관양초등학교",
+        "관양고등학교",
+        "근명고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41171/index.html",
+      "url": "/region/gyeonggi-do/41171/",
+      "title": "경기 안양시 만안구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안양시 만안구",
+      "key": "gyeonggi-do/41171",
+      "code": "41171",
+      "schools": [
+        "근명고등학교",
+        "근명중학교",
+        "덕천초등학교",
+        "성문고등학교",
+        "신성고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41173/index.html",
+      "url": "/region/gyeonggi-do/41173/",
+      "title": "경기 안양시 동안구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안양시 동안구",
+      "key": "gyeonggi-do/41173",
+      "code": "41173",
+      "schools": [
+        "경기게임마이스터고등학교",
+        "관양중학교",
+        "관양초등학교",
+        "관양고등학교",
+        "동안고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41190/index.html",
+      "url": "/region/gyeonggi-do/41190/",
+      "title": "경기 부천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 부천시",
+      "key": "gyeonggi-do/41190",
+      "code": "41190",
+      "schools": [
+        "경기경영고등학교",
+        "계남중학교",
+        "계남초등학교",
+        "경기국제통상고등학교",
+        "경기예술고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41192/index.html",
+      "url": "/region/gyeonggi-do/41192/",
+      "title": "경기 부천시 원미구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 부천시 원미구",
+      "key": "gyeonggi-do/41192",
+      "code": "41192",
+      "schools": [
+        "경기국제통상고등학교",
+        "계남중학교",
+        "계남초등학교",
+        "경기예술고등학교",
+        "계남고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41194/index.html",
+      "url": "/region/gyeonggi-do/41194/",
+      "title": "경기 부천시 소사구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 부천시 소사구",
+      "key": "gyeonggi-do/41194",
+      "code": "41194",
+      "schools": [
+        "경기경영고등학교",
+        "범박중학교",
+        "도원초등학교",
+        "범박고등학교",
+        "부천고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41196/index.html",
+      "url": "/region/gyeonggi-do/41196/",
+      "title": "경기 부천시 오정구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 부천시 오정구",
+      "key": "gyeonggi-do/41196",
+      "code": "41196",
+      "schools": [
+        "덕산고등학교",
+        "까치울중학교",
+        "고강초등학교",
+        "수주고등학교",
+        "원종고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41210/index.html",
+      "url": "/region/gyeonggi-do/41210/",
+      "title": "경기 광명시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 광명시",
+      "key": "gyeonggi-do/41210",
+      "code": "41210",
+      "schools": [
+        "경기항공고등학교",
+        "가림중학교",
+        "가림초등학교",
+        "광명고등학교",
+        "광명북고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41220/index.html",
+      "url": "/region/gyeonggi-do/41220/",
+      "title": "경기 평택시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 평택시",
+      "key": "gyeonggi-do/41220",
+      "code": "41220",
+      "schools": [
+        "경기물류고등학교",
+        "도곡중학교",
+        "가내초등학교",
+        "동일공업고등학교",
+        "라온고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41250/index.html",
+      "url": "/region/gyeonggi-do/41250/",
+      "title": "경기 동두천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 동두천시",
+      "key": "gyeonggi-do/41250",
+      "code": "41250",
+      "schools": [
+        "동두천고등학교",
+        "동두천여자중학교",
+        "동두천송내초등학교",
+        "동두천외국어고등학교",
+        "동두천중앙고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41270/index.html",
+      "url": "/region/gyeonggi-do/41270/",
+      "title": "경기 안산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안산시",
+      "key": "gyeonggi-do/41270",
+      "code": "41270",
+      "schools": [
+        "경기모바일과학고등학교",
+        "경수중학교",
+        "각골초등학교",
+        "경안고등학교",
+        "경일관광경영고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41271/index.html",
+      "url": "/region/gyeonggi-do/41271/",
+      "title": "경기 안산시 상록구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안산시 상록구",
+      "key": "gyeonggi-do/41271",
+      "code": "41271",
+      "schools": [
+        "경기모바일과학고등학교",
+        "경수중학교",
+        "각골초등학교",
+        "광덕고등학교",
+        "부곡고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41273/index.html",
+      "url": "/region/gyeonggi-do/41273/",
+      "title": "경기 안산시 단원구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안산시 단원구",
+      "key": "gyeonggi-do/41273",
+      "code": "41273",
+      "schools": [
+        "경안고등학교",
+        "관산중학교",
+        "고잔초등학교",
+        "경일관광경영고등학교",
+        "고잔고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41280/index.html",
+      "url": "/region/gyeonggi-do/41280/",
+      "title": "경기 고양시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 고양시",
+      "key": "gyeonggi-do/41280",
+      "code": "41280",
+      "schools": [
+        "가좌고등학교",
+        "가람중학교",
+        "가람초등학교",
+        "경기영상과학고등학교",
+        "고양고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41281/index.html",
+      "url": "/region/gyeonggi-do/41281/",
+      "title": "경기 고양시 덕양구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 고양시 덕양구",
+      "key": "gyeonggi-do/41281",
+      "code": "41281",
+      "schools": [
+        "고양고등학교",
+        "가람중학교",
+        "가람초등학교",
+        "고양동산고등학교",
+        "고양외국어고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41285/index.html",
+      "url": "/region/gyeonggi-do/41285/",
+      "title": "경기 고양시 일산동구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 고양시 일산동구",
+      "key": "gyeonggi-do/41285",
+      "code": "41285",
+      "schools": [
+        "고양국제고등학교",
+        "백마중학교",
+        "고봉초등학교",
+        "백마고등학교",
+        "백석고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41287/index.html",
+      "url": "/region/gyeonggi-do/41287/",
+      "title": "경기 고양시 일산서구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 고양시 일산서구",
+      "key": "gyeonggi-do/41287",
+      "code": "41287",
+      "schools": [
+        "가좌고등학교",
+        "고양송산중학교",
+        "가좌초등학교",
+        "경기영상과학고등학교",
+        "고양예술고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41290/index.html",
+      "url": "/region/gyeonggi-do/41290/",
+      "title": "경기 과천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 과천시",
+      "key": "gyeonggi-do/41290",
+      "code": "41290",
+      "schools": [
+        "과천고등학교",
+        "과천문원중학교",
+        "과천갈현초등학교",
+        "과천여자고등학교",
+        "과천외국어고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41310/index.html",
+      "url": "/region/gyeonggi-do/41310/",
+      "title": "경기 구리시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 구리시",
+      "key": "gyeonggi-do/41310",
+      "code": "41310",
+      "schools": [
+        "갈매고등학교",
+        "갈매중학교",
+        "갈매초등학교",
+        "구리고등학교",
+        "구리여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41360/index.html",
+      "url": "/region/gyeonggi-do/41360/",
+      "title": "경기 남양주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 남양주시",
+      "key": "gyeonggi-do/41360",
+      "code": "41360",
+      "schools": [
+        "가운고등학교",
+        "가운중학교",
+        "가곡초등학교",
+        "광동고등학교",
+        "금곡고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41370/index.html",
+      "url": "/region/gyeonggi-do/41370/",
+      "title": "경기 오산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 오산시",
+      "key": "gyeonggi-do/41370",
+      "code": "41370",
+      "schools": [
+        "매홀고등학교",
+        "가수중학교",
+        "가수초등학교",
+        "성호고등학교",
+        "세교고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41390/index.html",
+      "url": "/region/gyeonggi-do/41390/",
+      "title": "경기 시흥시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 시흥시",
+      "key": "gyeonggi-do/41390",
+      "code": "41390",
+      "schools": [
+        "경기스마트고등학교",
+        "군자중학교",
+        "검바위초등학교",
+        "경기자동차과학고등학교",
+        "군서고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41410/index.html",
+      "url": "/region/gyeonggi-do/41410/",
+      "title": "경기 군포시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 군포시",
+      "key": "gyeonggi-do/41410",
+      "code": "41410",
+      "schools": [
+        "경기폴리텍고등학교",
+        "곡란중학교",
+        "곡란초등학교",
+        "군포고등학교",
+        "군포중앙고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41430/index.html",
+      "url": "/region/gyeonggi-do/41430/",
+      "title": "경기 의왕시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 의왕시",
+      "key": "gyeonggi-do/41430",
+      "code": "41430",
+      "schools": [
+        "경기외국어고등학교",
+        "갈뫼중학교",
+        "갈뫼초등학교",
+        "내손고등학교",
+        "모락고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41450/index.html",
+      "url": "/region/gyeonggi-do/41450/",
+      "title": "경기 하남시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 하남시",
+      "key": "gyeonggi-do/41450",
+      "code": "41450",
+      "schools": [
+        "감일고등학교",
+        "감일백제중학교",
+        "감일초등학교",
+        "남한고등학교",
+        "미사강변고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41460/index.html",
+      "url": "/region/gyeonggi-do/41460/",
+      "title": "경기 용인시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 용인시",
+      "key": "gyeonggi-do/41460",
+      "code": "41460",
+      "schools": [
+        "고림고등학교",
+        "고림중학교",
+        "갈곡초등학교",
+        "구성고등학교",
+        "기흥고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41461/index.html",
+      "url": "/region/gyeonggi-do/41461/",
+      "title": "경기 용인시 처인구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 용인시 처인구",
+      "key": "gyeonggi-do/41461",
+      "code": "41461",
+      "schools": [
+        "고림고등학교",
+        "고림중학교",
+        "고림초등학교",
+        "덕영고등학교",
+        "백암고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41463/index.html",
+      "url": "/region/gyeonggi-do/41463/",
+      "title": "경기 용인시 기흥구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 용인시 기흥구",
+      "key": "gyeonggi-do/41463",
+      "code": "41463",
+      "schools": [
+        "구성고등학교",
+        "구갈중학교",
+        "갈곡초등학교",
+        "기흥고등학교",
+        "동백고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41465/index.html",
+      "url": "/region/gyeonggi-do/41465/",
+      "title": "경기 용인시 수지구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 용인시 수지구",
+      "key": "gyeonggi-do/41465",
+      "code": "41465",
+      "schools": [
+        "대지고등학교",
+        "대지중학교",
+        "고기초등학교",
+        "상현고등학교",
+        "서원고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41480/index.html",
+      "url": "/region/gyeonggi-do/41480/",
+      "title": "경기 파주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 파주시",
+      "key": "gyeonggi-do/41480",
+      "code": "41480",
+      "schools": [
+        "광탄고등학교",
+        "광탄중학교",
+        "가온초등학교",
+        "교하고등학교",
+        "금촌고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41500/index.html",
+      "url": "/region/gyeonggi-do/41500/",
+      "title": "경기 이천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 이천시",
+      "key": "gyeonggi-do/41500",
+      "code": "41500",
+      "schools": [
+        "다산고등학교",
+        "대월중학교",
+        "나래초등학교",
+        "마장고등학교",
+        "부원고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41550/index.html",
+      "url": "/region/gyeonggi-do/41550/",
+      "title": "경기 안성시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 안성시",
+      "key": "gyeonggi-do/41550",
+      "code": "41550",
+      "schools": [
+        "가온고등학교",
+        "공도중학교",
+        "개산초등학교",
+        "경기창조고등학교",
+        "두원공업고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41570/index.html",
+      "url": "/region/gyeonggi-do/41570/",
+      "title": "경기 김포시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 김포시",
+      "key": "gyeonggi-do/41570",
+      "code": "41570",
+      "schools": [
+        "고촌고등학교",
+        "감정중학교",
+        "가현초등학교",
+        "김포고등학교",
+        "김포과학기술고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41590/index.html",
+      "url": "/region/gyeonggi-do/41590/",
+      "title": "경기 화성시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 화성시",
+      "key": "gyeonggi-do/41590",
+      "code": "41590",
+      "schools": [
+        "나루고등학교",
+        "기산중학교",
+        "갈담초등학교",
+        "남양고등학교",
+        "능동고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41591/index.html",
+      "url": "/region/gyeonggi-do/41591/",
+      "title": "경기 화성시 만세구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 화성시 만세구",
+      "key": "gyeonggi-do/41591",
+      "code": "41591",
+      "schools": [
+        "남양고등학교",
+        "남양중학교",
+        "서신초등학교",
+        "새동초등학교",
+        "서봉초등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41593/index.html",
+      "url": "/region/gyeonggi-do/41593/",
+      "title": "경기 화성시 효행구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 화성시 효행구",
+      "key": "gyeonggi-do/41593",
+      "code": "41593",
+      "schools": [
+        "봉담고등학교",
+        "기안중학교",
+        "갈담초등학교",
+        "와우고등학교",
+        "홍익디자인고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41595/index.html",
+      "url": "/region/gyeonggi-do/41595/",
+      "title": "경기 화성시 병점구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 화성시 병점구",
+      "key": "gyeonggi-do/41595",
+      "code": "41595",
+      "schools": [
+        "능동고등학교",
+        "기산중학교",
+        "구봉초등학교",
+        "두레자연고등학교",
+        "병점고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41597/index.html",
+      "url": "/region/gyeonggi-do/41597/",
+      "title": "경기 화성시 동탄구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 화성시 동탄구",
+      "key": "gyeonggi-do/41597",
+      "code": "41597",
+      "schools": [
+        "나루고등학교",
+        "다원중학교",
+        "늘봄초등학교",
+        "동탄고등학교",
+        "동탄국제고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41610/index.html",
+      "url": "/region/gyeonggi-do/41610/",
+      "title": "경기 광주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 광주시",
+      "key": "gyeonggi-do/41610",
+      "code": "41610",
+      "schools": [
+        "경화여자고등학교",
+        "경안중학교",
+        "경안초등학교",
+        "경화여자English Business고등학교",
+        "곤지암고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41630/index.html",
+      "url": "/region/gyeonggi-do/41630/",
+      "title": "경기 양주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 양주시",
+      "key": "gyeonggi-do/41630",
+      "code": "41630",
+      "schools": [
+        "덕계고등학교",
+        "고암중학교",
+        "가납초등학교",
+        "덕정고등학교",
+        "덕현고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41650/index.html",
+      "url": "/region/gyeonggi-do/41650/",
+      "title": "경기 포천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 포천시",
+      "key": "gyeonggi-do/41650",
+      "code": "41650",
+      "schools": [
+        "관인고등학교",
+        "갈월중학교",
+        "가산초등학교",
+        "동남고등학교",
+        "송우고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41670/index.html",
+      "url": "/region/gyeonggi-do/41670/",
+      "title": "경기 여주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 여주시",
+      "key": "gyeonggi-do/41670",
+      "code": "41670",
+      "schools": [
+        "경기관광고등학교",
+        "강천중학교",
+        "가남초등학교",
+        "대신고등학교",
+        "세종고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41800/index.html",
+      "url": "/region/gyeonggi-do/41800/",
+      "title": "경기 연천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 연천군",
+      "key": "gyeonggi-do/41800",
+      "code": "41800",
+      "schools": [
+        "연천고등학교",
+        "군남중학교",
+        "군남초등학교",
+        "전곡고등학교",
+        "대광중학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41820/index.html",
+      "url": "/region/gyeonggi-do/41820/",
+      "title": "경기 가평군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 가평군",
+      "key": "gyeonggi-do/41820",
+      "code": "41820",
+      "schools": [
+        "가평고등학교",
+        "가평북중학교",
+        "가평마장초등학교",
+        "설악고등학교",
+        "조종고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeonggi-do/41830/index.html",
+      "url": "/region/gyeonggi-do/41830/",
+      "title": "경기 양평군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경기 양평군",
+      "key": "gyeonggi-do/41830",
+      "code": "41830",
+      "schools": [
+        "양동고등학교",
+        "강하중학교",
+        "강상초등학교",
+        "양서고등학교",
+        "양일고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43110/index.html",
+      "url": "/region/chungcheongbuk-do/43110/",
+      "title": "충북 청주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 청주시",
+      "key": "chungcheongbuk-do/43110",
+      "code": "43110",
+      "schools": [
+        "금천고등학교",
+        "가경중학교",
+        "가경초등학교",
+        "단재고등학교",
+        "대성여자상업고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43111/index.html",
+      "url": "/region/chungcheongbuk-do/43111/",
+      "title": "충북 청주시 상당구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 청주시 상당구",
+      "key": "chungcheongbuk-do/43111",
+      "code": "43111",
+      "schools": [
+        "금천고등학교",
+        "가덕중학교",
+        "가덕초등학교",
+        "단재고등학교",
+        "대성여자상업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43112/index.html",
+      "url": "/region/chungcheongbuk-do/43112/",
+      "title": "충북 청주시 서원구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 청주시 서원구",
+      "key": "chungcheongbuk-do/43112",
+      "code": "43112",
+      "schools": [
+        "산남고등학교",
+        "남성중학교",
+        "갈원초등학교",
+        "세광고등학교",
+        "운호고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43113/index.html",
+      "url": "/region/chungcheongbuk-do/43113/",
+      "title": "충북 청주시 흥덕구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 청주시 흥덕구",
+      "key": "chungcheongbuk-do/43113",
+      "code": "43113",
+      "schools": [
+        "봉명고등학교",
+        "가경중학교",
+        "가경초등학교",
+        "서원고등학교",
+        "양업고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43114/index.html",
+      "url": "/region/chungcheongbuk-do/43114/",
+      "title": "충북 청주시 청원구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 청주시 청원구",
+      "key": "chungcheongbuk-do/43114",
+      "code": "43114",
+      "schools": [
+        "양청고등학교",
+        "각리중학교",
+        "각리초등학교",
+        "오창고등학교",
+        "청원고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43130/index.html",
+      "url": "/region/chungcheongbuk-do/43130/",
+      "title": "충북 충주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 충주시",
+      "key": "chungcheongbuk-do/43130",
+      "code": "43130",
+      "schools": [
+        "국원고등학교",
+        "노은중학교",
+        "가흥초등학교",
+        "중앙탑고등학교",
+        "충원고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43150/index.html",
+      "url": "/region/chungcheongbuk-do/43150/",
+      "title": "충북 제천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 제천시",
+      "key": "chungcheongbuk-do/43150",
+      "code": "43150",
+      "schools": [
+        "세명고등학교",
+        "내토중학교",
+        "금성초등학교",
+        "제천고등학교",
+        "제천디지털전자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43720/index.html",
+      "url": "/region/chungcheongbuk-do/43720/",
+      "title": "충북 보은군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 보은군",
+      "key": "chungcheongbuk-do/43720",
+      "code": "43720",
+      "schools": [
+        "보은고등학교",
+        "보덕중학교",
+        "관기초등학교",
+        "보은여자고등학교",
+        "충북생명산업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43730/index.html",
+      "url": "/region/chungcheongbuk-do/43730/",
+      "title": "충북 옥천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 옥천군",
+      "key": "chungcheongbuk-do/43730",
+      "code": "43730",
+      "schools": [
+        "옥천고등학교",
+        "안내중학교",
+        "군남초등학교",
+        "청산고등학교",
+        "충북산업과학고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43740/index.html",
+      "url": "/region/chungcheongbuk-do/43740/",
+      "title": "충북 영동군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 영동군",
+      "key": "chungcheongbuk-do/43740",
+      "code": "43740",
+      "schools": [
+        "영동고등학교",
+        "새너울중학교",
+        "구룡초등학교",
+        "영동미래고등학교",
+        "영동산업과학고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43745/index.html",
+      "url": "/region/chungcheongbuk-do/43745/",
+      "title": "충북 증평군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 증평군",
+      "key": "chungcheongbuk-do/43745",
+      "code": "43745",
+      "schools": [
+        "증평공업고등학교",
+        "증평여자중학교",
+        "도안초등학교",
+        "충북비즈니스고등학교",
+        "형석고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43750/index.html",
+      "url": "/region/chungcheongbuk-do/43750/",
+      "title": "충북 진천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 진천군",
+      "key": "chungcheongbuk-do/43750",
+      "code": "43750",
+      "schools": [
+        "광혜원고등학교",
+        "광혜원중학교",
+        "구정초등학교",
+        "서전고등학교",
+        "진천고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43760/index.html",
+      "url": "/region/chungcheongbuk-do/43760/",
+      "title": "충북 괴산군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 괴산군",
+      "key": "chungcheongbuk-do/43760",
+      "code": "43760",
+      "schools": [
+        "괴산고등학교",
+        "괴산북중학교",
+        "감물초등학교",
+        "괴산오성중학교",
+        "괴산중학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43770/index.html",
+      "url": "/region/chungcheongbuk-do/43770/",
+      "title": "충북 음성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 음성군",
+      "key": "chungcheongbuk-do/43770",
+      "code": "43770",
+      "schools": [
+        "대금고등학교",
+        "감곡중학교",
+        "감곡초등학교",
+        "동성고등학교",
+        "매괴고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongbuk-do/43800/index.html",
+      "url": "/region/chungcheongbuk-do/43800/",
+      "title": "충북 단양군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충북 단양군",
+      "key": "chungcheongbuk-do/43800",
+      "code": "43800",
+      "schools": [
+        "단양고등학교",
+        "단성중학교",
+        "가곡초등학교",
+        "한국호텔관광고등학교",
+        "단양소백산중학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44130/index.html",
+      "url": "/region/chungcheongnam-do/44130/",
+      "title": "충남 천안시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 천안시",
+      "key": "chungcheongnam-do/44130",
+      "code": "44130",
+      "schools": [
+        "목천고등학교",
+        "광풍중학교",
+        "광덕초등학교",
+        "병천고등학교",
+        "복자여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44131/index.html",
+      "url": "/region/chungcheongnam-do/44131/",
+      "title": "충남 천안시 동남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 천안시 동남구",
+      "key": "chungcheongnam-do/44131",
+      "code": "44131",
+      "schools": [
+        "목천고등학교",
+        "광풍중학교",
+        "광덕초등학교",
+        "병천고등학교",
+        "복자여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44133/index.html",
+      "url": "/region/chungcheongnam-do/44133/",
+      "title": "충남 천안시 서북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 천안시 서북구",
+      "key": "chungcheongnam-do/44133",
+      "code": "44133",
+      "schools": [
+        "성환고등학교",
+        "성환중학교",
+        "대홍초등학교",
+        "천안두정고등학교",
+        "천안불당고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44150/index.html",
+      "url": "/region/chungcheongnam-do/44150/",
+      "title": "충남 공주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 공주시",
+      "key": "chungcheongnam-do/44150",
+      "code": "44150",
+      "schools": [
+        "공주고등학교",
+        "경천중학교",
+        "경천초등학교",
+        "공주금성여자고등학교",
+        "공주대학교사범대학부설고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44180/index.html",
+      "url": "/region/chungcheongnam-do/44180/",
+      "title": "충남 보령시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 보령시",
+      "key": "chungcheongnam-do/44180",
+      "code": "44180",
+      "schools": [
+        "대천고등학교",
+        "남포중학교",
+        "개화초등학교",
+        "대천여자고등학교",
+        "대천여자상업고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44200/index.html",
+      "url": "/region/chungcheongnam-do/44200/",
+      "title": "충남 아산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 아산시",
+      "key": "chungcheongnam-do/44200",
+      "code": "44200",
+      "schools": [
+        "배방고등학교",
+        "도고중학교",
+        "거산초등학교",
+        "설화고등학교",
+        "아산고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44210/index.html",
+      "url": "/region/chungcheongnam-do/44210/",
+      "title": "충남 서산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 서산시",
+      "key": "chungcheongnam-do/44210",
+      "code": "44210",
+      "schools": [
+        "대산고등학교",
+        "고북중학교",
+        "가사초등학교",
+        "부석고등학교",
+        "서령고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44230/index.html",
+      "url": "/region/chungcheongnam-do/44230/",
+      "title": "충남 논산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 논산시",
+      "key": "chungcheongnam-do/44230",
+      "code": "44230",
+      "schools": [
+        "강경고등학교",
+        "가야곡중학교",
+        "가야곡초등학교",
+        "강경상업고등학교",
+        "건양대학교병설건양고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44250/index.html",
+      "url": "/region/chungcheongnam-do/44250/",
+      "title": "충남 계룡시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 계룡시",
+      "key": "chungcheongnam-do/44250",
+      "code": "44250",
+      "schools": [
+        "계룡고등학교",
+        "계룡중학교",
+        "계룡대실초등학교",
+        "용남고등학교",
+        "엄사중학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44270/index.html",
+      "url": "/region/chungcheongnam-do/44270/",
+      "title": "충남 당진시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 당진시",
+      "key": "chungcheongnam-do/44270",
+      "code": "44270",
+      "schools": [
+        "당진고등학교",
+        "고대중학교",
+        "계성초등학교",
+        "당진정보고등학교",
+        "서야고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44710/index.html",
+      "url": "/region/chungcheongnam-do/44710/",
+      "title": "충남 금산군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 금산군",
+      "key": "chungcheongnam-do/44710",
+      "code": "44710",
+      "schools": [
+        "금산고등학교",
+        "금산동중학교",
+        "군북초등학교",
+        "금산산업고등학교",
+        "금산여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44760/index.html",
+      "url": "/region/chungcheongnam-do/44760/",
+      "title": "충남 부여군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 부여군",
+      "key": "chungcheongnam-do/44760",
+      "code": "44760",
+      "schools": [
+        "부여고등학교",
+        "백제중학교",
+        "구룡초등학교",
+        "부여여자고등학교",
+        "부여전자고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44770/index.html",
+      "url": "/region/chungcheongnam-do/44770/",
+      "title": "충남 서천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 서천군",
+      "key": "chungcheongnam-do/44770",
+      "code": "44770",
+      "schools": [
+        "공동체비전고등학교",
+        "동강중학교",
+        "기산초등학교",
+        "서천고등학교",
+        "서천여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44790/index.html",
+      "url": "/region/chungcheongnam-do/44790/",
+      "title": "충남 청양군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 청양군",
+      "key": "chungcheongnam-do/44790",
+      "code": "44790",
+      "schools": [
+        "정산고등학교",
+        "동영중학교",
+        "가남초등학교",
+        "청양고등학교",
+        "정산중학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44800/index.html",
+      "url": "/region/chungcheongnam-do/44800/",
+      "title": "충남 홍성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 홍성군",
+      "key": "chungcheongnam-do/44800",
+      "code": "44800",
+      "schools": [
+        "갈산고등학교",
+        "갈산중학교",
+        "갈산초등학교",
+        "서해삼육고등학교",
+        "충남드론항공고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44810/index.html",
+      "url": "/region/chungcheongnam-do/44810/",
+      "title": "충남 예산군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 예산군",
+      "key": "chungcheongnam-do/44810",
+      "code": "44810",
+      "schools": [
+        "대흥고등학교",
+        "고덕중학교",
+        "고덕초등학교",
+        "덕산고등학교",
+        "삽교고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/chungcheongnam-do/44825/index.html",
+      "url": "/region/chungcheongnam-do/44825/",
+      "title": "충남 태안군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "충남 태안군",
+      "key": "chungcheongnam-do/44825",
+      "code": "44825",
+      "schools": [
+        "만리포고등학교",
+        "근흥중학교",
+        "고남초등학교",
+        "안면고등학교",
+        "태안고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47110/index.html",
+      "url": "/region/gyeongsangbuk-do/47110/",
+      "title": "경북 포항시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 포항시",
+      "key": "gyeongsangbuk-do/47110",
+      "code": "47110",
+      "schools": [
+        "경북과학고등학교",
+        "구룡포중학교",
+        "곡강초등학교",
+        "경북세무고등학교",
+        "대동고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47111/index.html",
+      "url": "/region/gyeongsangbuk-do/47111/",
+      "title": "경북 포항시 남구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 포항시 남구",
+      "key": "gyeongsangbuk-do/47111",
+      "code": "47111",
+      "schools": [
+        "경북과학고등학교",
+        "구룡포중학교",
+        "구룡포초등학교",
+        "세명고등학교",
+        "영일고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47113/index.html",
+      "url": "/region/gyeongsangbuk-do/47113/",
+      "title": "경북 포항시 북구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 포항시 북구",
+      "key": "gyeongsangbuk-do/47113",
+      "code": "47113",
+      "schools": [
+        "경북세무고등학교",
+        "기계중학교",
+        "곡강초등학교",
+        "대동고등학교",
+        "동지고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47130/index.html",
+      "url": "/region/gyeongsangbuk-do/47130/",
+      "title": "경북 경주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 경주시",
+      "key": "gyeongsangbuk-do/47130",
+      "code": "47130",
+      "schools": [
+        "경주고등학교",
+        "감포중학교",
+        "감포초등학교",
+        "경주공업고등학교",
+        "경주디자인고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47150/index.html",
+      "url": "/region/gyeongsangbuk-do/47150/",
+      "title": "경북 김천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 김천시",
+      "key": "gyeongsangbuk-do/47150",
+      "code": "47150",
+      "schools": [
+        "경북과학기술고등학교",
+        "감문중학교",
+        "감천초등학교",
+        "김천고등학교",
+        "김천생명과학고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47170/index.html",
+      "url": "/region/gyeongsangbuk-do/47170/",
+      "title": "경북 안동시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 안동시",
+      "key": "gyeongsangbuk-do/47170",
+      "code": "47170",
+      "schools": [
+        "경북하이텍고등학교",
+        "경덕중학교",
+        "길안초등학교",
+        "경안고등학교",
+        "경안여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47190/index.html",
+      "url": "/region/gyeongsangbuk-do/47190/",
+      "title": "경북 구미시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 구미시",
+      "key": "gyeongsangbuk-do/47190",
+      "code": "47190",
+      "schools": [
+        "경구고등학교",
+        "경구중학교",
+        "고아초등학교",
+        "경북생활과학고등학교",
+        "경북외국어고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47210/index.html",
+      "url": "/region/gyeongsangbuk-do/47210/",
+      "title": "경북 영주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 영주시",
+      "key": "gyeongsangbuk-do/47210",
+      "code": "47210",
+      "schools": [
+        "경북항공고등학교",
+        "금계중학교",
+        "남산초등학교",
+        "대영고등학교",
+        "영광고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47230/index.html",
+      "url": "/region/gyeongsangbuk-do/47230/",
+      "title": "경북 영천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 영천시",
+      "key": "gyeongsangbuk-do/47230",
+      "code": "47230",
+      "schools": [
+        "경북바이오마이스터고등학교",
+        "금호중학교",
+        "거여초등학교",
+        "경북휴먼테크고등학교",
+        "선화여자고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47250/index.html",
+      "url": "/region/gyeongsangbuk-do/47250/",
+      "title": "경북 상주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 상주시",
+      "key": "gyeongsangbuk-do/47250",
+      "code": "47250",
+      "schools": [
+        "경북자연과학고등학교",
+        "낙동중학교",
+        "공검초등학교",
+        "상산전자고등학교",
+        "상주고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47280/index.html",
+      "url": "/region/gyeongsangbuk-do/47280/",
+      "title": "경북 문경시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 문경시",
+      "key": "gyeongsangbuk-do/47280",
+      "code": "47280",
+      "schools": [
+        "가은고등학교",
+        "가은중학교",
+        "가은초등학교",
+        "경북조리과학고등학교",
+        "문경공업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47290/index.html",
+      "url": "/region/gyeongsangbuk-do/47290/",
+      "title": "경북 경산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 경산시",
+      "key": "gyeongsangbuk-do/47290",
+      "code": "47290",
+      "schools": [
+        "경북기계금속고등학교",
+        "경북체육중학교",
+        "경산동부초등학교",
+        "경북체육고등학교",
+        "경산고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47730/index.html",
+      "url": "/region/gyeongsangbuk-do/47730/",
+      "title": "경북 의성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 의성군",
+      "key": "gyeongsangbuk-do/47730",
+      "code": "47730",
+      "schools": [
+        "경북소프트웨어마이스터고등학교",
+        "경북중부중학교",
+        "가음초등학교",
+        "금성고등학교",
+        "안계고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47750/index.html",
+      "url": "/region/gyeongsangbuk-do/47750/",
+      "title": "경북 청송군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 청송군",
+      "key": "gyeongsangbuk-do/47750",
+      "code": "47750",
+      "schools": [
+        "경북골프경영고등학교",
+        "구천중학교",
+        "도평초등학교",
+        "진보고등학교",
+        "청송고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47760/index.html",
+      "url": "/region/gyeongsangbuk-do/47760/",
+      "title": "경북 영양군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 영양군",
+      "key": "gyeongsangbuk-do/47760",
+      "code": "47760",
+      "schools": [
+        "수비고등학교",
+        "석보중학교",
+        "석보초등학교",
+        "영양고등학교",
+        "영양여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47770/index.html",
+      "url": "/region/gyeongsangbuk-do/47770/",
+      "title": "경북 영덕군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 영덕군",
+      "key": "gyeongsangbuk-do/47770",
+      "code": "47770",
+      "schools": [
+        "강구정보고등학교",
+        "강구중학교",
+        "강구초등학교",
+        "영덕고등학교",
+        "영덕여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47820/index.html",
+      "url": "/region/gyeongsangbuk-do/47820/",
+      "title": "경북 청도군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 청도군",
+      "key": "gyeongsangbuk-do/47820",
+      "code": "47820",
+      "schools": [
+        "경북드론고등학교",
+        "금천중학교",
+        "각남초등학교",
+        "금천고등학교",
+        "모계고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47830/index.html",
+      "url": "/region/gyeongsangbuk-do/47830/",
+      "title": "경북 고령군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 고령군",
+      "key": "gyeongsangbuk-do/47830",
+      "code": "47830",
+      "schools": [
+        "대가야고등학교",
+        "고령중학교",
+        "개진초등학교",
+        "한국조리명장고등학교",
+        "고령중학교개진분교장"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47840/index.html",
+      "url": "/region/gyeongsangbuk-do/47840/",
+      "title": "경북 성주군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 성주군",
+      "key": "gyeongsangbuk-do/47840",
+      "code": "47840",
+      "schools": [
+        "명인고등학교",
+        "명인중학교",
+        "가천초등학교",
+        "성주고등학교",
+        "성주여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47850/index.html",
+      "url": "/region/gyeongsangbuk-do/47850/",
+      "title": "경북 칠곡군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 칠곡군",
+      "key": "gyeongsangbuk-do/47850",
+      "code": "47850",
+      "schools": [
+        "경북기계명장고등학교",
+        "동명중학교",
+        "가산초등학교",
+        "동명고등학교",
+        "북삼고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47900/index.html",
+      "url": "/region/gyeongsangbuk-do/47900/",
+      "title": "경북 예천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 예천군",
+      "key": "gyeongsangbuk-do/47900",
+      "code": "47900",
+      "schools": [
+        "경북일고등학교",
+        "감천중학교",
+        "감천초등학교",
+        "대창고등학교",
+        "예천여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47920/index.html",
+      "url": "/region/gyeongsangbuk-do/47920/",
+      "title": "경북 봉화군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 봉화군",
+      "key": "gyeongsangbuk-do/47920",
+      "code": "47920",
+      "schools": [
+        "봉화고등학교",
+        "물야중학교",
+        "내성초등학교",
+        "한국산림과학고등학교",
+        "한국펫고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47930/index.html",
+      "url": "/region/gyeongsangbuk-do/47930/",
+      "title": "경북 울진군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 울진군",
+      "key": "gyeongsangbuk-do/47930",
+      "code": "47930",
+      "schools": [
+        "경북관광비즈니스고등학교",
+        "기성중학교",
+        "기성초등학교",
+        "울진고등학교",
+        "죽변고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangbuk-do/47940/index.html",
+      "url": "/region/gyeongsangbuk-do/47940/",
+      "title": "경북 울릉군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경북 울릉군",
+      "key": "gyeongsangbuk-do/47940",
+      "code": "47940",
+      "schools": [
+        "울릉고등학교",
+        "울릉중학교",
+        "남양초등학교",
+        "울릉초등학교",
+        "저동초등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48120/index.html",
+      "url": "/region/gyeongsangnam-do/48120/",
+      "title": "경남 창원시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창원시",
+      "key": "gyeongsangnam-do/48120",
+      "code": "48120",
+      "schools": [
+        "경남관광고등학교",
+        "감계중학교",
+        "가고파초등학교",
+        "경상고등학교",
+        "마산가포고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48121/index.html",
+      "url": "/region/gyeongsangnam-do/48121/",
+      "title": "경남 창원시 의창구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창원시 의창구",
+      "key": "gyeongsangnam-do/48121",
+      "code": "48121",
+      "schools": [
+        "경남관광고등학교",
+        "감계중학교",
+        "감계초등학교",
+        "경상고등학교",
+        "창원고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48123/index.html",
+      "url": "/region/gyeongsangnam-do/48123/",
+      "title": "경남 창원시 성산구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창원시 성산구",
+      "key": "gyeongsangnam-do/48123",
+      "code": "48123",
+      "schools": [
+        "창원경일고등학교",
+        "경원중학교",
+        "남양초등학교",
+        "창원경일여자고등학교",
+        "창원기계공업고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48125/index.html",
+      "url": "/region/gyeongsangnam-do/48125/",
+      "title": "경남 창원시 마산합포구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창원시 마산합포구",
+      "key": "gyeongsangnam-do/48125",
+      "code": "48125",
+      "schools": [
+        "마산가포고등학교",
+        "구산중학교",
+        "가포초등학교",
+        "마산고등학교",
+        "마산삼진고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48127/index.html",
+      "url": "/region/gyeongsangnam-do/48127/",
+      "title": "경남 창원시 마산회원구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창원시 마산회원구",
+      "key": "gyeongsangnam-do/48127",
+      "code": "48127",
+      "schools": [
+        "마산공업고등학교",
+        "광려중학교",
+        "가고파초등학교",
+        "마산구암고등학교",
+        "마산내서여자고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48129/index.html",
+      "url": "/region/gyeongsangnam-do/48129/",
+      "title": "경남 창원시 진해구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창원시 진해구",
+      "key": "gyeongsangnam-do/48129",
+      "code": "48129",
+      "schools": [
+        "웅천고등학교",
+        "동진여자중학교",
+        "경화초등학교",
+        "진해고등학교",
+        "진해세화여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48170/index.html",
+      "url": "/region/gyeongsangnam-do/48170/",
+      "title": "경남 진주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 진주시",
+      "key": "gyeongsangnam-do/48170",
+      "code": "48170",
+      "schools": [
+        "경남과학고등학교",
+        "개양중학교",
+        "가람초등학교",
+        "경남예술고등학교",
+        "경남자동차고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48220/index.html",
+      "url": "/region/gyeongsangnam-do/48220/",
+      "title": "경남 통영시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 통영시",
+      "key": "gyeongsangnam-do/48220",
+      "code": "48220",
+      "schools": [
+        "동원고등학교",
+        "도산중학교",
+        "광도초등학교",
+        "충렬여자고등학교",
+        "충무고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48240/index.html",
+      "url": "/region/gyeongsangnam-do/48240/",
+      "title": "경남 사천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 사천시",
+      "key": "gyeongsangnam-do/48240",
+      "code": "48240",
+      "schools": [
+        "경남자영고등학교",
+        "곤명중학교",
+        "곤명초등학교",
+        "곤양고등학교",
+        "사천고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48250/index.html",
+      "url": "/region/gyeongsangnam-do/48250/",
+      "title": "경남 김해시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 김해시",
+      "key": "gyeongsangnam-do/48250",
+      "code": "48250",
+      "schools": [
+        "구산고등학교",
+        "가야중학교",
+        "경운초등학교",
+        "김해가야고등학교",
+        "김해건설공업고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48270/index.html",
+      "url": "/region/gyeongsangnam-do/48270/",
+      "title": "경남 밀양시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 밀양시",
+      "key": "gyeongsangnam-do/48270",
+      "code": "48270",
+      "schools": [
+        "밀성고등학교",
+        "동국대학교사범대학부속홍제중학교",
+        "무안초등학교",
+        "밀성제일고등학교",
+        "밀양고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48310/index.html",
+      "url": "/region/gyeongsangnam-do/48310/",
+      "title": "경남 거제시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 거제시",
+      "key": "gyeongsangnam-do/48310",
+      "code": "48310",
+      "schools": [
+        "거제고등학교",
+        "거제고현중학교",
+        "거제고현초등학교",
+        "거제공업고등학교",
+        "거제상문고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48330/index.html",
+      "url": "/region/gyeongsangnam-do/48330/",
+      "title": "경남 양산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 양산시",
+      "key": "gyeongsangnam-do/48330",
+      "code": "48330",
+      "schools": [
+        "경남외국어고등학교",
+        "개운중학교",
+        "가남초등학교",
+        "물금고등학교",
+        "범어고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48720/index.html",
+      "url": "/region/gyeongsangnam-do/48720/",
+      "title": "경남 의령군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 의령군",
+      "key": "gyeongsangnam-do/48720",
+      "code": "48720",
+      "schools": [
+        "신반정보고등학교",
+        "신반중학교",
+        "가례초등학교",
+        "의령고등학교",
+        "의령여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48730/index.html",
+      "url": "/region/gyeongsangnam-do/48730/",
+      "title": "경남 함안군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 함안군",
+      "key": "gyeongsangnam-do/48730",
+      "code": "48730",
+      "schools": [
+        "경남로봇고등학교",
+        "군북중학교",
+        "가야초등학교",
+        "군북고등학교",
+        "명덕고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48740/index.html",
+      "url": "/region/gyeongsangnam-do/48740/",
+      "title": "경남 창녕군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 창녕군",
+      "key": "gyeongsangnam-do/48740",
+      "code": "48740",
+      "schools": [
+        "남지고등학교",
+        "남지여자중학교",
+        "계창초등학교",
+        "영산고등학교",
+        "창녕고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48820/index.html",
+      "url": "/region/gyeongsangnam-do/48820/",
+      "title": "경남 고성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 고성군",
+      "key": "gyeongsangnam-do/48820",
+      "code": "48820",
+      "schools": [
+        "경남항공고등학교",
+        "고성동중학교",
+        "개천초등학교",
+        "고성고등학교",
+        "고성중앙고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48840/index.html",
+      "url": "/region/gyeongsangnam-do/48840/",
+      "title": "경남 남해군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 남해군",
+      "key": "gyeongsangnam-do/48840",
+      "code": "48840",
+      "schools": [
+        "경남해양과학고등학교",
+        "꽃내중학교",
+        "고현초등학교",
+        "남해고등학교",
+        "남해정보산업고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48850/index.html",
+      "url": "/region/gyeongsangnam-do/48850/",
+      "title": "경남 하동군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 하동군",
+      "key": "gyeongsangnam-do/48850",
+      "code": "48850",
+      "schools": [
+        "금남고등학교",
+        "금남중학교",
+        "갈육초등학교",
+        "옥종고등학교",
+        "진교고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48860/index.html",
+      "url": "/region/gyeongsangnam-do/48860/",
+      "title": "경남 산청군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 산청군",
+      "key": "gyeongsangnam-do/48860",
+      "code": "48860",
+      "schools": [
+        "간디고등학교",
+        "단성중학교",
+        "금서초등학교",
+        "경남간호고등학교",
+        "단성고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48870/index.html",
+      "url": "/region/gyeongsangnam-do/48870/",
+      "title": "경남 함양군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 함양군",
+      "key": "gyeongsangnam-do/48870",
+      "code": "48870",
+      "schools": [
+        "서상고등학교",
+        "마천중학교",
+        "금반초등학교",
+        "안의고등학교",
+        "함양고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48880/index.html",
+      "url": "/region/gyeongsangnam-do/48880/",
+      "title": "경남 거창군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 거창군",
+      "key": "gyeongsangnam-do/48880",
+      "code": "48880",
+      "schools": [
+        "거창고등학교",
+        "가조중학교",
+        "가북초등학교",
+        "거창대성고등학교",
+        "거창승강기고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gyeongsangnam-do/48890/index.html",
+      "url": "/region/gyeongsangnam-do/48890/",
+      "title": "경남 합천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "경남 합천군",
+      "key": "gyeongsangnam-do/48890",
+      "code": "48890",
+      "schools": [
+        "삼가고등학교",
+        "가회중학교",
+        "가회초등학교",
+        "야로고등학교",
+        "초계고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/jeju/50110/index.html",
+      "url": "/region/jeju/50110/",
+      "title": "제주 제주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "제주 제주시",
+      "key": "jeju/50110",
+      "code": "50110",
+      "schools": [
+        "남녕고등학교",
+        "고산중학교",
+        "고산초등학교",
+        "대기고등학교",
+        "세화고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/jeju/50130/index.html",
+      "url": "/region/jeju/50130/",
+      "title": "제주 서귀포시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "제주 서귀포시",
+      "key": "jeju/50130",
+      "code": "50130",
+      "schools": [
+        "남주고등학교",
+        "남원중학교",
+        "가마초등학교",
+        "대정고등학교",
+        "대정여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51110/index.html",
+      "url": "/region/gangwon/51110/",
+      "title": "강원 춘천시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 춘천시",
+      "key": "gangwon/51110",
+      "code": "51110",
+      "schools": [
+        "강원고등학교",
+        "가정중학교",
+        "가산초등학교",
+        "강원대학교사범대학부설고등학교",
+        "강원생명과학고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51130/index.html",
+      "url": "/region/gangwon/51130/",
+      "title": "강원 원주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 원주시",
+      "key": "gangwon/51130",
+      "code": "51130",
+      "schools": [
+        "강원과학고등학교",
+        "귀래중학교",
+        "고산초등학교",
+        "대성고등학교",
+        "문막고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51150/index.html",
+      "url": "/region/gangwon/51150/",
+      "title": "강원 강릉시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 강릉시",
+      "key": "gangwon/51150",
+      "code": "51150",
+      "schools": [
+        "강릉고등학교",
+        "강릉중학교",
+        "강동초등학교",
+        "강릉명륜고등학교",
+        "강릉문성고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51170/index.html",
+      "url": "/region/gangwon/51170/",
+      "title": "강원 동해시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 동해시",
+      "key": "gangwon/51170",
+      "code": "51170",
+      "schools": [
+        "동해광희고등학교",
+        "동해광희중학교",
+        "남호초등학교",
+        "동해삼육고등학교",
+        "동해상업고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51190/index.html",
+      "url": "/region/gangwon/51190/",
+      "title": "강원 태백시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 태백시",
+      "key": "gangwon/51190",
+      "code": "51190",
+      "schools": [
+        "장성여자고등학교",
+        "상장중학교",
+        "동점초등학교",
+        "철암고등학교",
+        "한국항공고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51210/index.html",
+      "url": "/region/gangwon/51210/",
+      "title": "강원 속초시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 속초시",
+      "key": "gangwon/51210",
+      "code": "51210",
+      "schools": [
+        "설악고등학교",
+        "설악중학교",
+        "교동초등학교",
+        "속초고등학교",
+        "속초여자고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51230/index.html",
+      "url": "/region/gangwon/51230/",
+      "title": "강원 삼척시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 삼척시",
+      "key": "gangwon/51230",
+      "code": "51230",
+      "schools": [
+        "가곡고등학교",
+        "가곡중학교",
+        "근덕초등학교",
+        "도계고등학교",
+        "도계전산정보고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51720/index.html",
+      "url": "/region/gangwon/51720/",
+      "title": "강원 홍천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 홍천군",
+      "key": "gangwon/51720",
+      "code": "51720",
+      "schools": [
+        "강원생활과학고등학교",
+        "내면중학교",
+        "구송초등학교",
+        "내면고등학교",
+        "서석고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51730/index.html",
+      "url": "/region/gangwon/51730/",
+      "title": "강원 횡성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 횡성군",
+      "key": "gangwon/51730",
+      "code": "51730",
+      "schools": [
+        "갑천고등학교",
+        "갑천중학교",
+        "갑천초등학교",
+        "둔내고등학교",
+        "민족사관고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51750/index.html",
+      "url": "/region/gangwon/51750/",
+      "title": "강원 영월군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 영월군",
+      "key": "gangwon/51750",
+      "code": "51750",
+      "schools": [
+        "마차고등학교",
+        "녹전중학교",
+        "구래초등학교",
+        "상동고등학교",
+        "석정여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51760/index.html",
+      "url": "/region/gangwon/51760/",
+      "title": "강원 평창군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 평창군",
+      "key": "gangwon/51760",
+      "code": "51760",
+      "schools": [
+        "대화고등학교",
+        "계촌중학교",
+        "거문초등학교",
+        "봉평고등학교",
+        "상지대관령고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 0
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51770/index.html",
+      "url": "/region/gangwon/51770/",
+      "title": "강원 정선군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 정선군",
+      "key": "gangwon/51770",
+      "code": "51770",
+      "schools": [
+        "고한고등학교",
+        "고한중학교",
+        "갈래초등학교",
+        "사북고등학교",
+        "여량고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51780/index.html",
+      "url": "/region/gangwon/51780/",
+      "title": "강원 철원군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 철원군",
+      "key": "gangwon/51780",
+      "code": "51780",
+      "schools": [
+        "김화고등학교",
+        "김화여자중학교",
+        "근남초등학교",
+        "김화공업고등학교",
+        "신철원고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51790/index.html",
+      "url": "/region/gangwon/51790/",
+      "title": "강원 화천군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 화천군",
+      "key": "gangwon/51790",
+      "code": "51790",
+      "schools": [
+        "간동고등학교",
+        "간동중학교",
+        "광덕초등학교",
+        "사내고등학교",
+        "화천고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51800/index.html",
+      "url": "/region/gangwon/51800/",
+      "title": "강원 양구군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 양구군",
+      "key": "gangwon/51800",
+      "code": "51800",
+      "schools": [
+        "강원외국어고등학교",
+        "대암중학교",
+        "도촌초등학교",
+        "양구고등학교",
+        "양구여자고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51810/index.html",
+      "url": "/region/gangwon/51810/",
+      "title": "강원 인제군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 인제군",
+      "key": "gangwon/51810",
+      "code": "51810",
+      "schools": [
+        "기린고등학교",
+        "기린중학교",
+        "귀둔초등학교",
+        "신남고등학교",
+        "원통고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51820/index.html",
+      "url": "/region/gangwon/51820/",
+      "title": "강원 고성군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 고성군",
+      "key": "gangwon/51820",
+      "code": "51820",
+      "schools": [
+        "거진고등학교",
+        "거진중학교",
+        "간성초등학교",
+        "고성고등학교",
+        "대진고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/gangwon/51830/index.html",
+      "url": "/region/gangwon/51830/",
+      "title": "강원 양양군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "강원 양양군",
+      "key": "gangwon/51830",
+      "code": "51830",
+      "schools": [
+        "양양고등학교",
+        "강현중학교",
+        "강현초등학교",
+        "양양중학교",
+        "현남중학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52110/index.html",
+      "url": "/region/jeonbuk/52110/",
+      "title": "전북 전주시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 전주시",
+      "key": "jeonbuk/52110",
+      "code": "52110",
+      "schools": [
+        "동암고등학교",
+        "서전주중학교",
+        "전주교육대학교전주부설초등학교",
+        "상산고등학교",
+        "양현고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52111/index.html",
+      "url": "/region/jeonbuk/52111/",
+      "title": "전북 전주시 완산구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 전주시 완산구",
+      "key": "jeonbuk/52111",
+      "code": "52111",
+      "schools": [
+        "동암고등학교",
+        "서전주중학교",
+        "전주교육대학교전주부설초등학교",
+        "상산고등학교",
+        "완산고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52113/index.html",
+      "url": "/region/jeonbuk/52113/",
+      "title": "전북 전주시 덕진구 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 전주시 덕진구",
+      "key": "jeonbuk/52113",
+      "code": "52113",
+      "schools": [
+        "양현고등학교",
+        "전라중학교",
+        "전주금암초등학교",
+        "우석고등학교",
+        "유일여자고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52130/index.html",
+      "url": "/region/jeonbuk/52130/",
+      "title": "전북 군산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 군산시",
+      "key": "jeonbuk/52130",
+      "code": "52130",
+      "schools": [
+        "군산고등학교",
+        "군산금강중학교",
+        "개정초등학교",
+        "군산기계공업고등학교",
+        "군산동고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52140/index.html",
+      "url": "/region/jeonbuk/52140/",
+      "title": "전북 익산시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 익산시",
+      "key": "jeonbuk/52140",
+      "code": "52140",
+      "schools": [
+        "남성고등학교",
+        "남성중학교",
+        "금마초등학교",
+        "성일고등학교",
+        "여산고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52180/index.html",
+      "url": "/region/jeonbuk/52180/",
+      "title": "전북 정읍시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 정읍시",
+      "key": "jeonbuk/52180",
+      "code": "52180",
+      "schools": [
+        "글로벌학산고등학교",
+        "감곡중학교",
+        "감곡초등학교",
+        "배영고등학교",
+        "서영여자고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52190/index.html",
+      "url": "/region/jeonbuk/52190/",
+      "title": "전북 남원시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 남원시",
+      "key": "jeonbuk/52190",
+      "code": "52190",
+      "schools": [
+        "남원고등학교",
+        "금지중학교",
+        "금지초등학교",
+        "남원국악예술고등학교",
+        "남원서진여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52210/index.html",
+      "url": "/region/jeonbuk/52210/",
+      "title": "전북 김제시 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 김제시",
+      "key": "jeonbuk/52210",
+      "code": "52210",
+      "schools": [
+        "김제고등학교",
+        "금구중학교",
+        "공덕초등학교",
+        "김제농생명마이스터고등학교",
+        "김제서고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52710/index.html",
+      "url": "/region/jeonbuk/52710/",
+      "title": "전북 완주군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 완주군",
+      "key": "jeonbuk/52710",
+      "code": "52710",
+      "schools": [
+        "고산고등학교",
+        "고산중학교",
+        "가천초등학교",
+        "세인고등학교",
+        "완주고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52720/index.html",
+      "url": "/region/jeonbuk/52720/",
+      "title": "전북 진안군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 진안군",
+      "key": "jeonbuk/52720",
+      "code": "52720",
+      "schools": [
+        "마령고등학교",
+        "동향중학교",
+        "동향초등학교",
+        "안천고등학교",
+        "진안제일고등학교"
+      ],
+      "thumbnail": 4,
+      "variant": 2
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52730/index.html",
+      "url": "/region/jeonbuk/52730/",
+      "title": "전북 무주군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 무주군",
+      "key": "jeonbuk/52730",
+      "code": "52730",
+      "schools": [
+        "무주고등학교",
+        "무주중학교",
+        "괴목초등학교",
+        "무풍고등학교",
+        "설천고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52740/index.html",
+      "url": "/region/jeonbuk/52740/",
+      "title": "전북 장수군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 장수군",
+      "key": "jeonbuk/52740",
+      "code": "52740",
+      "schools": [
+        "마사고등학교실습지",
+        "계남중학교",
+        "계남초등학교",
+        "백화고등학교",
+        "산서고등학교"
+      ],
+      "thumbnail": 2,
+      "variant": 4
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52750/index.html",
+      "url": "/region/jeonbuk/52750/",
+      "title": "전북 임실군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 임실군",
+      "key": "jeonbuk/52750",
+      "code": "52750",
+      "schools": [
+        "임실고등학교",
+        "관촌중학교",
+        "갈담초등학교",
+        "전북펫고등학교",
+        "한국치즈과학고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 5
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52770/index.html",
+      "url": "/region/jeonbuk/52770/",
+      "title": "전북 순창군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 순창군",
+      "key": "jeonbuk/52770",
+      "code": "52770",
+      "schools": [
+        "동계고등학교",
+        "구림중학교",
+        "구림초등학교",
+        "순창고등학교",
+        "순창제일고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52790/index.html",
+      "url": "/region/jeonbuk/52790/",
+      "title": "전북 고창군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 고창군",
+      "key": "jeonbuk/52790",
+      "code": "52790",
+      "schools": [
+        "강호항공고등학교",
+        "고창남중학교",
+        "가평초등학교",
+        "고창고등학교",
+        "고창북고등학교"
+      ],
+      "thumbnail": 1,
+      "variant": 3
+    },
+    {
+      "kind": "district",
+      "file": "region/jeonbuk/52800/index.html",
+      "url": "/region/jeonbuk/52800/",
+      "title": "전북 부안군 맨투맨 일본어회화 일대일 과외수업 | TS재팬",
+      "label": "전북 부안군",
+      "key": "jeonbuk/52800",
+      "code": "52800",
+      "schools": [
+        "백산고등학교",
+        "계화중학교",
+        "격포초등학교",
+        "부안고등학교",
+        "부안여자고등학교"
+      ],
+      "thumbnail": 3,
+      "variant": 1
+    }
+  ]
+}

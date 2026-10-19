@@ -1,0 +1,7 @@
+{
+  "41591": [
+    {"name": "남양고등학교", "kind": "고등학교", "address": "경기도 화성시 만세구 남양읍 시청로45번길 23", "source": "https://semi-e.goehs.kr/goehs/ssm/scholStts/selectFacList.do"},
+    {"name": "남양중학교", "kind": "중학교", "address": "경기도 화성시 만세구 남양읍 시청로45번길 9-12", "source": "https://hs-namyang-m.goehs.kr/hs-namyang-m/main.do"},
+    {"name": "서신초등학교", "kind": "초등학교", "address": "경기도 화성시 만세구 서신면 매화3길 17", "source": "https://seosin-e.goehs.kr/"}
+  ]
+}

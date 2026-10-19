@@ -1,0 +1,30 @@
+{
+  "brand": "TS재팬",
+  "product": "맨투맨 일본어과외",
+  "titleProduct": "맨투맨 일본어회화 일대일 과외수업",
+  "counselUrl": "https://naver.me/52c74Jj4",
+  "origin": "",
+  "sample": {
+    "label": "홍은동",
+    "key": "seoul/hongeun-dong",
+    "schools": ["홍연초등학교", "홍제초등학교", "홍은중학교", "명지중학교", "명지고등학교"]
+  },
+  "groups": {
+    "1100000000": {"slug": "seoul", "label": "서울"},
+    "1200000000": {"slug": "gwangju-jeonnam", "label": "광주·전남"},
+    "2600000000": {"slug": "busan", "label": "부산"},
+    "2700000000": {"slug": "daegu", "label": "대구"},
+    "2800000000": {"slug": "incheon", "label": "인천"},
+    "3000000000": {"slug": "daejeon", "label": "대전"},
+    "3100000000": {"slug": "ulsan", "label": "울산"},
+    "3600000000": {"slug": "sejong", "label": "세종"},
+    "4100000000": {"slug": "gyeonggi-do", "label": "경기"},
+    "4300000000": {"slug": "chungcheongbuk-do", "label": "충북"},
+    "4400000000": {"slug": "chungcheongnam-do", "label": "충남"},
+    "4700000000": {"slug": "gyeongsangbuk-do", "label": "경북"},
+    "4800000000": {"slug": "gyeongsangnam-do", "label": "경남"},
+    "5000000000": {"slug": "jeju", "label": "제주"},
+    "5100000000": {"slug": "gangwon", "label": "강원"},
+    "5200000000": {"slug": "jeonbuk", "label": "전북"}
+  }
+}
