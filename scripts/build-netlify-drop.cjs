@@ -36,8 +36,8 @@ if (siteOrigin) {
 } else {
   fs.writeFileSync(path.join(dist, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 }
-fs.writeFileSync(path.join(dist, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=3600, must-revalidate\n/*.html\n  Cache-Control: public, max-age=0, must-revalidate\n/region/*\n  Cache-Control: public, max-age=0, must-revalidate\n`);
+fs.writeFileSync(path.join(dist, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=3600, must-revalidate\n/*.html\n  Cache-Control: public, max-age=0, must-revalidate\n/region/*\n  Cache-Control: public, max-age=0, must-revalidate\n/station/*\n  Cache-Control: public, max-age=0, must-revalidate\n`);
 
 const result = spawnSync(process.env.PYTHON || 'python', [path.join(__dirname, 'package-site.py')], { cwd: ROOT, stdio: 'inherit' });
 if (result.status !== 0) process.exit(result.status || 1);
-console.log(`Ready: ${manifest.districtCount} district pages, ${manifest.groupCount} province directories, and a national directory. ${siteOrigin ? `Origin: ${siteOrigin}` : 'Preview package: indexing disabled until a deployment origin is configured.'}`);
+console.log(`Ready: ${manifest.districtCount} district pages, ${manifest.groupCount} regional directories, ${manifest.stationCount} station pages, ${manifest.stationGroupCount} station region directories, and two national directories. ${siteOrigin ? `Origin: ${siteOrigin}` : 'Preview package: indexing disabled until a deployment origin is configured.'}`);

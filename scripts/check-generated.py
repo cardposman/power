@@ -64,6 +64,10 @@ def main():
 
     titles = set()
     thumbnails = Counter()
+    station_thumbnails = Counter()
+    station_ids = set()
+    station_source = json.loads((ROOT / "data" / "stations.json").read_text(encoding="utf-8"))
+    stations_by_id = {station["id"]: station for station in station_source["stations"]}
     checked_links = 0
     for entry in manifest["pages"]:
         path = directory / entry["file"]
@@ -73,6 +77,10 @@ def main():
         assert title not in titles, f"Duplicate page title: {title}"
         titles.add(title)
         assert "{{" not in path.read_text(encoding="utf-8"), path
+        assert not [attrs for attrs in page.select("input") if attrs.get("type") == "search"], path
+        assert not page.select("input", "data-region-search"), path
+        assert not [attrs for attrs in page.select("script") if attrs.get("src", "").endswith("js/regions.js")], path
+        assert "역별 상담" not in [text.strip() for text in page.text["main-nav"]], path
         expected_robots = "noindex,nofollow" if not manifest["origin"] else "index,follow"
         robots = next(attrs["content"] for attrs in page.select("meta") if attrs.get("name") == "robots")
         assert robots == expected_robots, path
@@ -92,6 +100,29 @@ def main():
             assert thumbnail["src"].endswith(f"thumbnail-{entry['thumbnail']}.webp"), path
             assert thumbnail.get("loading") == "eager", path
             thumbnails[entry["thumbnail"]] += 1
+        if entry["kind"] == "station":
+            station = stations_by_id[entry["stationId"]]
+            assert entry["stationId"] not in station_ids, path
+            station_ids.add(entry["stationId"])
+            assert entry["regionSlug"] == station["regionSlug"], path
+            assert entry["guide"] == station["guide"], path
+            assert entry["screeningDecision"] == station["screeningDecision"], path
+            assert not entry["schools"], path
+            assert entry["variant"] is None, path
+            assert entry["label"] in "".join(page.text["hero-title"]), path
+            assert "역역" not in entry["label"], path
+            assert title == f"{entry['label']} 맨투맨 일본어회화 일대일 과외수업 | TS재팬", path
+            assert "해당 역 주변의 오프라인 교실 안내가 아닙니다." in "".join(page.text["main"]), path
+            paragraph = "".join(page.text["local-guide"])
+            assert "학년" not in paragraph and "학교 일정" not in paragraph, path
+            assert paragraph.count(entry["label"]) == 1, path
+            assert len([attrs for attrs in page.select("div", "class") if attrs["class"] == "station-guide"]) == 1, path
+            thumbnail = next(attrs for attrs in page.select("img") if "data-regional-thumbnail" in attrs)
+            assert thumbnail["src"].endswith(f"thumbnail-{entry['thumbnail']}.webp"), path
+            station_thumbnails[entry["thumbnail"]] += 1
+        if entry["kind"] in {"station-directory", "station-province", "directory", "province"}:
+            expected_count = entry.get("stationCount", entry.get("districtCount"))
+            assert len(page.select("li", "data-region-item")) == expected_count, path
         for tag, attrs in page.nodes:
             for attribute in ("src", "href"):
                 value = attrs.get(attribute)
@@ -112,10 +143,16 @@ def main():
                     assert parts.fragment in load(target).ids, f"Missing fragment: {path} -> {value}"
                 checked_links += 1
     assert len(thumbnails) == 4
+    assert len(station_thumbnails) == 4
+    assert station_ids == set(range(1, 201))
+    assert manifest["stationCount"] == 200
+    assert manifest["stationGroupCount"] == 12
     assert manifest["districtCount"] == 269
     actual_region_pages = list((directory / "region").rglob("index.html"))
     assert len(actual_region_pages) == 286
-    print(json.dumps({"directory": str(directory), "htmlPages": len(manifest["pages"]), "districtPages": 269, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
+    assert len(list((directory / "station").rglob("index.html"))) == 213
+    assert len(manifest["pages"]) == 500
+    print(json.dumps({"directory": str(directory), "htmlPages": len(manifest["pages"]), "districtPages": 269, "stationPages": len(station_ids), "stationDirectories": 13, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "stationThumbnails": dict(station_thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

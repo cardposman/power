@@ -3,12 +3,12 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
-const { ROOT, districts } = require('./site-data.cjs');
+const { ROOT } = require('./site-data.cjs');
 
 (async () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'generated-pages.json'), 'utf8'));
   const regionalPages = manifest.pages.filter((page) => page.kind === 'district');
-  const searchOnly = process.argv.includes('--search-only');
+  const navigationOnly = process.argv.includes('--navigation-only');
   const output = path.join(ROOT, 'verification');
   fs.mkdirSync(output, { recursive: true });
   const browser = await chromium.launch({ headless: true, executablePath: process.env.BROWSER_EXECUTABLE || undefined, timeout: 20000 });
@@ -20,9 +20,11 @@ const { ROOT, districts } = require('./site-data.cjs');
   const visit = async (file) => {
     await page.goto(pathToFileURL(path.join(ROOT, file)).href);
     await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
+    assert.equal(await page.locator('input[type="search"], [data-region-search]').count(), 0);
+    assert.equal(await page.locator('#main-nav').getByRole('link', { name: '역별 상담', exact: true }).count(), 0);
   };
   try {
-    if (!searchOnly) {
+    if (!navigationOnly) {
     for (const [index, entry] of regionalPages.entries()) {
       await visit(entry.file);
       await page.locator('[data-regional-thumbnail]').evaluate((image) => image.decode());
@@ -62,32 +64,23 @@ const { ROOT, districts } = require('./site-data.cjs');
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await visit('region/index.html');
-    const input = page.locator('[data-region-search]');
     assert.equal(await page.locator('[data-region-item]').count(), 269);
-    await input.fill('서대문구');
-    assert.equal(await page.locator('[data-region-count]').innerText(), '1');
-    await page.locator('[data-region-item]:not([hidden]) a').click();
+    assert.equal(await page.locator('.directory-count').innerText(), '269개 지역');
+    await page.getByRole('link', { name: '서울 서대문구', exact: true }).click();
     assert((await page.locator('h1').innerText()).includes('서울 서대문구'));
     await page.locator('.menu-toggle').click();
     await page.locator('#main-nav a').filter({ hasText: '지역별 상담' }).click();
-    assert.equal(await page.locator('[data-region-count]').innerText(), '269');
-    for (const query of ['중구', '경기도 수원', '광주 북구', '세종']) {
-      await input.fill(query);
-      const terms = query.trim().split(/\s+/).map((term) => term.replace(/[·.,]/g, ''));
-      const expected = districts.filter((district) => terms.every((term) => `${district.label} ${district.officialName}`.replace(/[\s·.,]/g, '').includes(term))).length;
-      assert.equal(Number(await page.locator('[data-region-count]').innerText()), expected, query);
-      assert(expected > 0, query);
-    }
-    await input.fill('존재하지않는지역xyz');
-    assert.equal(await page.locator('[data-region-count]').innerText(), '0');
-    assert(await page.locator('[data-region-empty]').isVisible());
-    await input.fill('');
-    assert.equal(await page.locator('[data-region-count]').innerText(), '269');
+    assert.equal(await page.locator('[data-region-item]').count(), 269);
+    const busan = page.locator('[data-region-group]').filter({ has: page.locator('summary').filter({ hasText: /^부산/ }) });
+    await busan.locator('summary').click();
+    assert(await busan.locator('[data-region-item]').first().isVisible());
+    await busan.locator('summary').click();
+    assert(!(await busan.locator('[data-region-item]').first().isVisible()));
     await page.screenshot({ path: path.join(output, 'regional-directory-mobile.png') });
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.screenshot({ path: path.join(output, 'regional-directory-desktop.png') });
     assert.deepEqual(errors, []);
-    const result = { districtPages: searchOnly ? 'not rerun' : regionalPages.length, provinceDirectories: 16, regionalSearch: 'passed', mobile375: searchOnly ? 'not rerun' : 'all districts passed', desktopAndNarrowMobile: searchOnly ? 'not rerun' : '8 representative pages passed', javascriptErrors: errors.length };
+    const result = { districtPages: navigationOnly ? 'not rerun' : regionalPages.length, provinceDirectories: 16, searchAndStationMenu: 'removed', regionalNavigation: 'passed', mobile375: navigationOnly ? 'not rerun' : 'all districts passed', desktopAndNarrowMobile: navigationOnly ? 'not rerun' : '8 representative pages passed', javascriptErrors: errors.length };
     fs.writeFileSync(path.join(output, 'regional-browser-checks.json'), `${JSON.stringify(result, null, 2)}\n`);
     console.log(JSON.stringify(result, null, 2));
   } finally {

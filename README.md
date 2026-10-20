@@ -9,7 +9,8 @@ Open `index.html` directly in a browser. No build or dependencies are needed to 
 - Source images: `assets/originals/`
 - Optimized web images: `assets/images/`
 - Pages use `noindex,nofollow` until a production origin is configured.
-- Regional directory: `region/index.html`. There are 269 district pages and 16 province directory pages, plus the national directory and main page (287 HTML pages total).
+- Regional directory: `region/index.html`. Existing district content is retained: 269 district pages and 16 province directories, plus the national directory and main page.
+- Station directory: `station/index.html`. There are 200 station pages and 12 regional station directories, plus the national station directory. The complete local site has 500 HTML pages.
 
 Recreate optimized images (Python with Pillow):
 
@@ -21,18 +22,32 @@ Curriculum content is based on the supplied artwork. Lesson prices, schedules, a
 
 Regional context is limited to the page identity and one medium-length consultation paragraph with five verified local school names. Product sections and FAQ use general lesson information. See `docs/regional-content.md` for source references and expansion criteria.
 
-## Generate and Package
+Station pages do not insert school names. They identify the region and representative line, explicitly describe online-only consultation rather than a local classroom, and provide goal-based guidance, a consultation checklist, and a related question. Five shared guidance topics are used; these are editorial starting points, not measured characteristics of each station's learners or 200 independently verified local offerings. See `docs/station-expansion.md` for scope and limitations.
+
+## Generate and Check
 
 ```powershell
 node scripts/generate-regions.cjs
+node --test scripts/test-stations.cjs
 python scripts/check-generated.py
+```
+
+`data/stations.json` is the editable, checked-in station snapshot. URLs use the region slug and stable candidate ID, not an official railway station code. The IDs are preserved from the initial 200-candidate list. Reimport only when intentionally restoring that snapshot, as importing will replace manual edits to station guidance topics:
+
+```powershell
+node scripts/import-stations.cjs
+```
+
+The following packaging commands are optional and should only be run when a deployment package is requested:
+
+```powershell
 node scripts/build-netlify-drop.cjs
 python scripts/check-generated.py --directory dist-netlify
 ```
 
 `templates/lesson.html` is the shared page source. `data/site.json` stores the main-page settings, consultation URL, and region groups. Region and school snapshots were copied from HowCoding; no external folder is needed to regenerate this site. Each region receives one of four thumbnails at generation time, so images also work without JavaScript. The main page contains general lesson information instead of the former Hongeun-dong sample text. Logos link back to this main page, and it links to the regional directory.
 
-The package is `dist-netlify.zip`, containing the contents of `dist-netlify` directly. These files have been prepared locally, not deployed.
+Packaging produces `dist-netlify.zip`, containing the contents of `dist-netlify` directly. The station expansion was generated and checked locally without rebuilding that package or deploying. Any pre-existing package may therefore be stale.
 
 ## Deployment Origin and Indexing
 
@@ -45,4 +60,4 @@ node scripts/build-netlify-drop.cjs
 
 ## Verification
 
-`scripts/check-generated.py` checks all generated pages, local links, assets, titles, and region-school data. Browser checks use Playwright supplied by the local Codex runtime; no browser dependency is required to use the site itself. Run `scripts/check-page.cjs` for the main page and `scripts/check-regions.cjs` for all regional pages with that runtime's `NODE_PATH` and an available `BROWSER_EXECUTABLE`.
+`scripts/check-generated.py` checks all 500 generated pages, local links, assets, unique titles, region-school data, station IDs, directory counts, and the absence of search controls and the station entry in the header menu. `scripts/test-stations.cjs` checks the candidate import and regional identities. Browser checks use Playwright supplied by the local Codex runtime; no browser dependency is required to use the site itself. Run `scripts/check-page.cjs` for the main page, `scripts/check-regions.cjs` for regional pages, and `scripts/check-stations.cjs` for all 200 stations and directory navigation with that runtime's `NODE_PATH` and an available `BROWSER_EXECUTABLE`. Directories use static grouped lists without search; the station list remains accessible through footer links and directory tabs, not the header menu.
