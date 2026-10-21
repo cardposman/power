@@ -4,6 +4,7 @@ from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -178,6 +179,25 @@ def main():
         script = next(attrs for attrs in page.select("script"))
         assert (path.parent / script["src"]).resolve().is_file(), path
     assert (directory / ".nojekyll").is_file()
+    for filename in manifest["publicFiles"]:
+        assert Path(filename).name == filename, filename
+        assert (directory / filename).is_file(), filename
+        if filename.startswith("naver"):
+            expected = f"naver-site-verification: {filename}"
+            assert (directory / filename).read_text(encoding="utf-8").strip() == expected, filename
+            assert (directory / filename).read_bytes() == (ROOT / filename).read_bytes(), filename
+    sitemap = ElementTree.parse(directory / "sitemap.xml")
+    locations = [node.text for node in sitemap.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+    expected_locations = [manifest["origin"] + manifest["basePath"] + entry["url"] for entry in manifest["pages"]] if manifest["origin"] else []
+    assert locations == expected_locations, "Sitemap must list canonical pages only"
+    robots = (directory / "robots.txt").read_text(encoding="utf-8")
+    if manifest["origin"]:
+        assert "Disallow: /" not in robots
+        assert "Allow: /" in robots
+        assert f"Sitemap: {manifest['origin']}{manifest['basePath']}/sitemap.xml" in robots
+        assert (directory / "CNAME").read_text(encoding="utf-8").strip() == urlsplit(manifest["origin"]).hostname
+    else:
+        assert "Disallow: /" in robots
     assert len(thumbnails) == 4
     assert len(station_thumbnails) == 4
     assert station_ids == set(range(1, 201))

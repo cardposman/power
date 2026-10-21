@@ -146,7 +146,20 @@ for (const group of stationGroups) directory(group, 'station');
 for (const station of stations) lesson({ file: station.file, legacyFile: station.legacyFile, key: `station/${station.key}`, label: station.label, station });
 
 write('.nojekyll', '');
-write('data/generated-pages.json', `${JSON.stringify({ origin: siteOrigin, basePath: basePath(), districtCount: districts.length, groupCount: groups.length, stationCount: stations.length, stationGroupCount: stationGroups.length, redirectCount: redirects.length, sources: { regions: source.source, schools: schoolSource.source, supplements: 'data/school-supplements.json', stations: stationSource.source, stationReview: stationSource.reviewSource, slugs: 'data/route-slugs.json' }, pages, redirects }, null, 2)}\n`);
+const verificationFiles = site.verificationFiles || [];
+for (const file of verificationFiles) {
+  if (!/^naver[a-f0-9]+\.html$/.test(file)) throw new Error(`Invalid verification filename: ${file}`);
+}
+const suppliedFiles = ['CNAME', ...verificationFiles];
+for (const file of suppliedFiles) {
+  const sourceFile = path.join(ROOT, file);
+  if (!fs.statSync(sourceFile).isFile()) throw new Error(`Missing public file: ${file}`);
+  if (outputRoot !== ROOT) fs.copyFileSync(sourceFile, path.join(outputRoot, file));
+}
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${siteOrigin ? pages.map((page) => `  <url><loc>${e(publicUrl(page.url))}</loc></url>`).join('\n') : ''}\n</urlset>\n`);
+write('robots.txt', siteOrigin ? `User-agent: *\nAllow: /\nSitemap: ${publicUrl('/sitemap.xml')}\n` : 'User-agent: *\nDisallow: /\n');
+const publicFiles = ['.nojekyll', ...suppliedFiles, 'sitemap.xml', 'robots.txt'];
+write('data/generated-pages.json', `${JSON.stringify({ origin: siteOrigin, basePath: basePath(), districtCount: districts.length, groupCount: groups.length, stationCount: stations.length, stationGroupCount: stationGroups.length, redirectCount: redirects.length, publicFiles, sources: { regions: source.source, schools: schoolSource.source, supplements: 'data/school-supplements.json', stations: stationSource.source, stationReview: stationSource.reviewSource, slugs: 'data/route-slugs.json' }, pages, redirects }, null, 2)}\n`);
 write('data/generated-urls.txt', `${pages.map((page) => page.url).join('\n')}\n`);
 const thumbnails = districts.reduce((totals, district) => { totals[district.thumbnail] = (totals[district.thumbnail] || 0) + 1; return totals; }, {});
 console.log(JSON.stringify({ districts: districts.length, provinceDirectories: groups.length, stations: stations.length, stationDirectories: stationGroups.length + 1, totalPages: pages.length, legacyRedirects: redirects.length, basePath: basePath(), thumbnails, indexing: siteOrigin ? 'pages enabled' : 'disabled until SITE_ORIGIN is configured' }, null, 2));

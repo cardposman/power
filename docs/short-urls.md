@@ -2,18 +2,20 @@
 
 작업일: 2026-10-21
 
+도메인 연결 후 운영 주소는 `https://tstudymate.com`으로 전환했다. `/power` 접두사는 더 이상 사용하지 않으며, [도메인·소유확인 설정](domain-setup.md)을 함께 참고한다.
+
 ## 적용 범위
 
 지역 상세 269개는 `reg-지역명/`, 역별 상세 200개는 `st-역명/` 형식으로 전환했다. 메인 1개와 목록 30개의 주소는 그대로다. 제목·상담 내용·학교명·썸네일 배정은 바꾸지 않았다.
 
 | 항목 | 기존 경로 | 새 경로 |
 | --- | --- | --- |
-| 서울 용산구 | `/power/region/seoul/11170/` | `/power/reg-yongsangu/` |
-| 부산 서면역 | `/power/station/busan/147/` | `/power/st-seomyun/` |
-| 서울 중구 | `/power/region/seoul/11140/` | `/power/reg-seoul-junggu/` |
-| 부산 중구 | `/power/region/busan/26110/` | `/power/reg-busan-junggu/` |
-| 대구 중앙로역 | `/power/station/daegu/168/` | `/power/st-daegu-jungangno/` |
-| 대전 중앙로역 | `/power/station/daejeon/183/` | `/power/st-daejeon-jungangno/` |
+| 서울 용산구 | `/power/region/seoul/11170/` | `https://tstudymate.com/reg-yongsangu/` |
+| 부산 서면역 | `/power/station/busan/147/` | `https://tstudymate.com/st-seomyun/` |
+| 서울 중구 | `/power/region/seoul/11140/` | `https://tstudymate.com/reg-seoul-junggu/` |
+| 부산 중구 | `/power/region/busan/26110/` | `https://tstudymate.com/reg-busan-junggu/` |
+| 대구 중앙로역 | `/power/station/daegu/168/` | `https://tstudymate.com/st-daegu-jungangno/` |
+| 대전 중앙로역 | `/power/station/daejeon/183/` | `https://tstudymate.com/st-daejeon-jungangno/` |
 
 서면은 요청받은 `seomyun` 표기를 그대로 사용했다. 영문 슬러그는 주소용 식별자이며 공식 영문 역명·행정명 표기임을 보장하는 자료가 아니다.
 
@@ -35,19 +37,19 @@ GitHub Pages 정적 파일 배포를 위한 `.nojekyll`도 포함한다. [GitHub
 
 ## 프로젝트 하위 경로와 색인
 
-`data/site.json`의 `basePath`는 `/power`다. 운영용 canonical·Open Graph·사이트맵 URL은 `origin + basePath + route`로 생성한다. 내부 링크와 이미지 경로는 상대 경로이므로 `/power/` 아래에서도 작동한다. 웹에서는 끝이 `/`인 짧은 경로를 사용하고, `file://` 미리보기에서는 공유 스크립트가 이동 링크에 `index.html`을 붙인다.
+`data/site.json`의 `origin`은 `https://tstudymate.com`, `basePath`는 빈 문자열이다. 운영용 canonical·Open Graph·사이트맵 URL은 `origin + basePath + route`로 생성한다. 내부 링크와 이미지 경로는 상대 경로이므로 도메인 루트에서 작동한다. 웹에서는 끝이 `/`인 짧은 경로를 사용하고, `file://` 미리보기에서는 공유 스크립트가 이동 링크에 `index.html`을 붙인다.
 
 운영 도메인 origin과 프로젝트 경로는 분리한다:
 
 ```powershell
-$env:SITE_ORIGIN = 'https://cardposman.github.io'
-$env:SITE_BASE_PATH = '/power'
+$env:SITE_ORIGIN = 'https://tstudymate.com'
+$env:SITE_BASE_PATH = '/'
 node scripts/generate-regions.cjs
 ```
 
-다른 호스팅의 도메인 루트에 배포한다면 `SITE_BASE_PATH='/'`로 바꾼다. `SITE_ORIGIN`에는 `/power`를 포함하지 않는다. 위 운영용 명령은 색인을 활성화하므로 이번 로컬 기본 생성에는 사용하지 않았다. **기존 `origin: ""`와 기본 색인 차단은 유지했다.**
+`SITE_ORIGIN`에는 경로를 포함하지 않는다. 최초 짧은 주소 작업 때는 검토용 색인 차단을 유지했지만, 사용자 요청에 따른 실제 도메인·서치어드바이저 연결 이후에는 운영 페이지의 색인을 허용한다. 기존 주소 이동 파일은 계속 `noindex,follow`다.
 
-배포 패키지를 명시적으로 요청해 생성할 때에는 새 페이지와 이전 주소 이동 파일을 모두 포함한다. 사이트맵에는 콘텐츠·목록 500개만 넣고 이동용 주소는 제외한다. 이번 작업은 패키지 생성·커밋·푸시·서버 배포를 수행하지 않았다.
+배포 패키지를 명시적으로 요청해 생성할 때에는 새 페이지와 이전 주소 이동 파일, 네이버 소유확인 파일 등 루트 지원 파일을 모두 포함한다. 사이트맵에는 콘텐츠·목록 500개만 넣고 이동용 주소와 소유확인 파일은 제외한다. ZIP은 별도 요청 전에는 생성하지 않는다.
 
 ## 확인 방법
 
@@ -57,6 +59,6 @@ node --test scripts/test-stations.cjs scripts/test-routes.cjs
 python scripts/check-generated.py
 ```
 
-브라우저 검사에는 기존 메인·지역·역 스크립트와 `scripts/check-routes.cjs`를 사용한다. 새 경로 검사는 Git에서 제외된 `verification/short-routes-production`에 `/power` 운영 URL을 사용한 별도 사본을 생성하고 잠깐 실행하는 로컬 HTTP 서버로 검증한다. 원본의 색인 설정이나 GitHub 저장소는 바꾸지 않는다. 검사가 끝나면 서버를 닫는다.
+브라우저 검사에는 기존 메인·지역·역 스크립트와 `scripts/check-routes.cjs`를 사용한다. 새 경로 검사는 Git에서 제외된 `verification/short-routes-production`에 `tstudymate.com`의 도메인 루트 구조를 사용한 별도 사본을 생성하고 잠깐 실행하는 로컬 HTTP 서버로 검증한다. 검증 자체는 원본의 설정이나 GitHub 저장소를 바꾸지 않는다. 검사가 끝나면 서버를 닫는다.
 
 검증 범위는 500개 콘텐츠·목록 및 469개 이동 파일의 응답·경로, 대표 지역·역의 PC/모바일 화면, 동일 이름의 목적지 구분, 기존 주소의 슬래시·`index.html` 변형, 쿼리·앵커 유지, JavaScript 미사용 대체 경로, 로컬 파일 열기 및 실제 목록 클릭이다. 원격 GitHub Pages 배포가 완료되었다는 확인과는 구분한다.

@@ -10,24 +10,25 @@ const { stations } = require('./station-data.cjs');
 
 (async () => {
   const output = path.join(ROOT, 'verification', 'short-routes-production');
-  const env = { ...process.env, SITE_ORIGIN: 'https://cardposman.github.io', SITE_BASE_PATH: '/power' };
+  const env = { ...process.env, SITE_ORIGIN: 'https://tstudymate.com', SITE_BASE_PATH: '/' };
   const generated = spawnSync(process.execPath, [path.join(__dirname, 'generate-regions.cjs'), '--output', output], { env, stdio: 'inherit' });
   assert.equal(generated.status, 0);
   fs.cpSync(path.join(ROOT, 'assets'), path.join(output, 'assets'), { recursive: true });
   const checked = spawnSync(process.env.PYTHON || 'python', [path.join(__dirname, 'check-generated.py'), '--directory', output], { stdio: 'inherit' });
   assert.equal(checked.status, 0);
   const manifest = JSON.parse(fs.readFileSync(path.join(output, 'data/generated-pages.json'), 'utf8'));
+  const prefix = manifest.basePath;
   const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.png': 'image/png', '.webp': 'image/webp' };
   const server = http.createServer((request, response) => {
     try {
       const url = new URL(request.url, 'http://localhost');
-      if (url.pathname === '/power') {
-        response.writeHead(301, { Location: `/power/${url.search}` });
+      if (prefix && url.pathname === prefix) {
+        response.writeHead(301, { Location: `${prefix}/${url.search}` });
         response.end();
         return;
       }
-      if (!url.pathname.startsWith('/power/')) throw new Error('Outside project');
-      let file = path.resolve(output, decodeURIComponent(url.pathname.slice('/power/'.length)));
+      if (!url.pathname.startsWith(`${prefix}/`)) throw new Error('Outside project');
+      let file = path.resolve(output, decodeURIComponent(url.pathname.slice(prefix.length + 1)));
       const relative = path.relative(output, file);
       if (relative.startsWith('..') || path.isAbsolute(relative)) throw new Error('Outside fixture');
       if (fs.statSync(file).isDirectory()) {
@@ -51,11 +52,11 @@ const { stations } = require('./station-data.cjs');
       server.once('error', reject);
       server.listen(0, '127.0.0.1', resolve);
     });
-    const base = `http://127.0.0.1:${server.address().port}/power`;
+    const base = `http://127.0.0.1:${server.address().port}${prefix}`;
     browser = await chromium.launch({ headless: true, executablePath: process.env.BROWSER_EXECUTABLE || undefined, timeout: 20000 });
-    for (const entry of [...manifest.pages, ...manifest.redirects]) {
-      const response = await fetch(base + entry.url);
-      assert.equal(response.status, 200, entry.url);
+    for (const route of [...manifest.pages.map((entry) => entry.url), ...manifest.redirects.map((entry) => entry.url), ...manifest.publicFiles.map((file) => `/${file}`)]) {
+      const response = await fetch(base + route);
+      assert.equal(response.status, 200, route);
       await response.text();
     }
     const cases = [districts.find((item) => item.pathCode === '11170'), districts.find((item) => item.pathCode === '11140'), districts.find((item) => item.pathCode === '26110'), ...[147, 168, 183].map((id) => stations.find((item) => item.id === id))];
@@ -71,7 +72,7 @@ const { stations } = require('./station-data.cjs');
         await page.goto(base + entry.url.slice(0, -1));
         assert.equal(page.url(), base + entry.url);
         assert((await page.locator('h1').innerText()).includes(entry.label));
-        assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://cardposman.github.io/power${entry.url}`);
+        assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `${env.SITE_ORIGIN}${prefix}${entry.url}`);
         assert.equal((await page.locator('.page-shell').boundingBox()).width, Math.min(width, 480));
         await page.evaluate(async () => {
           for (const image of document.images) image.loading = 'eager';
@@ -108,7 +109,7 @@ const { stations } = require('./station-data.cjs');
     await noJs.close();
     assert.deepEqual(errors, []);
     assert.deepEqual(failedRequests, []);
-    const result = { canonicalPages: manifest.pages.length, legacyRedirects: manifest.redirects.length, projectPrefix: '/power', httpRoutes: '969 passed', redirectsWithQueryAndFragment: 'slash, no slash and index.html passed', filePreview: 'passed', noJavaScriptFallback: 'passed', internalNavigation: 'passed', viewportWidths: [320, 1440], javascriptErrors: 0, missingAssets: 0 };
+    const result = { canonicalPages: manifest.pages.length, legacyRedirects: manifest.redirects.length, siteOrigin: env.SITE_ORIGIN, projectPrefix: prefix, httpRoutes: `${manifest.pages.length + manifest.redirects.length + manifest.publicFiles.length} passed`, redirectsWithQueryAndFragment: 'slash, no slash and index.html passed', filePreview: 'passed', noJavaScriptFallback: 'passed', internalNavigation: 'passed', viewportWidths: [320, 1440], javascriptErrors: 0, missingAssets: 0 };
     fs.writeFileSync(path.join(ROOT, 'verification', 'short-route-checks.json'), `${JSON.stringify(result, null, 2)}\n`);
     console.log(JSON.stringify(result, null, 2));
   } finally {

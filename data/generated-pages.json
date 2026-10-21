@@ -1,11 +1,18 @@
 {
-  "origin": "",
-  "basePath": "/power",
+  "origin": "https://tstudymate.com",
+  "basePath": "",
   "districtCount": 269,
   "groupCount": 16,
   "stationCount": 200,
   "stationGroupCount": 12,
   "redirectCount": 469,
+  "publicFiles": [
+    ".nojekyll",
+    "CNAME",
+    "naver686492ec587065ddaf1ebc2627b5b46f.html",
+    "sitemap.xml",
+    "robots.txt"
+  ],
   "sources": {
     "regions": {
       "name": "행정표준코드관리시스템 법정동코드 전체자료",

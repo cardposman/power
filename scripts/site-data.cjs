@@ -18,7 +18,7 @@ function hash(value) {
 }
 
 function origin() {
-  const value = process.env.SITE_ORIGIN || site.origin;
+  const value = process.env.SITE_ORIGIN ?? site.origin;
   if (!value) return '';
   const parsed = new URL(value);
   if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password || parsed.pathname !== '/' || parsed.search || parsed.hash) {

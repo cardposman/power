@@ -8,10 +8,11 @@ Open `index.html` directly in a browser. No build or dependencies are needed to 
 - All consultation links: https://naver.me/52c74Jj4
 - Source images: `assets/originals/`
 - Optimized web images: `assets/images/`
-- Pages use `noindex,nofollow` until a production origin is configured.
+- Production origin: `https://tstudymate.com` with no `/power` prefix. Canonical pages use `index,follow`; legacy redirects stay `noindex,follow`.
 - Regional directory: `region/index.html`. The 269 district pages now use `reg-{slug}/index.html`; province and national directory paths are unchanged.
 - Station directory: `station/index.html`. The 200 station pages now use `st-{slug}/index.html`; the 12 regional directories and national station directory retain their paths. There are 500 content/list pages plus 469 legacy redirect files, not 969 independent content pages.
-- Examples: `/power/reg-yongsangu/` and `/power/st-seomyun/`. The old nested detail paths redirect to these short routes. See `docs/short-urls.md` for the migration rules.
+- Examples: `https://tstudymate.com/reg-yongsangu/` and `https://tstudymate.com/st-seomyun/`. The old nested detail paths redirect to these short routes. See `docs/short-urls.md` and `docs/domain-setup.md`.
+- Naver ownership file: `naver686492ec587065ddaf1ebc2627b5b46f.html` at the site root, preserved byte-for-byte. `CNAME`, the verification file, `robots.txt`, and `sitemap.xml` are included in generation/package checks.
 
 Recreate optimized images (Python with Pillow):
 
@@ -53,14 +54,14 @@ Packaging produces `dist-netlify.zip`, containing the contents of `dist-netlify`
 
 ## Deployment Origin and Indexing
 
-The short-URL migration retains the previous indexing setting: with `origin` empty, pages remain `noindex,nofollow`. Set `SITE_ORIGIN` to the real origin (scheme and host only) or set `origin` in `data/site.json` to enable absolute canonical/Open Graph URLs and indexing metadata. `basePath` defaults to `/power` for this GitHub Pages project. Override it with `SITE_BASE_PATH=/` for a root-domain deployment. Packaging emits a sitemap containing only the 500 canonical pages, never legacy redirects.
+`data/site.json` now sets `origin` to `https://tstudymate.com` and `basePath` to an empty string. Generation emits production canonical/Open Graph URLs, root `robots.txt`, and a sitemap containing only the 500 canonical pages, never legacy redirects. Indexing is enabled for canonical pages. `SITE_ORIGIN` and `SITE_BASE_PATH` override defaults; an explicitly empty `SITE_ORIGIN` generates a blocked preview with no canonical URLs and an empty sitemap.
 
 ```powershell
-$env:SITE_ORIGIN = 'https://cardposman.github.io'
-$env:SITE_BASE_PATH = '/power'
-node scripts/build-netlify-drop.cjs
+$env:SITE_ORIGIN = 'https://tstudymate.com'
+$env:SITE_BASE_PATH = '/'
+node scripts/generate-regions.cjs
 ```
 
 ## Verification
 
-`scripts/check-generated.py` checks all 500 content/list pages, 469 redirect targets, local links, assets, unique canonical titles, school data, station IDs and directory counts. It also checks that search and the station header menu remain absent. `scripts/test-stations.cjs` checks candidate provenance; `scripts/test-routes.cjs` checks slug coverage, collisions, and project-prefixed URLs. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated production fixture inside ignored `verification/`, verifies `/power/` routes over a temporary HTTP server, and closes the server afterward. It does not deploy or create a ZIP. Directories remain static lists; station links are available through footers and directory tabs, not the header menu.
+`scripts/check-generated.py` checks all 500 content/list pages, 469 redirects, links, assets, canonical URLs, school data, station IDs and directory counts. It also checks root verification/CNAME files, sitemap contents, robots policy, and the absence of search and the station header menu. `scripts/test-stations.cjs` checks provenance; `scripts/test-routes.cjs` checks slugs, production-domain defaults and legacy project-prefix URL handling. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated custom-domain-root fixture inside ignored `verification/`, verifies routes over a temporary HTTP server, and closes it afterward. It does not deploy or create a ZIP. Directories remain static lists; station links are available through footers and directory tabs, not the header menu.

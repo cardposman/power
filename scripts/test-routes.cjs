@@ -66,6 +66,17 @@ test('canonical URLs include the GitHub Pages project prefix once', () => {
   withEnvironment({ SITE_ORIGIN: '', SITE_BASE_PATH: '/power' }, () => assert.equal(publicUrl('/reg-yongsangu/'), ''));
 });
 
+test('production defaults use the custom domain root without the old project path', () => {
+  withEnvironment({ SITE_ORIGIN: undefined, SITE_BASE_PATH: undefined }, () => {
+    assert.equal(origin(), 'https://tstudymate.com');
+    assert.equal(basePath(), '');
+    assert.equal(publicUrl('/'), 'https://tstudymate.com/');
+    assert.equal(publicUrl(districtRoute('11170').url), 'https://tstudymate.com/reg-yongsangu/');
+    assert.equal(publicUrl(stationRoute(147).url), 'https://tstudymate.com/st-seomyun/');
+    assert.equal(publicUrl('/sitemap.xml'), 'https://tstudymate.com/sitemap.xml');
+  });
+});
+
 test('invalid origins and path prefixes fail without generating misleading canonicals', () => {
   for (const prefix of ['power', '//power', '/power/../other', '/power?x', '/power#x', '/power%2fother']) {
     withEnvironment({ SITE_BASE_PATH: prefix }, () => assert.throws(basePath, /SITE_BASE_PATH/));

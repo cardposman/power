@@ -3,8 +3,9 @@
   "product": "맨투맨 일본어과외",
   "titleProduct": "맨투맨 일본어회화 일대일 과외수업",
   "counselUrl": "https://naver.me/52c74Jj4",
-  "origin": "",
-  "basePath": "/power",
+  "origin": "https://tstudymate.com",
+  "basePath": "",
+  "verificationFiles": ["naver686492ec587065ddaf1ebc2627b5b46f.html"],
   "home": {
     "key": "home",
     "thumbnail": 4
