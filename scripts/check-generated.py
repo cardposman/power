@@ -59,6 +59,9 @@ def main():
     if not manifest_path.is_file():
         manifest_path = ROOT / "data" / "generated-pages.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    mode = manifest["mode"]
+    assert mode in {"source", "deployment"}, mode
+    deployment = mode == "deployment"
     cache = {}
 
     def load(path):
@@ -77,6 +80,7 @@ def main():
     canonical_urls = {entry["url"] for entry in manifest["pages"]}
     assert len(canonical_files) == len(canonical_urls) == 500
     for entry in manifest["pages"]:
+        assert entry["file"] == entry["deployFile" if deployment else "sourceFile"], entry
         path = directory / entry["file"]
         page = load(path)
         title = "".join(page.title)
@@ -102,7 +106,8 @@ def main():
             assert "맨투맨 일본어과외" in "".join(page.text["hero-title"]), path
             assert not entry["schools"], path
         if entry["kind"] == "district":
-            assert entry["file"].startswith("reg-") and entry["file"].count("/") == 1, path
+            assert entry["sourceFile"].startswith("region/") and entry["sourceFile"].count("/") == 3, path
+            assert entry["deployFile"].startswith("reg-") and entry["deployFile"].count("/") == 1, path
             assert len(entry["schools"]) == 5, path
             paragraph = "".join(page.text["local-guide"])
             assert len(set(entry["schools"])) == 5, path
@@ -114,7 +119,8 @@ def main():
             assert thumbnail.get("loading") == "eager", path
             thumbnails[entry["thumbnail"]] += 1
         if entry["kind"] == "station":
-            assert entry["file"].startswith("st-") and entry["file"].count("/") == 1, path
+            assert entry["sourceFile"].startswith("station/") and entry["sourceFile"].count("/") == 3, path
+            assert entry["deployFile"].startswith("st-") and entry["deployFile"].count("/") == 1, path
             station = stations_by_id[entry["stationId"]]
             assert entry["stationId"] not in station_ids, path
             station_ids.add(entry["stationId"])
@@ -159,9 +165,10 @@ def main():
                     assert parts.fragment in load(target).ids, f"Missing fragment: {path} -> {value}"
                 checked_links += 1
     redirects = manifest["redirects"]
-    assert len(redirects) == manifest["redirectCount"] == 469
-    assert len({entry["file"] for entry in redirects}) == 469
-    assert len({entry["targetFile"] for entry in redirects}) == 469
+    expected_redirects = 469 if deployment else 0
+    assert len(redirects) == manifest["redirectCount"] == expected_redirects
+    assert len({entry["file"] for entry in redirects}) == expected_redirects
+    assert len({entry["targetFile"] for entry in redirects}) == expected_redirects
     for entry in redirects:
         path = directory / entry["file"]
         page = load(path)
@@ -208,9 +215,9 @@ def main():
     assert len(actual_region_pages) == 286
     assert len(list((directory / "station").rglob("index.html"))) == 213
     assert len(manifest["pages"]) == 500
-    assert len(list(directory.glob("reg-*/index.html"))) == 269
-    assert len(list(directory.glob("st-*/index.html"))) == 200
-    print(json.dumps({"directory": str(directory), "htmlPages": len(manifest["pages"]), "legacyRedirects": len(redirects), "districtPages": 269, "stationPages": len(station_ids), "stationDirectories": 13, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "stationThumbnails": dict(station_thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
+    assert len(list(directory.glob("reg-*/index.html"))) == (269 if deployment else 0)
+    assert len(list(directory.glob("st-*/index.html"))) == (200 if deployment else 0)
+    print(json.dumps({"mode": mode, "directory": str(directory), "htmlPages": len(manifest["pages"]), "legacyRedirects": len(redirects), "districtPages": 269, "stationPages": len(station_ids), "stationDirectories": 13, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "stationThumbnails": dict(station_thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

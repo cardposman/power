@@ -25,15 +25,15 @@ test('short routes match the requested examples exactly', () => {
   assert.deepEqual(stationRoute(147), { file: 'st-seomyun/index.html', url: '/st-seomyun/' });
 });
 
-test('all 469 identities retain old paths and have unique flat destinations', () => {
+test('all 469 identities keep grouped source paths and separate short deployment paths', () => {
   const entries = [...districts, ...stations];
   assert.equal(entries.length, 469);
   assert.equal(new Set(entries.map((entry) => entry.url)).size, 469);
-  assert.equal(new Set(entries.map((entry) => entry.legacyFile)).size, 469);
+  assert.equal(new Set(entries.map((entry) => entry.file)).size, 469);
   for (const entry of entries) {
-    assert.match(entry.file, /^(?:reg|st)-[a-z0-9]+(?:-[a-z0-9]+)*\/index\.html$/);
-    assert.match(entry.legacyFile, /^(?:region|station)\/[a-z-]+\/\d+\/index\.html$/);
-    assert.notEqual(entry.file, entry.legacyFile);
+    assert.match(entry.deployFile, /^(?:reg|st)-[a-z0-9]+(?:-[a-z0-9]+)*\/index\.html$/);
+    assert.match(entry.file, /^(?:region|station)\/[a-z-]+\/\d+\/index\.html$/);
+    assert.notEqual(entry.file, entry.deployFile);
   }
   assert.equal(districtRoute('11140').url, '/reg-seoul-junggu/');
   assert.equal(districtRoute('26110').url, '/reg-busan-junggu/');

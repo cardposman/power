@@ -9,11 +9,11 @@ const { ROOT, districts } = require('./site-data.cjs');
 const { stations } = require('./station-data.cjs');
 
 (async () => {
-  const output = path.join(ROOT, 'verification', 'short-routes-production');
+  fs.mkdirSync(path.join(ROOT, 'verification'), { recursive: true });
+  const output = fs.mkdtempSync(path.join(ROOT, 'verification', 'deployment-'));
   const env = { ...process.env, SITE_ORIGIN: 'https://tstudymate.com', SITE_BASE_PATH: '/' };
-  const generated = spawnSync(process.execPath, [path.join(__dirname, 'generate-regions.cjs'), '--output', output], { env, stdio: 'inherit' });
+  const generated = spawnSync(process.execPath, [path.join(__dirname, 'generate-regions.cjs'), '--deploy', '--output', output], { env, stdio: 'inherit' });
   assert.equal(generated.status, 0);
-  fs.cpSync(path.join(ROOT, 'assets'), path.join(output, 'assets'), { recursive: true });
   const checked = spawnSync(process.env.PYTHON || 'python', [path.join(__dirname, 'check-generated.py'), '--directory', output], { stdio: 'inherit' });
   assert.equal(checked.status, 0);
   const manifest = JSON.parse(fs.readFileSync(path.join(output, 'data/generated-pages.json'), 'utf8'));
@@ -79,21 +79,24 @@ const { stations } = require('./station-data.cjs');
           await Promise.all([...document.images].map((image) => image.decode()));
         });
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-        if (entry.file === 'reg-yongsangu/index.html') {
+        if (entry.deployFile === 'reg-yongsangu/index.html') {
           await page.locator('.hero').screenshot({ path: path.join(ROOT, 'verification', `short-route-yongsan-${width}.png`) });
         }
-        for (const old of [entry.legacyUrl.slice(0, -1), entry.legacyUrl, `/${entry.legacyFile}`]) {
+        for (const old of [entry.legacyUrl.slice(0, -1), entry.legacyUrl, `/${entry.file}`]) {
           await page.goto(`${base}${old}?from=old#local-guide`, { waitUntil: 'commit' });
           await page.waitForURL(`${base}${entry.url}?from=old#local-guide`);
           await page.waitForLoadState('load');
           assert((await page.locator('h1').innerText()).includes(entry.label));
         }
-        await page.goto(pathToFileURL(path.join(ROOT, entry.legacyFile)).href, { waitUntil: 'commit' });
-        await page.waitForURL(pathToFileURL(path.join(ROOT, entry.file)).href);
-        await page.waitForLoadState('load');
+        const sourceUrl = pathToFileURL(path.join(ROOT, entry.file)).href;
+        await page.goto(sourceUrl);
+        assert.equal(page.url(), sourceUrl);
         assert((await page.locator('h1').innerText()).includes(entry.label));
       }
     }
+    await page.goto(pathToFileURL(path.join(ROOT, 'region/index.html')).href);
+    await page.getByRole('link', { name: '서울 용산구', exact: true }).click();
+    assert.equal(page.url(), pathToFileURL(path.join(ROOT, 'region/seoul/11170/index.html')).href);
     await page.goto(`${base}/region/`);
     await page.getByRole('link', { name: '서울 용산구', exact: true }).click();
     assert.equal(page.url(), `${base}/reg-yongsangu/`);

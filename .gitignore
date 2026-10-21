@@ -1,5 +1,6 @@
 dist-netlify/
 dist-netlify.zip
+_site/
 verification/
 __pycache__/
 *.py[cod]

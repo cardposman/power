@@ -26,8 +26,10 @@
 
 ```powershell
 node scripts/generate-regions.cjs
-node --test scripts/test-stations.cjs scripts/test-routes.cjs
+node --test scripts/test-stations.cjs scripts/test-routes.cjs scripts/test-layout.cjs
 python scripts/check-generated.py
+node scripts/build-pages.cjs
+python scripts/check-generated.py --directory _site
 ```
 
-루트의 `sitemap.xml`과 `robots.txt`도 이 생성 명령에서 갱신한다. 별도 ZIP을 만들지 않아도 GitHub Pages 배포에 포함된다. `publicFiles` 목록에 확인 파일·CNAME·수집 지원 파일을 기록하고 누락을 검사한다.
+루트의 `sitemap.xml`과 `robots.txt`도 생성 명령에서 갱신한다. 원본은 분류 폴더를 유지하고, Actions가 `_site/`에 짧은 공개 경로와 이전 주소 이동 파일을 생성한 뒤 그 결과만 배포한다. `CNAME`과 네이버 확인 파일도 `_site/`에 그대로 포함된다. 별도 ZIP이나 생성물 커밋은 필요 없다. `publicFiles` 목록으로 확인 파일·CNAME·수집 지원 파일의 누락을 검사한다.

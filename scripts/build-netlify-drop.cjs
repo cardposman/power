@@ -3,9 +3,10 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { ROOT, origin } = require('./site-data.cjs');
 
-const generation = spawnSync(process.execPath, [path.join(__dirname, 'generate-regions.cjs')], { cwd: ROOT, stdio: 'inherit' });
+const generation = spawnSync(process.execPath, [path.join(__dirname, 'build-pages.cjs')], { cwd: ROOT, stdio: 'inherit' });
 if (generation.status !== 0) process.exit(generation.status || 1);
-const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'generated-pages.json'), 'utf8'));
+const build = path.join(ROOT, '_site');
+const manifest = JSON.parse(fs.readFileSync(path.join(build, 'data', 'generated-pages.json'), 'utf8'));
 const dist = path.resolve(ROOT, 'dist-netlify');
 if (path.dirname(dist) !== ROOT || path.basename(dist) !== 'dist-netlify') throw new Error('Invalid distribution directory');
 if (fs.existsSync(dist)) fs.rmSync(dist, { recursive: true, force: true });
@@ -25,10 +26,10 @@ function copyTree(source, destination) {
   }
 }
 
-for (const page of manifest.pages) copy(path.join(ROOT, page.file), path.join(dist, page.file));
-for (const entry of manifest.redirects) copy(path.join(ROOT, entry.file), path.join(dist, entry.file));
-for (const file of manifest.publicFiles) copy(path.join(ROOT, file), path.join(dist, file));
-copyTree(path.join(ROOT, 'assets'), path.join(dist, 'assets'));
+for (const page of manifest.pages) copy(path.join(build, page.file), path.join(dist, page.file));
+for (const entry of manifest.redirects) copy(path.join(build, entry.file), path.join(dist, entry.file));
+for (const file of manifest.publicFiles) copy(path.join(build, file), path.join(dist, file));
+copyTree(path.join(build, 'assets'), path.join(dist, 'assets'));
 const siteOrigin = origin();
 fs.writeFileSync(path.join(dist, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=3600, must-revalidate\n/*.html\n  Cache-Control: public, max-age=0, must-revalidate\n/region/*\n  Cache-Control: public, max-age=0, must-revalidate\n/station/*\n  Cache-Control: public, max-age=0, must-revalidate\n`);
 

@@ -62,7 +62,8 @@ const districts = source.districts.map((district) => {
   if (!group || !/^\d{5}$/.test(district.pathCode)) throw new Error(`Invalid district: ${district.pathCode}`);
   const label = district.provinceCode === '3600000000' ? '세종' : `${group.label} ${district.displayName.trim()}`;
   const key = `${group.slug}/${district.pathCode}`;
-  return { ...district, label, key, group, schools: selectSchools(district.pathCode), thumbnail: (hash(key) % 4) + 1, ...districtRoute(district.pathCode), legacyFile: `region/${key}/index.html`, legacyUrl: `/region/${key}/` };
+  const route = districtRoute(district.pathCode);
+  return { ...district, label, key, group, schools: selectSchools(district.pathCode), thumbnail: (hash(key) % 4) + 1, file: `region/${key}/index.html`, deployFile: route.file, url: route.url, legacyUrl: `/region/${key}/` };
 });
 
 const groups = [...new Set(districts.map((district) => district.provinceCode))].map((code) => ({

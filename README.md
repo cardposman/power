@@ -9,9 +9,10 @@ Open `index.html` directly in a browser. No build or dependencies are needed to 
 - Source images: `assets/originals/`
 - Optimized web images: `assets/images/`
 - Production origin: `https://tstudymate.com` with no `/power` prefix. Canonical pages use `index,follow`; legacy redirects stay `noindex,follow`.
-- Regional directory: `region/index.html`. The 269 district pages now use `reg-{slug}/index.html`; province and national directory paths are unchanged.
-- Station directory: `station/index.html`. The 200 station pages now use `st-{slug}/index.html`; the 12 regional directories and national station directory retain their paths. There are 500 content/list pages plus 469 legacy redirect files, not 969 independent content pages.
-- Examples: `https://tstudymate.com/reg-yongsangu/` and `https://tstudymate.com/st-seomyun/`. The old nested detail paths redirect to these short routes. See `docs/short-urls.md` and `docs/domain-setup.md`.
+- Regional source: `region/{province}/{code}/index.html` for 269 full district pages. Regional directory: `region/index.html`.
+- Station source: `station/{province}/{id}/index.html` for 200 full station pages. Station directory: `station/index.html`.
+- The repository keeps all 500 content/list pages grouped. No `reg-*` or `st-*` folders are stored at the repository root.
+- Public URLs remain `https://tstudymate.com/reg-yongsangu/` and `https://tstudymate.com/st-seomyun/`. GitHub Actions creates these flat routes only inside the ignored `_site/` deployment artifact, including 469 old-path redirects. See `docs/short-urls.md` and `docs/domain-setup.md`.
 - Naver ownership file: `naver686492ec587065ddaf1ebc2627b5b46f.html` at the site root, preserved byte-for-byte. `CNAME`, the verification file, `robots.txt`, and `sitemap.xml` are included in generation/package checks.
 
 Recreate optimized images (Python with Pillow):
@@ -30,9 +31,10 @@ Station pages do not insert school names. They identify the region and represent
 
 ```powershell
 node scripts/generate-regions.cjs
-node --test scripts/test-stations.cjs
-node --test scripts/test-routes.cjs
+node --test scripts/test-stations.cjs scripts/test-routes.cjs scripts/test-layout.cjs
 python scripts/check-generated.py
+node scripts/build-pages.cjs
+python scripts/check-generated.py --directory _site
 ```
 
 `data/stations.json` is the editable, checked-in station snapshot. Stable candidate IDs remain internal identifiers, not official railway codes or public URL slugs. `data/route-slugs.json` explicitly assigns all 269 district and 200 station slugs, including namespaced duplicates. Reimport only when intentionally restoring the station snapshot, as importing will replace manual edits to station guidance topics:
@@ -40,6 +42,8 @@ python scripts/check-generated.py
 ```powershell
 node scripts/import-stations.cjs
 ```
+
+Default generation writes grouped source pages only. `build-pages.cjs` builds the short public paths separately into `_site/`, never back into the checkout. The layout regression test checks this separation and repeated builds. `.github/workflows/pages.yml` tests, builds, and uploads only `_site/`. GitHub Pages must use **GitHub Actions** as its publishing source, not **Deploy from a branch**. Generated deployment files are not committed.
 
 The following packaging commands are optional and should only be run when a deployment package is requested:
 
@@ -64,4 +68,4 @@ node scripts/generate-regions.cjs
 
 ## Verification
 
-`scripts/check-generated.py` checks all 500 content/list pages, 469 redirects, links, assets, canonical URLs, school data, station IDs and directory counts. It also checks root verification/CNAME files, sitemap contents, robots policy, and the absence of search and the station header menu. `scripts/test-stations.cjs` checks provenance; `scripts/test-routes.cjs` checks slugs, production-domain defaults and legacy project-prefix URL handling. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated custom-domain-root fixture inside ignored `verification/`, verifies routes over a temporary HTTP server, and closes it afterward. It does not deploy or create a ZIP. Directories remain static lists; station links are available through footers and directory tabs, not the header menu.
+`scripts/check-generated.py` checks all 500 grouped source pages with zero redirects, or 500 deployment pages plus 469 redirects when passed `--directory _site`. It checks links, assets, canonical URLs, school data, station IDs, directories, root verification/CNAME files, sitemap contents, robots policy, and the absence of search and the station header menu. `scripts/test-stations.cjs` checks provenance; `scripts/test-routes.cjs` checks slugs and domain defaults; `scripts/test-layout.cjs` guards source/deployment separation. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated deployment fixture inside ignored `verification/`, verifies routes over a temporary HTTP server, and closes it afterward. It does not deploy or create a ZIP. Local previews navigate grouped source pages; deployment links use the short public paths.
