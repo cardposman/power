@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="robots" content="{{ROBOTS}}">
+  <meta name="theme-color" content="#eb5b22">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:site_name" content="맨투맨 일본어과외">
+{{HEAD_URLS}}
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="{{ASSET_BASE}}css/site.css">
+  <script src="{{ASSET_BASE}}js/site.js" defer></script>
+</head>
+<body data-category="{{SLUG}}">
+<div class="page-shell category-page">
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="{{HOME_LINK}}" aria-label="맨투맨 일본어과외 홈"><span class="brand-symbol">맨투맨</span></a>
+    <nav class="navigation" aria-label="주요 메뉴" id="main-nav"><a href="{{HOME_LINK}}">맨투맨 일본어과외</a>{{CATEGORY_NAV}}</nav>
+    <a class="button header-cta" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span></button>
+  </div></header>
+  <main id="main">
+    <section class="category-intro" aria-labelledby="hero-title"><div class="container">
+      <nav class="breadcrumbs" aria-label="현재 위치"><a href="{{HOME_LINK}}">홈</a><span aria-hidden="true">/</span><span aria-current="page">{{LABEL}}</span></nav>
+      <p class="eyebrow">{{EYEBROW}}</p>
+      <h1 id="hero-title">{{LABEL}}<span class="orange-dot">.</span></h1>
+      <p class="category-lead">{{LEAD}}</p>
+      <p class="section-description">{{INTRO}}</p>
+      <p class="category-format">맨투맨 일본어과외 · 1:1 화상수업 상담</p>
+      <a class="button category-primary" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">{{CTA}} <span aria-hidden="true">↗</span></a>
+      <nav class="category-jump" aria-label="페이지 목차"><a href="#learning">학습 내용 <span aria-hidden="true">↓</span></a><a href="#practice">연습 예시 <span aria-hidden="true">↓</span></a><a href="#faq">자주 묻는 질문 <span aria-hidden="true">↓</span></a></nav>
+    </div></section>
+    <figure class="category-art">
+      <a class="curriculum-excerpt" style="--art-row: {{ART_ROW}}" href="{{ASSET_BASE}}originals/product-detail.png" target="_blank" rel="noopener noreferrer" aria-label="교재 전체 안내 이미지 보기 (새 창)"><img src="{{ASSET_BASE}}images/product-detail.webp" alt="{{ART_ALT}}" width="1025" height="5760" fetchpriority="high" decoding="async"></a>
+      <figcaption class="container">{{ART_CAPTION}}</figcaption>
+    </figure>
+    <section class="section category-fit" aria-labelledby="fit-title"><div class="container">
+      <p class="section-label">이런 고민이 있다면</p><h2 id="fit-title">{{FIT_TITLE}}</h2>
+      <dl class="category-fit-list">{{FIT_ITEMS}}</dl>
+    </div></section>
+    <section class="section" id="learning" aria-labelledby="learning-title"><div class="container">
+      <p class="section-label">학습 내용</p><h2 id="learning-title">{{CURRICULUM_TITLE}}</h2><p class="section-description">{{CURRICULUM_INTRO}}</p>
+      <ol class="category-modules">{{MODULES}}</ol>
+    </div></section>
+    <section class="section category-practice" id="practice" aria-labelledby="practice-title"><div class="container">
+      <p class="section-label">수업에서 연결해볼 장면</p><h2 id="practice-title">{{PRACTICE_TITLE}}</h2><p class="section-description">{{PRACTICE_INTRO}}</p>
+      <ol class="category-practice-list">{{PRACTICE_ITEMS}}</ol>
+    </div></section>
+    <section class="section category-consult" id="consult" aria-labelledby="consult-title"><div class="container">
+      <p class="section-label">상담 준비</p><h2 id="consult-title">이 네 가지를 알려주시면<br>상담이 더 구체적입니다.</h2><ul class="category-checklist">{{CHECKLIST}}</ul>
+      <p class="category-note">{{NOTE}}</p>{{SOURCE}}
+      <a class="inline-cta" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">{{CTA}} <span aria-hidden="true">↗</span></a>
+    </div></section>
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title"><div class="container">
+      <p class="section-label">자주 묻는 질문</p><h2 id="faq-title">{{LABEL}},<br>시작하기 전에.</h2><div class="faq-list category-faq">{{FAQ}}</div>
+    </div></section>
+    <section class="contact-section" aria-labelledby="contact-title"><div class="container contact-inner">
+      <p class="section-label">{{LABEL}} · 1:1 학습 상담</p><h2 id="contact-title">{{CONTACT_TITLE}}</h2><p>{{CONTACT_TEXT}}</p>
+      <a class="button button-dark" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">{{CTA}} <span aria-hidden="true">↗</span></a>
+      <p class="category-contact-note">수강료·수업 시간·교재 및 과정별 조건은 상담에서 확인해주세요.</p>
+    </div></section>
+    <section class="section category-related" aria-labelledby="related-title"><div class="container"><p class="section-label">다른 학습 목적</p><h2 id="related-title">다음 목표도 살펴보세요.</h2><ul>{{RELATED}}</ul></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="{{HOME_LINK}}"><span class="brand-symbol">맨투맨</span></a><a href="#main">맨 위로 <span aria-hidden="true">↑</span></a></div><div class="container footer-regions"><a href="{{REGIONS_LINK}}">지역별 상담 목록 <span aria-hidden="true">→</span></a><a href="{{STATIONS_LINK}}">역별 상담 목록 <span aria-hidden="true">→</span></a></div></footer>
+  <aside class="fixed-contact" aria-label="빠른 상담접수"><div class="container fixed-inner"><div><strong>{{LABEL}} · 맨투맨 일본어</strong></div><a class="button" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a></div></aside>
+</div>
+</body>
+</html>

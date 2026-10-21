@@ -14,7 +14,7 @@
 
 사용자가 GitHub 설정에서 추가한 `CNAME` 커밋을 먼저 가져와 그대로 유지했다. HTTP 요청이 HTTPS로 이동하고 HTTPS 홈페이지가 정상 응답하는 것을 확인한 뒤 HTTPS를 대표 주소로 설정했다. `data/site.json`의 `origin`은 `https://tstudymate.com`, `basePath`는 빈 문자열이다. 기존 GitHub Pages의 `/power` 경로를 새 도메인에 붙이지 않는다.
 
-콘텐츠·목록 500개의 canonical·Open Graph URL과 기존 주소 이동 파일의 canonical은 모두 운영 도메인을 사용한다. 일반 페이지는 `index,follow`로 바꾸고 기존 주소 이동 파일의 `noindex,follow`는 유지한다. `robots.txt`는 수집을 허용하고 새 도메인의 사이트맵을 안내한다. 사이트맵에는 콘텐츠·목록 500개만 포함하고 이동 파일과 소유확인 파일은 넣지 않는다. 수집 허용이 실제 색인이나 순위를 보장하지는 않는다.
+콘텐츠·목록 504개의 canonical·Open Graph URL과 기존 주소 이동 파일의 canonical은 모두 운영 도메인을 사용한다. 일반 페이지는 `index,follow`로 바꾸고 기존 주소 이동 파일의 `noindex,follow`는 유지한다. `robots.txt`는 수집을 허용하고 새 도메인의 사이트맵을 안내한다. 사이트맵에는 콘텐츠·목록 504개만 포함하고 이동 파일과 소유확인 파일은 넣지 않는다. 수집 허용이 실제 색인이나 순위를 보장하지는 않는다.
 
 ## 네이버 파일 보존
 

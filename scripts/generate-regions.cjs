@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { ROOT, site, source, schoolSource, districts, groups, escapeHtml: e, hash, origin, basePath, publicUrl, thumbnailAlts, localParagraph } = require('./site-data.cjs');
 const { stationSource, stations, stationGroups } = require('./station-data.cjs');
+const { categories, categoryFile, categoryNavigation, renderCategory } = require('./category-pages.cjs');
 
 const siteOrigin = origin();
 const args = process.argv.slice(2);
@@ -37,6 +38,7 @@ function write(file, content) {
   const target = path.resolve(outputRoot, file);
   const relative = path.relative(outputRoot, target);
   if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new Error(`Invalid output: ${file}`);
+  if (fs.existsSync(target) && fs.readFileSync(target, 'utf8') === content) return;
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, content, 'utf8');
 }
@@ -94,6 +96,7 @@ function lesson({ file: sourceFile, key, label = site.product, schools = [], hom
     FIXED_TITLE: `${home ? '' : `${label} `}${site.product}`
   };
   const html = template.replace(/\{\{([A-Z_]+)\}\}/g, (_, token) => {
+    if (token === 'CATEGORY_NAV') return categoryNavigation(file, relativeTo);
     if (token === 'HEAD_URLS') return headUrls(routeFor(file), thumbnail);
     if (token === 'HEADING_PREFIX') return home ? '' : `${e(label)}<br>`;
     if (token === 'STATION_NOTICE') return station ? `<p class="station-context">${e(station.regionLabel)} · 대표 노선 ${e(station.representativeLine)}</p><p class="service-notice">1:1 화상수업 안내입니다. 해당 역 주변의 오프라인 교실 안내가 아닙니다.</p>` : '';
@@ -139,7 +142,7 @@ ${headUrls(routeFor(file))}
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="site-header"><div class="container header-inner">
   <a class="brand" href="${e(relativeTo(file, 'index.html'))}" aria-label="TS재팬 홈"><span class="brand-symbol">TS</span><span>재팬<span class="brand-dot">.</span></span></a>
-  <nav class="navigation" id="main-nav" aria-label="주요 메뉴"><a href="${e(relativeTo(file, 'index.html'))}">TS재팬 소개</a><a href="${e(relativeTo(file, 'region/index.html'))}">전체 지역</a></nav>
+  <nav class="navigation" id="main-nav" aria-label="주요 메뉴"><a href="${e(relativeTo(file, 'index.html'))}">맨투맨 일본어과외</a>${categoryNavigation(file, relativeTo)}</nav>
   <a class="button header-cta" href="${e(site.counselUrl)}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a>
   <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span></button>
 </div></header>
@@ -161,6 +164,12 @@ for (const district of districts) lesson({ file: district.file, key: district.ke
 directory(null, 'station');
 for (const group of stationGroups) directory(group, 'station');
 for (const station of stations) lesson({ file: station.file, key: `station/${station.key}`, label: station.label, station });
+
+for (const category of categories) {
+  const file = categoryFile(category);
+  write(file, renderCategory(category, { relativeTo, assetBase, headUrls, siteOrigin, site }));
+  pages.push({ kind: 'category', slug: category.slug, file, sourceFile: file, deployFile: file, url: routeFor(file), title: category.title, label: category.label });
+}
 
 if (deployMode) fs.cpSync(path.join(ROOT, 'assets'), path.join(outputRoot, 'assets'), { recursive: true });
 

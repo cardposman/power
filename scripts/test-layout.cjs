@@ -5,6 +5,8 @@ const path = require('node:path');
 const { createHash } = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const { ROOT } = require('./site-data.cjs');
+const { categories } = require('./category-pages.cjs');
+const expectedPages = 500 + categories.length;
 
 const readManifest = (directory) => JSON.parse(fs.readFileSync(path.join(directory, 'data/generated-pages.json'), 'utf8'));
 const flatSourceFolders = () => fs.readdirSync(ROOT).filter((name) => /^(?:reg|st)-/.test(name));
@@ -14,7 +16,7 @@ const fingerprint = (files) => Object.fromEntries(files.map((file) => [file, cre
 test('source checkout stores full grouped pages without short-route folders', () => {
   const manifest = readManifest(ROOT);
   assert.equal(manifest.mode, 'source');
-  assert.equal(manifest.pages.length, 500);
+  assert.equal(manifest.pages.length, expectedPages);
   assert.equal(manifest.redirects.length, 0);
   assert.deepEqual(flatSourceFolders(), []);
   for (const page of manifest.pages) {
@@ -52,7 +54,7 @@ test('repeated source generation and deployment builds preserve source and publi
     const output = path.join(ROOT, '_site');
     const deployed = readManifest(output);
     assert.equal(deployed.mode, 'deployment');
-    assert.equal(deployed.pages.length, 500);
+    assert.equal(deployed.pages.length, expectedPages);
     assert.equal(deployed.redirects.length, 469);
     for (const page of deployed.pages) {
       assert.equal(page.file, page.deployFile);

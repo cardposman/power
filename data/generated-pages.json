@@ -9532,6 +9532,46 @@
       "regionSlug": "chungcheongnam-do",
       "guide": "conversation",
       "screeningDecision": "미검토"
+    },
+    {
+      "kind": "category",
+      "slug": "jlpt",
+      "file": "course/jlpt/index.html",
+      "sourceFile": "course/jlpt/index.html",
+      "deployFile": "course/jlpt/index.html",
+      "url": "/course/jlpt/",
+      "title": "일본어자격증 JLPT 일대일 과외수업 | 맨투맨 일본어",
+      "label": "일본어자격증"
+    },
+    {
+      "kind": "category",
+      "slug": "travel",
+      "file": "course/travel/index.html",
+      "sourceFile": "course/travel/index.html",
+      "deployFile": "course/travel/index.html",
+      "url": "/course/travel/",
+      "title": "일본어 여행회화 일대일 과외수업 | 맨투맨 일본어",
+      "label": "여행회화"
+    },
+    {
+      "kind": "category",
+      "slug": "business",
+      "file": "course/business/index.html",
+      "sourceFile": "course/business/index.html",
+      "deployFile": "course/business/index.html",
+      "url": "/course/business/",
+      "title": "일본어 비즈니스회화 일대일 과외수업 | 맨투맨 일본어",
+      "label": "비즈니스회화"
+    },
+    {
+      "kind": "category",
+      "slug": "hobby",
+      "file": "course/hobby/index.html",
+      "sourceFile": "course/hobby/index.html",
+      "deployFile": "course/hobby/index.html",
+      "url": "/course/hobby/",
+      "title": "성인취미 일본어회화 일대일 과외수업 | 맨투맨 일본어",
+      "label": "성인취미"
     }
   ],
   "redirects": []

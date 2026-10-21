@@ -498,3 +498,7 @@
 /st-dujeong/
 /st-ssangyong/
 /st-onyangoncheon/
+/course/jlpt/
+/course/travel/
+/course/business/
+/course/hobby/

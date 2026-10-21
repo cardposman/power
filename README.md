@@ -11,8 +11,9 @@ Open `index.html` directly in a browser. No build or dependencies are needed to 
 - Production origin: `https://tstudymate.com` with no `/power` prefix. Canonical pages use `index,follow`; legacy redirects stay `noindex,follow`.
 - Regional source: `region/{province}/{code}/index.html` for 269 full district pages. Regional directory: `region/index.html`.
 - Station source: `station/{province}/{id}/index.html` for 200 full station pages. Station directory: `station/index.html`.
-- The repository keeps all 500 content/list pages grouped. No `reg-*` or `st-*` folders are stored at the repository root.
-- Public URLs remain `https://tstudymate.com/reg-yongsangu/` and `https://tstudymate.com/st-seomyun/`. GitHub Actions creates these flat routes only inside the ignored `_site/` deployment artifact, including 469 old-path redirects. See `docs/short-urls.md` and `docs/domain-setup.md`.
+- The repository keeps all 504 content/list pages grouped: the existing 500 plus four learning-purpose categories. No `reg-*` or `st-*` folders are stored at the repository root.
+- New category pages: `course/jlpt/` (certification), `course/travel/`, `course/business/`, and `course/hobby/`. Every page's header links to these four categories instead of the regional directory. Regional and station directories remain available through footer links.
+- Public URLs remain `https://tstudymate.com/reg-yongsangu/` and `https://tstudymate.com/st-seomyun/`. GitHub Actions creates these flat routes only inside the ignored `_site/` deployment artifact, including 469 old-path redirects. The four category paths are the same in source and deployment. See `docs/short-urls.md` and `docs/domain-setup.md`.
 - Naver ownership file: `naver686492ec587065ddaf1ebc2627b5b46f.html` at the site root, preserved byte-for-byte. `CNAME`, the verification file, `robots.txt`, and `sitemap.xml` are included in generation/package checks.
 
 Recreate optimized images (Python with Pillow):
@@ -31,7 +32,7 @@ Station pages do not insert school names. They identify the region and represent
 
 ```powershell
 node scripts/generate-regions.cjs
-node --test scripts/test-stations.cjs scripts/test-routes.cjs scripts/test-layout.cjs
+node --test scripts/test-stations.cjs scripts/test-routes.cjs scripts/test-layout.cjs scripts/test-categories.cjs
 python scripts/check-generated.py
 node scripts/build-pages.cjs
 python scripts/check-generated.py --directory _site
@@ -54,11 +55,13 @@ python scripts/check-generated.py --directory dist-netlify
 
 `templates/lesson.html` is the shared page source. `data/site.json` stores the main-page settings, consultation URL, and region groups. Region and school snapshots were copied from HowCoding; no external folder is needed to regenerate this site. Each region receives one of four thumbnails at generation time, so images also work without JavaScript. The main page contains general lesson information instead of the former Hongeun-dong sample text. Logos link back to this main page, and it links to the regional directory.
 
+`data/categories.json` contains distinct learning guidance, practice examples, consultation checklists and FAQs for the four new categories. `templates/category.html` and `scripts/category-pages.cjs` render them. Curriculum illustrations show the relevant section of the supplied product artwork with a link to the complete original. Suggested practice activities are editorial examples, not guaranteed service terms. JLPT factual context is linked to the official exam overview; prices, schedules, individual material requests and availability remain subject to consultation. `scripts/check-categories.cjs` checks category navigation, responsive layout, artwork, FAQ and no-JavaScript content on both source and deployment files.
+
 Packaging produces `dist-netlify.zip`, containing the contents of `dist-netlify` directly. The station expansion was generated and checked locally without rebuilding that package or deploying. Any pre-existing package may therefore be stale.
 
 ## Deployment Origin and Indexing
 
-`data/site.json` now sets `origin` to `https://tstudymate.com` and `basePath` to an empty string. Generation emits production canonical/Open Graph URLs, root `robots.txt`, and a sitemap containing only the 500 canonical pages, never legacy redirects. Indexing is enabled for canonical pages. `SITE_ORIGIN` and `SITE_BASE_PATH` override defaults; an explicitly empty `SITE_ORIGIN` generates a blocked preview with no canonical URLs and an empty sitemap.
+`data/site.json` now sets `origin` to `https://tstudymate.com` and `basePath` to an empty string. Generation emits production canonical/Open Graph URLs, root `robots.txt`, and a sitemap containing only the 504 canonical pages, never legacy redirects. Indexing is enabled for canonical pages. `SITE_ORIGIN` and `SITE_BASE_PATH` override defaults; an explicitly empty `SITE_ORIGIN` generates a blocked preview with no canonical URLs and an empty sitemap.
 
 ```powershell
 $env:SITE_ORIGIN = 'https://tstudymate.com'
@@ -68,4 +71,4 @@ node scripts/generate-regions.cjs
 
 ## Verification
 
-`scripts/check-generated.py` checks all 500 grouped source pages with zero redirects, or 500 deployment pages plus 469 redirects when passed `--directory _site`. It checks links, assets, canonical URLs, school data, station IDs, directories, root verification/CNAME files, sitemap contents, robots policy, and the absence of search and the station header menu. `scripts/test-stations.cjs` checks provenance; `scripts/test-routes.cjs` checks slugs and domain defaults; `scripts/test-layout.cjs` guards source/deployment separation. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated deployment fixture inside ignored `verification/`, verifies routes over a temporary HTTP server, and closes it afterward. It does not deploy or create a ZIP. Local previews navigate grouped source pages; deployment links use the short public paths.
+`scripts/check-generated.py` checks all 504 grouped source pages with zero redirects, or 504 deployment pages plus 469 redirects when passed `--directory _site`. It checks links, assets, canonical URLs, school data, station IDs, directories, root verification/CNAME files, sitemap contents, robots policy, and the absence of search and the station header menu. `scripts/test-stations.cjs` checks provenance; `scripts/test-routes.cjs` checks slugs and domain defaults; `scripts/test-layout.cjs` guards source/deployment separation. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated deployment fixture inside ignored `verification/`, verifies routes over a temporary HTTP server, and closes it afterward. It does not deploy or create a ZIP. Local previews navigate grouped source pages; deployment links use the short public paths.

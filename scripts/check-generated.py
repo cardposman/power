@@ -62,6 +62,10 @@ def main():
     mode = manifest["mode"]
     assert mode in {"source", "deployment"}, mode
     deployment = mode == "deployment"
+    categories = json.loads((ROOT / "data" / "categories.json").read_text(encoding="utf-8"))
+    categories_by_slug = {item["slug"]: item for item in categories}
+    expected_pages = 500 + len(categories)
+    official_sources = {item["source"]["url"] for item in categories if "source" in item}
     cache = {}
 
     def load(path):
@@ -78,7 +82,7 @@ def main():
     checked_links = 0
     canonical_files = {entry["file"] for entry in manifest["pages"]}
     canonical_urls = {entry["url"] for entry in manifest["pages"]}
-    assert len(canonical_files) == len(canonical_urls) == 500
+    assert len(canonical_files) == len(canonical_urls) == expected_pages
     for entry in manifest["pages"]:
         assert entry["file"] == entry["deployFile" if deployment else "sourceFile"], entry
         path = directory / entry["file"]
@@ -92,6 +96,10 @@ def main():
         assert not page.select("input", "data-region-search"), path
         assert not [attrs for attrs in page.select("script") if attrs.get("src", "").endswith("js/regions.js")], path
         assert "역별 상담" not in [text.strip() for text in page.text["main-nav"]], path
+        menu_text = [text.strip() for text in page.text["main-nav"]]
+        assert "지역별 상담" not in menu_text and "전체 지역" not in menu_text, path
+        for category in categories:
+            assert menu_text.count(category["label"]) == 1, (path, category["label"])
         expected_robots = "noindex,nofollow" if not manifest["origin"] else "index,follow"
         robots = next(attrs["content"] for attrs in page.select("meta") if attrs.get("name") == "robots")
         assert robots == expected_robots, path
@@ -143,6 +151,14 @@ def main():
         if entry["kind"] in {"station-directory", "station-province", "directory", "province"}:
             expected_count = entry.get("stationCount", entry.get("districtCount"))
             assert len(page.select("li", "data-region-item")) == expected_count, path
+        if entry["kind"] == "category":
+            category = categories_by_slug[entry["slug"]]
+            assert entry["file"] == f"course/{category['slug']}/index.html", path
+            assert "".join(page.text["hero-title"]) == category["label"] + ".", path
+            assert len([attrs for attrs in page.select("details")]) == 4, path
+            assert len([attrs for attrs in page.select("a") if attrs.get("aria-current") == "page"]) == 1, path
+            assert "1:1 화상수업" in "".join(page.text["main"]), path
+            assert "수강료·수업 시간·교재" in "".join(page.text["main"]), path
         for tag, attrs in page.nodes:
             for attribute in ("src", "href"):
                 value = attrs.get(attribute)
@@ -151,7 +167,7 @@ def main():
                 parts = urlsplit(value)
                 if parts.scheme or parts.netloc:
                     if tag == "a" and parts.scheme in {"http", "https"}:
-                        assert value == "https://naver.me/52c74Jj4", (path, value)
+                        assert value == "https://naver.me/52c74Jj4" or (entry["kind"] == "category" and value in official_sources), (path, value)
                         assert attrs.get("target") == "_blank" and "noopener" in attrs.get("rel", ""), path
                     continue
                 target = (path.parent / unquote(parts.path)).resolve() if parts.path else path
@@ -214,7 +230,8 @@ def main():
     actual_region_pages = list((directory / "region").rglob("index.html"))
     assert len(actual_region_pages) == 286
     assert len(list((directory / "station").rglob("index.html"))) == 213
-    assert len(manifest["pages"]) == 500
+    assert len(manifest["pages"]) == expected_pages
+    assert len([entry for entry in manifest["pages"] if entry["kind"] == "category"]) == len(categories)
     assert len(list(directory.glob("reg-*/index.html"))) == (269 if deployment else 0)
     assert len(list(directory.glob("st-*/index.html"))) == (200 if deployment else 0)
     print(json.dumps({"mode": mode, "directory": str(directory), "htmlPages": len(manifest["pages"]), "legacyRedirects": len(redirects), "districtPages": 269, "stationPages": len(station_ids), "stationDirectories": 13, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "stationThumbnails": dict(station_thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
