@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { ROOT } = require('./site-data.cjs');
+const { stationRoute } = require('./page-routes.cjs');
 
 const stationSource = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/stations.json'), 'utf8'));
 
@@ -57,7 +58,7 @@ const stations = stationSource.stations.map((station) => {
   if (!Object.hasOwn(guides, station.guide) || !/^[a-z]+(?:-[a-z]+)*$/.test(station.regionSlug) || !Number.isInteger(station.id) || station.id < 1 || station.id > 200) throw new Error(`Invalid station: ${station.id}`);
   const name = station.name.endsWith('역') ? station.name : `${station.name}역`;
   const key = `${station.regionSlug}/${String(station.id).padStart(3, '0')}`;
-  return { ...station, displayName: name, label: `${station.regionLabel} ${name}`, key, file: `station/${key}/index.html`, url: `/station/${key}/`, content: guides[station.guide] };
+  return { ...station, displayName: name, label: `${station.regionLabel} ${name}`, key, ...stationRoute(station.id), legacyFile: `station/${key}/index.html`, legacyUrl: `/station/${key}/`, content: guides[station.guide] };
 });
 if (stations.length !== 200 || new Set(stations.map((station) => station.id)).size !== 200 || new Set(stations.map((station) => station.key)).size !== 200) throw new Error('Expected 200 unique stations');
 

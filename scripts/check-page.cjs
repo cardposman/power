@@ -47,7 +47,7 @@ const { pathToFileURL } = require('node:url');
       assert((await page.locator('#hero-title').innerText()).includes('맨투맨 일본어과외'));
       assert(!(await page.locator('body').innerText()).includes('TS재팬'));
       assert(!(await page.locator('body').innerText()).includes('홍은동'));
-      assert.equal(await page.locator('.hero-actions .text-link').getAttribute('href'), 'region/index.html');
+      assert.equal(await page.locator('.hero-actions .text-link').getAttribute('href'), pathToFileURL(path.join(root, 'region/index.html')).href);
       for (const image of await page.locator('img').all()) await image.scrollIntoViewIfNeeded();
       await page.evaluate(async () => {
         await Promise.all([...document.images].map((image) => image.decode()));

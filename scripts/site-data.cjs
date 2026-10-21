@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { districtRoute } = require('./page-routes.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const readJson = (name) => JSON.parse(fs.readFileSync(path.join(ROOT, 'data', name), 'utf8'));
@@ -26,6 +27,20 @@ function origin() {
   return parsed.origin;
 }
 
+function basePath() {
+  const value = process.env.SITE_BASE_PATH ?? site.basePath ?? '';
+  if (value === '' || value === '/') return '';
+  if (!/^\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\/?$/.test(value)) throw new Error('SITE_BASE_PATH must be an absolute path without query, fragment, or dot segments.');
+  return value.replace(/\/$/, '');
+}
+
+function publicUrl(route) {
+  const siteOrigin = origin();
+  if (!siteOrigin) return '';
+  if (!route.startsWith('/') || route.startsWith('//')) throw new Error(`Invalid site route: ${route}`);
+  return `${siteOrigin}${basePath()}${route}`;
+}
+
 function selectSchools(code) {
   const candidates = [...(supplements[code] || []), ...(schoolSource.districts[code]?.schools || [])];
   const unique = [...new Map(candidates.map((school) => [school.name, school])).values()];
@@ -47,7 +62,7 @@ const districts = source.districts.map((district) => {
   if (!group || !/^\d{5}$/.test(district.pathCode)) throw new Error(`Invalid district: ${district.pathCode}`);
   const label = district.provinceCode === '3600000000' ? '세종' : `${group.label} ${district.displayName.trim()}`;
   const key = `${group.slug}/${district.pathCode}`;
-  return { ...district, label, key, group, schools: selectSchools(district.pathCode), thumbnail: (hash(key) % 4) + 1, url: `/region/${key}/` };
+  return { ...district, label, key, group, schools: selectSchools(district.pathCode), thumbnail: (hash(key) % 4) + 1, ...districtRoute(district.pathCode), legacyFile: `region/${key}/index.html`, legacyUrl: `/region/${key}/` };
 });
 
 const groups = [...new Set(districts.map((district) => district.provinceCode))].map((code) => ({
@@ -74,4 +89,4 @@ function localParagraph(label, names, variant = 0) {
   return versions[variant % versions.length];
 }
 
-module.exports = { ROOT, site, source, schoolSource, supplements, districts, groups, escapeHtml, hash, origin, thumbnailAlts, localParagraph };
+module.exports = { ROOT, site, source, schoolSource, supplements, districts, groups, escapeHtml, hash, origin, basePath, publicUrl, thumbnailAlts, localParagraph };

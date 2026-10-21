@@ -1,6 +1,17 @@
 (() => {
   'use strict';
 
+  // Directory URLs work on the web; local file previews need an explicit file.
+  if (location.protocol === 'file:') {
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const url = new URL(link.getAttribute('href'), location.href);
+      if (url.protocol === 'file:' && url.pathname.endsWith('/')) {
+        url.pathname += 'index.html';
+        link.href = url.href;
+      }
+    });
+  }
+
   const courses = {
     basic: {
       category: '처음 시작하는 일본어',

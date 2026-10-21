@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
-const { ROOT, origin, escapeHtml } = require('./site-data.cjs');
+const { ROOT, origin, publicUrl, escapeHtml } = require('./site-data.cjs');
 
 const generation = spawnSync(process.execPath, [path.join(__dirname, 'generate-regions.cjs')], { cwd: ROOT, stdio: 'inherit' });
 if (generation.status !== 0) process.exit(generation.status || 1);
@@ -26,13 +26,15 @@ function copyTree(source, destination) {
 }
 
 for (const page of manifest.pages) copy(path.join(ROOT, page.file), path.join(dist, page.file));
+for (const entry of manifest.redirects) copy(path.join(ROOT, entry.file), path.join(dist, entry.file));
+copy(path.join(ROOT, '.nojekyll'), path.join(dist, '.nojekyll'));
 copyTree(path.join(ROOT, 'assets'), path.join(dist, 'assets'));
 const siteOrigin = origin();
 if (siteOrigin) {
   const urls = manifest.pages;
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((page) => `  <url><loc>${escapeHtml(siteOrigin + page.url)}</loc></url>`).join('\n')}\n</urlset>\n`;
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((page) => `  <url><loc>${escapeHtml(publicUrl(page.url))}</loc></url>`).join('\n')}\n</urlset>\n`;
   fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap);
-  fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${siteOrigin}/sitemap.xml\n`);
+  fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${publicUrl('/sitemap.xml')}\n`);
 } else {
   fs.writeFileSync(path.join(dist, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 }

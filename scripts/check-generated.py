@@ -54,7 +54,10 @@ def main():
     parser.add_argument("--directory", type=Path, default=ROOT)
     args = parser.parse_args()
     directory = args.directory.resolve()
-    manifest = json.loads((ROOT / "data" / "generated-pages.json").read_text(encoding="utf-8"))
+    manifest_path = directory / "data" / "generated-pages.json"
+    if not manifest_path.is_file():
+        manifest_path = ROOT / "data" / "generated-pages.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     cache = {}
 
     def load(path):
@@ -69,6 +72,9 @@ def main():
     station_source = json.loads((ROOT / "data" / "stations.json").read_text(encoding="utf-8"))
     stations_by_id = {station["id"]: station for station in station_source["stations"]}
     checked_links = 0
+    canonical_files = {entry["file"] for entry in manifest["pages"]}
+    canonical_urls = {entry["url"] for entry in manifest["pages"]}
+    assert len(canonical_files) == len(canonical_urls) == 500
     for entry in manifest["pages"]:
         path = directory / entry["file"]
         page = load(path)
@@ -84,12 +90,18 @@ def main():
         expected_robots = "noindex,nofollow" if not manifest["origin"] else "index,follow"
         robots = next(attrs["content"] for attrs in page.select("meta") if attrs.get("name") == "robots")
         assert robots == expected_robots, path
+        canonical = [attrs["href"] for attrs in page.select("link") if attrs.get("rel") == "canonical"]
+        expected_url = manifest["origin"] + manifest["basePath"] + entry["url"]
+        assert canonical == ([expected_url] if manifest["origin"] else []), path
+        if manifest["origin"]:
+            assert next(attrs["content"] for attrs in page.select("meta") if attrs.get("property") == "og:url") == expected_url, path
         if entry["kind"] == "home":
             assert "홍은동" not in path.read_text(encoding="utf-8"), path
             assert "TS재팬" not in path.read_text(encoding="utf-8"), path
             assert "맨투맨 일본어과외" in "".join(page.text["hero-title"]), path
             assert not entry["schools"], path
         if entry["kind"] == "district":
+            assert entry["file"].startswith("reg-") and entry["file"].count("/") == 1, path
             assert len(entry["schools"]) == 5, path
             paragraph = "".join(page.text["local-guide"])
             assert len(set(entry["schools"])) == 5, path
@@ -101,6 +113,7 @@ def main():
             assert thumbnail.get("loading") == "eager", path
             thumbnails[entry["thumbnail"]] += 1
         if entry["kind"] == "station":
+            assert entry["file"].startswith("st-") and entry["file"].count("/") == 1, path
             station = stations_by_id[entry["stationId"]]
             assert entry["stationId"] not in station_ids, path
             station_ids.add(entry["stationId"])
@@ -139,9 +152,32 @@ def main():
                 if target.is_dir():
                     target /= "index.html"
                 assert target.is_file(), f"Missing link or asset: {path} -> {value}"
+                if tag == "a" and target.suffix == ".html":
+                    assert target.relative_to(directory).as_posix() in canonical_files, f"Internal link still points to a legacy route: {path} -> {value}"
                 if parts.fragment:
                     assert parts.fragment in load(target).ids, f"Missing fragment: {path} -> {value}"
                 checked_links += 1
+    redirects = manifest["redirects"]
+    assert len(redirects) == manifest["redirectCount"] == 469
+    assert len({entry["file"] for entry in redirects}) == 469
+    assert len({entry["targetFile"] for entry in redirects}) == 469
+    for entry in redirects:
+        path = directory / entry["file"]
+        page = load(path)
+        assert entry["file"] not in canonical_files, path
+        assert entry["targetFile"] in canonical_files, path
+        assert entry["targetUrl"] in canonical_urls, path
+        link = next(attrs for attrs in page.select("a") if "data-redirect-target" in attrs)
+        target = (path.parent / link["href"]).resolve()
+        assert target == (directory / entry["targetFile"]).resolve(), path
+        assert target.is_file(), path
+        assert next(attrs["content"] for attrs in page.select("meta") if attrs.get("name") == "robots") == "noindex,follow", path
+        canonical = [attrs["href"] for attrs in page.select("link") if attrs.get("rel") == "canonical"]
+        expected_url = manifest["origin"] + manifest["basePath"] + entry["targetUrl"]
+        assert canonical == ([expected_url] if manifest["origin"] else []), path
+        script = next(attrs for attrs in page.select("script"))
+        assert (path.parent / script["src"]).resolve().is_file(), path
+    assert (directory / ".nojekyll").is_file()
     assert len(thumbnails) == 4
     assert len(station_thumbnails) == 4
     assert station_ids == set(range(1, 201))
@@ -152,7 +188,9 @@ def main():
     assert len(actual_region_pages) == 286
     assert len(list((directory / "station").rglob("index.html"))) == 213
     assert len(manifest["pages"]) == 500
-    print(json.dumps({"directory": str(directory), "htmlPages": len(manifest["pages"]), "districtPages": 269, "stationPages": len(station_ids), "stationDirectories": 13, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "stationThumbnails": dict(station_thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
+    assert len(list(directory.glob("reg-*/index.html"))) == 269
+    assert len(list(directory.glob("st-*/index.html"))) == 200
+    print(json.dumps({"directory": str(directory), "htmlPages": len(manifest["pages"]), "legacyRedirects": len(redirects), "districtPages": 269, "stationPages": len(station_ids), "stationDirectories": 13, "schoolsPerDistrict": 5, "linksAndAssetsChecked": checked_links, "thumbnails": dict(thumbnails), "stationThumbnails": dict(station_thumbnails), "brokenLinks": 0}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

@@ -1,18 +1,25 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { ROOT, site, source, schoolSource, districts, groups, escapeHtml: e, hash, origin, thumbnailAlts, localParagraph } = require('./site-data.cjs');
+const { ROOT, site, source, schoolSource, districts, groups, escapeHtml: e, hash, origin, basePath, publicUrl, thumbnailAlts, localParagraph } = require('./site-data.cjs');
 const { stationSource, stations, stationGroups } = require('./station-data.cjs');
 
 const siteOrigin = origin();
+const args = process.argv.slice(2);
+if (args.length && (args.length !== 2 || args[0] !== '--output')) throw new Error('Usage: node scripts/generate-regions.cjs [--output workspace-subdirectory]');
+const outputRoot = args.length ? path.resolve(ROOT, args[1]) : ROOT;
+const outputRelative = path.relative(ROOT, outputRoot);
+if (outputRelative.startsWith('..') || path.isAbsolute(outputRelative)) throw new Error('Output directory must stay inside the workspace');
 const template = fs.readFileSync(path.join(ROOT, 'templates', 'lesson.html'), 'utf8');
 const pages = [];
-const relativeTo = (file, target) => path.posix.relative(path.posix.dirname(file), target) || 'index.html';
+const redirects = [];
+const relativeFile = (file, target) => path.posix.relative(path.posix.dirname(file), target) || 'index.html';
+const relativeTo = (file, target) => target.endsWith('index.html') ? relativeFile(file, target).replace(/index\.html$/, '') || './' : relativeFile(file, target);
 const assetBase = (file) => `${relativeTo(file, 'assets')}/`;
 const routeFor = (file) => `/${file.replace(/index\.html$/, '')}`;
 
 function write(file, content) {
-  const target = path.resolve(ROOT, file);
-  const relative = path.relative(ROOT, target);
+  const target = path.resolve(outputRoot, file);
+  const relative = path.relative(outputRoot, target);
   if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new Error(`Invalid output: ${file}`);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, content, 'utf8');
@@ -20,10 +27,25 @@ function write(file, content) {
 
 function headUrls(url, thumbnail = 3) {
   if (!siteOrigin) return '';
-  return `<link rel="canonical" href="${e(siteOrigin + url)}">\n  <meta property="og:url" content="${e(siteOrigin + url)}">\n  <meta property="og:image" content="${e(`${siteOrigin}/assets/originals/thumbnail-${thumbnail}.png`)}">`;
+  return `<link rel="canonical" href="${e(publicUrl(url))}">\n  <meta property="og:url" content="${e(publicUrl(url))}">\n  <meta property="og:image" content="${e(publicUrl(`/assets/originals/thumbnail-${thumbnail}.png`))}">`;
 }
 
-function lesson({ file, key, label = site.product, schools = [], home = false, code = '', station = null }) {
+function redirect(legacyFile, file, label) {
+  const target = relativeFile(legacyFile, file);
+  const targetUrl = routeFor(file);
+  const title = `${label} 일본어 수업 안내`;
+  write(legacyFile, `<!doctype html>
+<html lang="ko"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${e(title)}</title><meta name="robots" content="noindex,follow">
+${siteOrigin ? `  <link rel="canonical" href="${e(publicUrl(targetUrl))}">\n` : ''}  <script src="${e(assetBase(legacyFile))}js/redirect.js" defer></script>
+  <noscript><meta http-equiv="refresh" content="0;url=${e(target)}"></noscript>
+</head><body><p>페이지 주소가 변경되었습니다. <a data-redirect-target href="${e(target)}">${e(label)} 일본어 수업 안내로 이동</a></p></body></html>
+`);
+  redirects.push({ file: legacyFile, url: routeFor(legacyFile), targetFile: file, targetUrl });
+}
+
+function lesson({ file, key, label = site.product, schools = [], home = false, code = '', station = null, legacyFile = '' }) {
   const thumbnail = home ? site.home.thumbnail : (hash(key) % 4) + 1;
   const variant = home ? 0 : hash(`copy:${key}`) % 6;
   const paragraph = home
@@ -63,7 +85,8 @@ function lesson({ file, key, label = site.product, schools = [], home = false, c
     return e(fields[token]);
   });
   write(file, html);
-  pages.push({ kind: home ? 'home' : station ? 'station' : 'district', file, url: routeFor(file), title, label, key, code, schools, thumbnail, variant: station ? null : variant, ...(station ? { stationId: station.id, representativeLine: station.representativeLine, regionSlug: station.regionSlug, guide: station.guide, screeningDecision: station.screeningDecision } : {}) });
+  pages.push({ kind: home ? 'home' : station ? 'station' : 'district', file, url: routeFor(file), title, label, key, code, schools, thumbnail, variant: station ? null : variant, ...(legacyFile ? { legacyFile } : {}), ...(station ? { stationId: station.id, representativeLine: station.representativeLine, regionSlug: station.regionSlug, guide: station.guide, screeningDecision: station.screeningDecision } : {}) });
+  if (legacyFile) redirect(legacyFile, file, label);
 }
 
 function districtLinks(fromFile, items) {
@@ -117,12 +140,13 @@ ${headUrls(routeFor(file))}
 lesson({ file: 'index.html', key: site.home.key, home: true });
 directory();
 for (const group of groups) directory(group);
-for (const district of districts) lesson({ file: `region/${district.key}/index.html`, key: district.key, label: district.label, schools: district.schools.map((school) => school.name), code: district.pathCode });
+for (const district of districts) lesson({ file: district.file, legacyFile: district.legacyFile, key: district.key, label: district.label, schools: district.schools.map((school) => school.name), code: district.pathCode });
 directory(null, 'station');
 for (const group of stationGroups) directory(group, 'station');
-for (const station of stations) lesson({ file: station.file, key: `station/${station.key}`, label: station.label, station });
+for (const station of stations) lesson({ file: station.file, legacyFile: station.legacyFile, key: `station/${station.key}`, label: station.label, station });
 
-write('data/generated-pages.json', `${JSON.stringify({ origin: siteOrigin, districtCount: districts.length, groupCount: groups.length, stationCount: stations.length, stationGroupCount: stationGroups.length, sources: { regions: source.source, schools: schoolSource.source, supplements: 'data/school-supplements.json', stations: stationSource.source, stationReview: stationSource.reviewSource }, pages }, null, 2)}\n`);
+write('.nojekyll', '');
+write('data/generated-pages.json', `${JSON.stringify({ origin: siteOrigin, basePath: basePath(), districtCount: districts.length, groupCount: groups.length, stationCount: stations.length, stationGroupCount: stationGroups.length, redirectCount: redirects.length, sources: { regions: source.source, schools: schoolSource.source, supplements: 'data/school-supplements.json', stations: stationSource.source, stationReview: stationSource.reviewSource, slugs: 'data/route-slugs.json' }, pages, redirects }, null, 2)}\n`);
 write('data/generated-urls.txt', `${pages.map((page) => page.url).join('\n')}\n`);
 const thumbnails = districts.reduce((totals, district) => { totals[district.thumbnail] = (totals[district.thumbnail] || 0) + 1; return totals; }, {});
-console.log(JSON.stringify({ districts: districts.length, provinceDirectories: groups.length, stations: stations.length, stationDirectories: stationGroups.length + 1, totalPages: pages.length, thumbnails, indexing: siteOrigin ? 'pages enabled' : 'disabled until SITE_ORIGIN is configured' }, null, 2));
+console.log(JSON.stringify({ districts: districts.length, provinceDirectories: groups.length, stations: stations.length, stationDirectories: stationGroups.length + 1, totalPages: pages.length, legacyRedirects: redirects.length, basePath: basePath(), thumbnails, indexing: siteOrigin ? 'pages enabled' : 'disabled until SITE_ORIGIN is configured' }, null, 2));

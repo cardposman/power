@@ -9,8 +9,9 @@ Open `index.html` directly in a browser. No build or dependencies are needed to 
 - Source images: `assets/originals/`
 - Optimized web images: `assets/images/`
 - Pages use `noindex,nofollow` until a production origin is configured.
-- Regional directory: `region/index.html`. Existing district content is retained: 269 district pages and 16 province directories, plus the national directory and main page.
-- Station directory: `station/index.html`. There are 200 station pages and 12 regional station directories, plus the national station directory. The complete local site has 500 HTML pages.
+- Regional directory: `region/index.html`. The 269 district pages now use `reg-{slug}/index.html`; province and national directory paths are unchanged.
+- Station directory: `station/index.html`. The 200 station pages now use `st-{slug}/index.html`; the 12 regional directories and national station directory retain their paths. There are 500 content/list pages plus 469 legacy redirect files, not 969 independent content pages.
+- Examples: `/power/reg-yongsangu/` and `/power/st-seomyun/`. The old nested detail paths redirect to these short routes. See `docs/short-urls.md` for the migration rules.
 
 Recreate optimized images (Python with Pillow):
 
@@ -29,10 +30,11 @@ Station pages do not insert school names. They identify the region and represent
 ```powershell
 node scripts/generate-regions.cjs
 node --test scripts/test-stations.cjs
+node --test scripts/test-routes.cjs
 python scripts/check-generated.py
 ```
 
-`data/stations.json` is the editable, checked-in station snapshot. URLs use the region slug and stable candidate ID, not an official railway station code. The IDs are preserved from the initial 200-candidate list. Reimport only when intentionally restoring that snapshot, as importing will replace manual edits to station guidance topics:
+`data/stations.json` is the editable, checked-in station snapshot. Stable candidate IDs remain internal identifiers, not official railway codes or public URL slugs. `data/route-slugs.json` explicitly assigns all 269 district and 200 station slugs, including namespaced duplicates. Reimport only when intentionally restoring the station snapshot, as importing will replace manual edits to station guidance topics:
 
 ```powershell
 node scripts/import-stations.cjs
@@ -51,13 +53,14 @@ Packaging produces `dist-netlify.zip`, containing the contents of `dist-netlify`
 
 ## Deployment Origin and Indexing
 
-The default build is a review package with `noindex,nofollow` and a disallowing `robots.txt`, because no production domain has been supplied. No example-domain canonical or sitemap is emitted. Set `SITE_ORIGIN` to the real deployment origin, or set `origin` in `data/site.json`, then rebuild to emit canonical URLs, Open Graph URLs, a sitemap including the main page, and indexing metadata.
+The short-URL migration retains the previous indexing setting: with `origin` empty, pages remain `noindex,nofollow`. Set `SITE_ORIGIN` to the real origin (scheme and host only) or set `origin` in `data/site.json` to enable absolute canonical/Open Graph URLs and indexing metadata. `basePath` defaults to `/power` for this GitHub Pages project. Override it with `SITE_BASE_PATH=/` for a root-domain deployment. Packaging emits a sitemap containing only the 500 canonical pages, never legacy redirects.
 
 ```powershell
-$env:SITE_ORIGIN = 'https://your-actual-domain.example'
+$env:SITE_ORIGIN = 'https://cardposman.github.io'
+$env:SITE_BASE_PATH = '/power'
 node scripts/build-netlify-drop.cjs
 ```
 
 ## Verification
 
-`scripts/check-generated.py` checks all 500 generated pages, local links, assets, unique titles, region-school data, station IDs, directory counts, and the absence of search controls and the station entry in the header menu. `scripts/test-stations.cjs` checks the candidate import and regional identities. Browser checks use Playwright supplied by the local Codex runtime; no browser dependency is required to use the site itself. Run `scripts/check-page.cjs` for the main page, `scripts/check-regions.cjs` for regional pages, and `scripts/check-stations.cjs` for all 200 stations and directory navigation with that runtime's `NODE_PATH` and an available `BROWSER_EXECUTABLE`. Directories use static grouped lists without search; the station list remains accessible through footer links and directory tabs, not the header menu.
+`scripts/check-generated.py` checks all 500 content/list pages, 469 redirect targets, local links, assets, unique canonical titles, school data, station IDs and directory counts. It also checks that search and the station header menu remain absent. `scripts/test-stations.cjs` checks candidate provenance; `scripts/test-routes.cjs` checks slug coverage, collisions, and project-prefixed URLs. Browser checks use Playwright supplied by the local Codex runtime. Run `scripts/check-page.cjs`, `scripts/check-regions.cjs`, and `scripts/check-stations.cjs` with that runtime's `NODE_PATH` and `BROWSER_EXECUTABLE`. `scripts/check-routes.cjs` generates an isolated production fixture inside ignored `verification/`, verifies `/power/` routes over a temporary HTTP server, and closes the server afterward. It does not deploy or create a ZIP. Directories remain static lists; station links are available through footers and directory tabs, not the header menu.
