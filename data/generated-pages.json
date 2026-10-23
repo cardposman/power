@@ -10,6 +10,7 @@
   "publicFiles": [
     ".nojekyll",
     "CNAME",
+    "favicon.ico",
     "naver686492ec587065ddaf1ebc2627b5b46f.html",
     "sitemap.xml",
     "robots.txt"

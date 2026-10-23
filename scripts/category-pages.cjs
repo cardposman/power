@@ -11,7 +11,7 @@ function categoryNavigation(file, relativeTo, active = '') {
   return categories.map((category) => `<a href="${e(relativeTo(file, categoryFile(category)))}"${category.slug === active ? ' aria-current="page"' : ''}>${e(category.label)}</a>`).join('');
 }
 
-function renderCategory(category, { relativeTo, assetBase, headUrls, siteOrigin, site }) {
+function renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteOrigin, site }) {
   const file = categoryFile(category);
   const fields = {
     TITLE: category.title, DESCRIPTION: category.description, LABEL: category.label,
@@ -24,6 +24,7 @@ function renderCategory(category, { relativeTo, assetBase, headUrls, siteOrigin,
     CTA: category.cta, NOTE: category.note, CONTACT_TEXT: category.contactText
   };
   const html = {
+    FAVICON_LINKS: faviconLinks(file),
     HEAD_URLS: headUrls(`/${file.replace(/index\.html$/, '')}`),
     CATEGORY_NAV: categoryNavigation(file, relativeTo, category.slug),
     LEAD: lines(category.lead), FIT_TITLE: lines(category.fitTitle),

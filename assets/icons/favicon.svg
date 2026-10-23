@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>Speaking person on an apricot background</title>
+  <rect width="64" height="64" rx="14" fill="#F8C7A6"/>
+  <path d="M25 12c-9 0-15 6.5-15 15.5 0 6 3 11 8 14.5v9h17V40h3a4 4 0 0 0 4-4v-6h4l-6-10c-3-5-8-8-15-8Z" fill="#49352D"/>
+  <path d="M48 24c3 3 3 7 0 10m6-15c6 6 6 15 0 21" fill="none" stroke="#B84922" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

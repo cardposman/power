@@ -48,6 +48,11 @@ function headUrls(url, thumbnail = 3) {
   return `<link rel="canonical" href="${e(publicUrl(url))}">\n  <meta property="og:url" content="${e(publicUrl(url))}">\n  <meta property="og:image" content="${e(publicUrl(`/assets/originals/thumbnail-${thumbnail}.png`))}">`;
 }
 
+function faviconLinks(file) {
+  const base = assetBase(file);
+  return `  <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="${e(relativeTo(file, 'favicon.ico'))}">\n  <link rel="icon" type="image/png" sizes="32x32" href="${e(base)}icons/favicon-32.png">\n  <link rel="icon" type="image/svg+xml" sizes="any" href="${e(base)}icons/favicon.svg">\n  <link rel="apple-touch-icon" sizes="180x180" href="${e(base)}icons/apple-touch-icon.png">`;
+}
+
 function redirect(legacyFile, file, label) {
   const target = relativeFile(legacyFile, file);
   const targetUrl = routeFor(file);
@@ -56,6 +61,7 @@ function redirect(legacyFile, file, label) {
 <html lang="ko"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>${e(title)}</title><meta name="robots" content="noindex,follow">
+${faviconLinks(legacyFile)}
 ${siteOrigin ? `  <link rel="canonical" href="${e(publicUrl(targetUrl))}">\n` : ''}  <script src="${e(assetBase(legacyFile))}js/redirect.js" defer></script>
   <noscript><meta http-equiv="refresh" content="0;url=${e(target)}"></noscript>
 </head><body><p>페이지 주소가 변경되었습니다. <a data-redirect-target href="${e(target)}">${e(label)} 일본어 수업 안내로 이동</a></p></body></html>
@@ -96,6 +102,7 @@ function lesson({ file: sourceFile, key, label = site.product, schools = [], hom
     FIXED_TITLE: `${home ? '' : `${label} `}${site.product}`
   };
   const html = template.replace(/\{\{([A-Z_]+)\}\}/g, (_, token) => {
+    if (token === 'FAVICON_LINKS') return faviconLinks(file);
     if (token === 'CATEGORY_NAV') return categoryNavigation(file, relativeTo);
     if (token === 'HEAD_URLS') return headUrls(routeFor(file), thumbnail);
     if (token === 'HEADING_PREFIX') return home ? '' : `${e(label)}<br>`;
@@ -136,7 +143,8 @@ function directory(group = null, mode = 'district') {
   <meta name="robots" content="${siteOrigin ? 'index,follow' : 'noindex,nofollow'}"><meta name="theme-color" content="#eb5b22">
   <meta property="og:type" content="website"><meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}">
 ${headUrls(routeFor(file))}
-  <link rel="icon" href="data:,"><link rel="stylesheet" href="${e(base)}css/site.css">
+${faviconLinks(file)}
+  <link rel="stylesheet" href="${e(base)}css/site.css">
   <script src="${e(base)}js/site.js" defer></script>
 </head><body><div class="page-shell">
 <a class="skip-link" href="#main">본문 바로가기</a>
@@ -167,7 +175,7 @@ for (const station of stations) lesson({ file: station.file, key: `station/${sta
 
 for (const category of categories) {
   const file = categoryFile(category);
-  write(file, renderCategory(category, { relativeTo, assetBase, headUrls, siteOrigin, site }));
+  write(file, renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteOrigin, site }));
   pages.push({ kind: 'category', slug: category.slug, file, sourceFile: file, deployFile: file, url: routeFor(file), title: category.title, label: category.label });
 }
 
@@ -178,7 +186,7 @@ const verificationFiles = site.verificationFiles || [];
 for (const file of verificationFiles) {
   if (!/^naver[a-f0-9]+\.html$/.test(file)) throw new Error(`Invalid verification filename: ${file}`);
 }
-const suppliedFiles = ['CNAME', ...verificationFiles];
+const suppliedFiles = ['CNAME', 'favicon.ico', ...verificationFiles];
 for (const file of suppliedFiles) {
   const sourceFile = path.join(ROOT, file);
   if (!fs.statSync(sourceFile).isFile()) throw new Error(`Missing public file: ${file}`);

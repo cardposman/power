@@ -8,6 +8,7 @@ Open `index.html` directly in a browser. No build or dependencies are needed to 
 - All consultation links: https://naver.me/52c74Jj4
 - Source images: `assets/originals/`
 - Optimized web images: `assets/images/`
+- Favicon: an apricot-background speaking-person mark in `assets/icons/favicon.svg`, with PNG, Apple touch icon and root `favicon.ico` fallbacks. Rebuild the committed raster assets with `node scripts/build-favicon.cjs` using a local Node runtime with Sharp. Normal page generation and Actions deployment use the committed assets without requiring Sharp.
 - Production origin: `https://tstudymate.com` with no `/power` prefix. Canonical pages use `index,follow`; legacy redirects stay `noindex,follow`.
 - Regional source: `region/{province}/{code}/index.html` for 269 full district pages. Regional directory: `region/index.html`.
 - Station source: `station/{province}/{id}/index.html` for 200 full station pages. Station directory: `station/index.html`.

@@ -92,6 +92,10 @@ def main():
         assert title not in titles, f"Duplicate page title: {title}"
         titles.add(title)
         assert "{{" not in path.read_text(encoding="utf-8"), path
+        icons = [attrs for attrs in page.select("link") if attrs.get("rel") == "icon"]
+        assert {attrs.get("type") for attrs in icons} == {"image/svg+xml", "image/png", "image/x-icon"}, path
+        assert not any(attrs["href"].startswith("data:") for attrs in icons), path
+        assert len([attrs for attrs in page.select("link") if attrs.get("rel") == "apple-touch-icon"]) == 1, path
         assert not [attrs for attrs in page.select("input") if attrs.get("type") == "search"], path
         assert not page.select("input", "data-region-search"), path
         assert not [attrs for attrs in page.select("script") if attrs.get("src", "").endswith("js/regions.js")], path
