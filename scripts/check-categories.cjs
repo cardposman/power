@@ -25,6 +25,13 @@ const { categories } = require('./category-pages.cjs');
       for (const category of categories) {
         const entry = manifest.pages.find((item) => item.kind === 'category' && item.slug === category.slug);
         await page.goto(fileUrl(entry.file));
+        assert.equal(await page.locator('meta[property="og:site_name"]').getAttribute('content'), site.name);
+        assert.equal(await page.locator('.site-header .brand').innerText(), site.name);
+        assert.equal(await page.locator('.site-footer .brand').innerText(), site.name);
+        assert.equal(await page.locator('#website-identity').count(), 0);
+        const wordmark = await page.locator('.site-header .brand').boundingBox();
+        const headerCta = await page.locator('.header-cta').boundingBox();
+        assert(wordmark.x + wordmark.width <= headerCta.x, `Wordmark overlap at ${width}`);
         await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
         assert.equal(await page.title(), category.title);
         assert.equal(await page.locator('h1').innerText(), `${category.label}.`);

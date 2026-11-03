@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const path = require('node:path');
 const fs = require('node:fs');
 const { pathToFileURL } = require('node:url');
+const { site, publicUrl } = require('./site-data.cjs');
 
 (async () => {
   const root = path.resolve(__dirname, '..');
@@ -19,6 +20,15 @@ const { pathToFileURL } = require('node:url');
       const errors = [];
       page.on('pageerror', (error) => errors.push(error.message));
       await page.goto(pathToFileURL(path.join(root, 'index.html')).href);
+      assert.equal(await page.locator('meta[property="og:site_name"]').getAttribute('content'), site.name);
+      assert.equal(await page.locator('.site-header .brand').innerText(), site.name);
+      assert.equal(await page.locator('.site-footer .brand').innerText(), site.name);
+      const identity = JSON.parse(await page.locator('#website-identity').textContent());
+      assert.equal(identity.name, site.name);
+      assert.equal(identity.url, publicUrl('/'));
+      const brand = await page.locator('.site-header .brand').boundingBox();
+      const cta = await page.locator('.header-cta').boundingBox();
+      assert(brand.x + brand.width <= cta.x, `Site wordmark overlaps consultation button at ${width}`);
       await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
       assert.equal(await page.locator('.intro-strip').count(), 0);
       assert.equal(await page.locator('main > :first-child').getAttribute('id'), 'intro-media');

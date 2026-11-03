@@ -11,7 +11,7 @@
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="{{TITLE}}">
   <meta property="og:description" content="{{DESCRIPTION}}">
-  <meta property="og:site_name" content="맨투맨 일본어과외">
+  <meta property="og:site_name" content="{{SITE_NAME}}">
 {{HEAD_URLS}}
 {{FAVICON_LINKS}}
   <link rel="stylesheet" href="{{ASSET_BASE}}css/site.css">
@@ -21,8 +21,8 @@
 <div class="page-shell category-page">
   <a class="skip-link" href="#main">본문 바로가기</a>
   <header class="site-header"><div class="container header-inner">
-    <a class="brand" href="{{HOME_LINK}}" aria-label="맨투맨 일본어과외 홈"><span class="brand-symbol">맨투맨</span></a>
-    <nav class="navigation" aria-label="주요 메뉴" id="main-nav"><a href="{{HOME_LINK}}">맨투맨 일본어과외</a>{{CATEGORY_NAV}}</nav>
+    {{SITE_BRAND}}
+    <nav class="navigation" aria-label="주요 메뉴" id="main-nav"><a href="{{HOME_LINK}}">{{SITE_NAME}}</a>{{CATEGORY_NAV}}</nav>
     <a class="button header-cta" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span></button>
   </div></header>
@@ -68,7 +68,7 @@
     </div></section>
     <section class="section category-related" aria-labelledby="related-title"><div class="container"><p class="section-label">다른 학습 목적</p><h2 id="related-title">다음 목표도 살펴보세요.</h2><ul>{{RELATED}}</ul></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="{{HOME_LINK}}"><span class="brand-symbol">맨투맨</span></a><a href="#main">맨 위로 <span aria-hidden="true">↑</span></a></div><div class="container footer-regions"><a href="{{REGIONS_LINK}}">지역별 상담 목록 <span aria-hidden="true">→</span></a><a href="{{STATIONS_LINK}}">역별 상담 목록 <span aria-hidden="true">→</span></a></div></footer>
+  <footer class="site-footer"><div class="container footer-inner">{{SITE_BRAND}}<a href="#main">맨 위로 <span aria-hidden="true">↑</span></a></div><div class="container footer-regions"><a href="{{REGIONS_LINK}}">지역별 상담 목록 <span aria-hidden="true">→</span></a><a href="{{STATIONS_LINK}}">역별 상담 목록 <span aria-hidden="true">→</span></a></div></footer>
   <aside class="fixed-contact" aria-label="빠른 상담접수"><div class="container fixed-inner"><div><strong>{{LABEL}} · 맨투맨 일본어</strong></div><a class="button" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a></div></aside>
 </div>
 </body>

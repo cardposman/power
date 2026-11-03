@@ -48,6 +48,18 @@ function headUrls(url, thumbnail = 3) {
   return `<link rel="canonical" href="${e(publicUrl(url))}">\n  <meta property="og:url" content="${e(publicUrl(url))}">\n  <meta property="og:image" content="${e(publicUrl(`/assets/originals/thumbnail-${thumbnail}.png`))}">`;
 }
 
+function siteBrand(file) {
+  return `<a class="brand site-brand" href="${e(relativeTo(file, 'index.html'))}" aria-label="${e(site.name)} 홈"><span class="brand-symbol">${e(site.name)}</span></a>`;
+}
+
+function websiteIdentity() {
+  if (!siteOrigin) return '';
+  const url = publicUrl('/');
+  const data = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${url}#website`, name: site.name, url, inLanguage: 'ko-KR' };
+  const json = JSON.stringify(data).replace(/</g, '\\u003c');
+  return `  <script id="website-identity" type="application/ld+json">${json}</script>`;
+}
+
 function faviconLinks(file) {
   const base = assetBase(file);
   return `  <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="${e(relativeTo(file, 'favicon.ico'))}">\n  <link rel="icon" type="image/png" sizes="32x32" href="${e(base)}icons/favicon-32.png">\n  <link rel="icon" type="image/svg+xml" sizes="any" href="${e(base)}icons/favicon.svg">\n  <link rel="apple-touch-icon" sizes="180x180" href="${e(base)}icons/apple-touch-icon.png">`;
@@ -85,11 +97,7 @@ function lesson({ file: sourceFile, key, label = site.product, schools = [], hom
     STATIONS_LINK: relativeTo(file, 'station/index.html'),
     COURSE_ASIDE: station ? '처음 배우는 기초, 여행과 일상의 대화, JLPT와 업무 표현까지. 지금 필요한 내용을 중심으로 과정을 살펴보세요.' : '학교생활과 함께 준비할 JLPT, 여행에서 써보고 싶은 한마디, 일에 필요한 경어까지. 필요한 장면을 떠올리며 과정을 살펴보세요.',
     COUNSEL_URL: site.counselUrl, LOCAL_PARAGRAPH: paragraph,
-    SITE_NAME: home ? site.product : site.brand,
-    HOME_LABEL: `${home ? site.product : site.brand} 홈`,
-    BRAND_SYMBOL: home ? '맨투맨' : 'TS',
-    BRAND_WORD: home ? '' : '재팬',
-    BRAND_DOT: home ? '' : '.',
+    SITE_NAME: site.name,
     HERO_EYEBROW: home ? '1:1 화상수업' : `${site.brand} · 1:1 화상수업`,
     CONTACT_LABEL: home ? '일본어 상담' : `${site.brand} · 일본어 상담`,
     FIXED_SUBTITLE: `${home ? '' : `${site.brand} · `}나에게 맞는 1:1 일본어`,
@@ -102,6 +110,8 @@ function lesson({ file: sourceFile, key, label = site.product, schools = [], hom
     FIXED_TITLE: `${home ? '' : `${label} `}${site.product}`
   };
   const html = template.replace(/\{\{([A-Z_]+)\}\}/g, (_, token) => {
+    if (token === 'SITE_BRAND') return siteBrand(file);
+    if (token === 'WEBSITE_IDENTITY') return home ? websiteIdentity() : '';
     if (token === 'FAVICON_LINKS') return faviconLinks(file);
     if (token === 'CATEGORY_NAV') return categoryNavigation(file, relativeTo);
     if (token === 'HEAD_URLS') return headUrls(routeFor(file), thumbnail);
@@ -142,6 +152,7 @@ function directory(group = null, mode = 'district') {
   <title>${e(title)}</title><meta name="description" content="${e(description)}">
   <meta name="robots" content="${siteOrigin ? 'index,follow' : 'noindex,nofollow'}"><meta name="theme-color" content="#eb5b22">
   <meta property="og:type" content="website"><meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}">
+  <meta property="og:site_name" content="${e(site.name)}">
 ${headUrls(routeFor(file))}
 ${faviconLinks(file)}
   <link rel="stylesheet" href="${e(base)}css/site.css">
@@ -149,17 +160,17 @@ ${faviconLinks(file)}
 </head><body><div class="page-shell">
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="site-header"><div class="container header-inner">
-  <a class="brand" href="${e(relativeTo(file, 'index.html'))}" aria-label="TS재팬 홈"><span class="brand-symbol">TS</span><span>재팬<span class="brand-dot">.</span></span></a>
-  <nav class="navigation" id="main-nav" aria-label="주요 메뉴"><a href="${e(relativeTo(file, 'index.html'))}">맨투맨 일본어과외</a>${categoryNavigation(file, relativeTo)}</nav>
+  ${siteBrand(file)}
+  <nav class="navigation" id="main-nav" aria-label="주요 메뉴"><a href="${e(relativeTo(file, 'index.html'))}">${e(site.name)}</a>${categoryNavigation(file, relativeTo)}</nav>
   <a class="button header-cta" href="${e(site.counselUrl)}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a>
   <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span></button>
 </div></header>
 <main id="main">
-  <section class="directory-heading container"><p class="section-label">TS재팬 · 맨투맨 일본어과외</p><h1>${e(label)}</h1>${stationMode ? '<p class="service-notice">1:1 화상수업 상담 안내입니다. 역 주변 오프라인 지점 안내가 아닙니다.</p>' : ''}<nav class="directory-switch" aria-label="상담 목록 구분"><a href="${e(relativeTo(file, 'region/index.html'))}"${stationMode ? '' : ' aria-current="page"'}>시·군·구</a><a href="${e(relativeTo(file, 'station/index.html'))}"${stationMode ? ' aria-current="page"' : ''}>역별</a></nav>${group ? `<a class="inline-cta" href="${e(relativeTo(file, `${folder}/index.html`))}"><span aria-hidden="true">←</span> 전체 ${unit}</a>` : ''}</section>
+  <section class="directory-heading container"><p class="section-label">${e(site.name)} · 맨투맨 일본어과외</p><h1>${e(label)}</h1>${stationMode ? '<p class="service-notice">1:1 화상수업 상담 안내입니다. 역 주변 오프라인 지점 안내가 아닙니다.</p>' : ''}<nav class="directory-switch" aria-label="상담 목록 구분"><a href="${e(relativeTo(file, 'region/index.html'))}"${stationMode ? '' : ' aria-current="page"'}>시·군·구</a><a href="${e(relativeTo(file, 'station/index.html'))}"${stationMode ? ' aria-current="page"' : ''}>역별</a></nav>${group ? `<a class="inline-cta" href="${e(relativeTo(file, `${folder}/index.html`))}"><span aria-hidden="true">←</span> 전체 ${unit}</a>` : ''}</section>
   <p class="directory-count container">${items.length}개 ${unit}</p>
   <section class="directory-list container" aria-label="상담 ${unit} 목록">${list}</section>
 </main>
-<footer class="site-footer"><div class="container footer-inner"><a class="brand" href="${e(relativeTo(file, 'index.html'))}"><span class="brand-symbol">TS</span><span>재팬<span class="brand-dot">.</span></span></a><a href="#main">맨 위로 <span aria-hidden="true">↑</span></a></div></footer>
+<footer class="site-footer"><div class="container footer-inner">${siteBrand(file)}<a href="#main">맨 위로 <span aria-hidden="true">↑</span></a></div></footer>
 <aside class="fixed-contact" aria-label="빠른 상담접수"><div class="container fixed-inner"><div><strong>맨투맨 일본어과외</strong></div><a class="button" href="${e(site.counselUrl)}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a></div></aside>
 </div></body></html>\n`);
   pages.push({ kind: stationMode ? group ? 'station-province' : 'station-directory' : group ? 'province' : 'directory', file, sourceFile: file, deployFile: file, url: routeFor(file), title, label, [stationMode ? 'stationCount' : 'districtCount']: items.length });
@@ -175,7 +186,7 @@ for (const station of stations) lesson({ file: station.file, key: `station/${sta
 
 for (const category of categories) {
   const file = categoryFile(category);
-  write(file, renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteOrigin, site }));
+  write(file, renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteBrand, siteOrigin, site }));
   pages.push({ kind: 'category', slug: category.slug, file, sourceFile: file, deployFile: file, url: routeFor(file), title: category.title, label: category.label });
 }
 

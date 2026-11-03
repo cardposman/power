@@ -11,10 +11,11 @@ function categoryNavigation(file, relativeTo, active = '') {
   return categories.map((category) => `<a href="${e(relativeTo(file, categoryFile(category)))}"${category.slug === active ? ' aria-current="page"' : ''}>${e(category.label)}</a>`).join('');
 }
 
-function renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteOrigin, site }) {
+function renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteBrand, siteOrigin, site }) {
   const file = categoryFile(category);
   const fields = {
     TITLE: category.title, DESCRIPTION: category.description, LABEL: category.label,
+    SITE_NAME: site.name,
     ROBOTS: siteOrigin ? 'index,follow' : 'noindex,nofollow', SLUG: category.slug,
     ASSET_BASE: assetBase(file), HOME_LINK: relativeTo(file, 'index.html'),
     REGIONS_LINK: relativeTo(file, 'region/index.html'), STATIONS_LINK: relativeTo(file, 'station/index.html'),
@@ -24,6 +25,7 @@ function renderCategory(category, { relativeTo, assetBase, headUrls, faviconLink
     CTA: category.cta, NOTE: category.note, CONTACT_TEXT: category.contactText
   };
   const html = {
+    SITE_BRAND: siteBrand(file),
     FAVICON_LINKS: faviconLinks(file),
     HEAD_URLS: headUrls(`/${file.replace(/index\.html$/, '')}`),
     CATEGORY_NAV: categoryNavigation(file, relativeTo, category.slug),

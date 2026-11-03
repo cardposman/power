@@ -62,6 +62,7 @@ def main():
     mode = manifest["mode"]
     assert mode in {"source", "deployment"}, mode
     deployment = mode == "deployment"
+    site = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
     categories = json.loads((ROOT / "data" / "categories.json").read_text(encoding="utf-8"))
     categories_by_slug = {item["slug"]: item for item in categories}
     expected_pages = 500 + len(categories)
@@ -91,6 +92,21 @@ def main():
         assert title == entry["title"], path
         assert title not in titles, f"Duplicate page title: {title}"
         titles.add(title)
+        site_names = [attrs["content"] for attrs in page.select("meta") if attrs.get("property") == "og:site_name"]
+        assert site_names == [site["name"]], path
+        logos = [attrs for attrs in page.select("a") if "site-brand" in attrs.get("class", "").split()]
+        assert len(logos) == 2 and all(attrs.get("aria-label") == site["name"] + " 홈" for attrs in logos), path
+        structured = [attrs for attrs in page.select("script") if attrs.get("type") == "application/ld+json"]
+        if entry["kind"] == "home" and manifest["origin"]:
+            assert len(structured) == 1, path
+            identity = json.loads("".join(page.text["website-identity"]))
+            assert identity["@context"] == "https://schema.org", path
+            assert identity["@type"] == "WebSite", path
+            assert identity["name"] == site["name"], path
+            home_url = manifest["origin"] + manifest["basePath"] + "/"
+            assert identity["url"] == home_url and identity["@id"] == home_url + "#website", path
+        else:
+            assert not structured, path
         assert "{{" not in path.read_text(encoding="utf-8"), path
         icons = [attrs for attrs in page.select("link") if attrs.get("rel") == "icon"]
         assert {attrs.get("type") for attrs in icons} == {"image/svg+xml", "image/png", "image/x-icon"}, path

@@ -41,6 +41,8 @@ button, a, summary { touch-action: manipulation; }
 .brand { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font-size: 22px; line-height: 1; font-weight: 850; }
 .brand-symbol { color: var(--orange); font-size: 28px; font-weight: 900; }
 .brand-dot { color: var(--orange); }
+.site-brand { flex-shrink: 0; }
+.site-brand .brand-symbol { font-size: 20px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 52px; padding: 13px 18px; border: 1px solid transparent; border-radius: 4px; background: var(--orange); color: white; font-size: 14px; font-weight: 750; line-height: 1.6; text-align: center; transition: background .18s; }
 .button:hover { background: var(--orange-deep); }
 .button span[aria-hidden] { flex: 0 0 auto; font-size: 21px; line-height: 1; }

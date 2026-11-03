@@ -1,8 +1,9 @@
-# TS Japan: Regional Japanese Lesson Pages
+# TS Mantoman Conversation: Regional Japanese Lesson Pages
 
 Open `index.html` directly in a browser. No build or dependencies are needed to use the page.
 
 - Product: TS Japan 1:1 Japanese lessons
+- Site display name: `TS맨투맨회화`, configured independently as `data/site.json.name`. All page Open Graph site names and header/footer wordmarks use it. The domain homepage emits `WebSite` JSON-LD with this name and the canonical homepage URL. Product names, the existing TS Japan provider label, per-page titles and routes remain unchanged. This signals a preferred search site name, not a guarantee of search-result wording or timing.
 - Main page: a region-neutral TS Japan introduction at `index.html`.
 - Mobile-first single-column layout on all devices, capped at 480px. The opening order below the header is a region-assigned thumbnail, the product introduction, then the full product detail image.
 - All consultation links: https://naver.me/52c74Jj4
