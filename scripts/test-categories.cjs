@@ -27,7 +27,7 @@ test('four complete, distinct category pages match the requested topics', () => 
 
 test('category pages are rendered in both the manifest and sitemap without altering regional routes', () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/generated-pages.json'), 'utf8'));
-  assert.equal(manifest.pages.length, 504);
+  assert.equal(manifest.pages.length, 1004);
   assert.equal(manifest.pages.filter((page) => page.kind === 'district').length, 269);
   assert.equal(manifest.pages.filter((page) => page.kind === 'station').length, 200);
   const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');

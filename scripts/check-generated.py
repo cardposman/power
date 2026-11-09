@@ -65,7 +65,7 @@ def main():
     site = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
     categories = json.loads((ROOT / "data" / "categories.json").read_text(encoding="utf-8"))
     categories_by_slug = {item["slug"]: item for item in categories}
-    expected_pages = 500 + len(categories)
+    expected_pages = 1000 + len(categories)
     official_sources = {item["source"]["url"] for item in categories if "source" in item}
     cache = {}
 
@@ -118,7 +118,7 @@ def main():
         assert "역별 상담" not in [text.strip() for text in page.text["main-nav"]], path
         menu_text = [text.strip() for text in page.text["main-nav"]]
         assert "지역별 상담" not in menu_text and "전체 지역" not in menu_text, path
-        for category in categories:
+        for category in ([] if entry["kind"].startswith("english-") else categories):
             assert menu_text.count(category["label"]) == 1, (path, category["label"])
         expected_robots = "noindex,nofollow" if not manifest["origin"] else "index,follow"
         robots = next(attrs["content"] for attrs in page.select("meta") if attrs.get("name") == "robots")
@@ -187,7 +187,8 @@ def main():
                 parts = urlsplit(value)
                 if parts.scheme or parts.netloc:
                     if tag == "a" and parts.scheme in {"http", "https"}:
-                        assert value == "https://naver.me/52c74Jj4" or (entry["kind"] == "category" and value in official_sources), (path, value)
+                        counsel = "https://naver.me/FCZLglsi" if entry["kind"].startswith("english-") else "https://naver.me/52c74Jj4"
+                        assert value == counsel or (entry["kind"] == "category" and value in official_sources), (path, value)
                         assert attrs.get("target") == "_blank" and "noopener" in attrs.get("rel", ""), path
                     continue
                 target = (path.parent / unquote(parts.path)).resolve() if parts.path else path

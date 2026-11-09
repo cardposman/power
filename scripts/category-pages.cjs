@@ -8,7 +8,7 @@ const categoryFile = (category) => `course/${category.slug}/index.html`;
 const lines = (text) => e(text).replace(/\n/g, '<br>');
 
 function categoryNavigation(file, relativeTo, active = '') {
-  return categories.map((category) => `<a href="${e(relativeTo(file, categoryFile(category)))}"${category.slug === active ? ' aria-current="page"' : ''}>${e(category.label)}</a>`).join('');
+  return categories.map((category) => `<a href="${e(relativeTo(file, categoryFile(category)))}"${category.slug === active ? ' aria-current="page"' : ''}>${e(category.label)}</a>`).join('') + `<a href="${e(relativeTo(file, 'english/index.html'))}">영어수업</a>`;
 }
 
 function renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteBrand, siteOrigin, site }) {

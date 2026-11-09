@@ -12,7 +12,8 @@
     });
   }
 
-  const courses = {
+  const embeddedCourses = document.getElementById('course-data');
+  const courses = embeddedCourses ? JSON.parse(embeddedCourses.textContent) : {
     basic: {
       category: '처음 시작하는 일본어',
       title: ['히라가나부터,', '탄탄한 첫걸음.'],

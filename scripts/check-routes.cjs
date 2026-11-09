@@ -66,6 +66,21 @@ const { stations } = require('./station-data.cjs');
     page.setDefaultTimeout(15000);
     page.on('pageerror', (error) => errors.push(error.message));
     page.on('response', (response) => { if (response.status() >= 400) failedRequests.push(response.url()); });
+    for (const route of ['/english/', '/en-reg-yongsangu/', '/en-st-seomyun/']) {
+      await page.goto(base + route.slice(0,-1));
+      assert.equal(page.url(),base + route);
+      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),env.SITE_ORIGIN + prefix + route);
+      assert.equal(await page.locator('.header-cta').getAttribute('href'),'https://naver.me/FCZLglsi');
+      assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+    }
+    await page.goto(base+'/english/region/');
+    await page.getByRole('link',{name:'서울 용산구',exact:true}).click();
+    assert.equal(page.url(),base+'/en-reg-yongsangu/');
+    await page.locator('.site-footer').getByRole('link',{name:'영어 역 안내',exact:true}).click();
+    const englishBusan = page.locator('details').filter({has:page.locator('summary').filter({hasText:/^부산/})});
+    await englishBusan.locator('summary').click();
+    await englishBusan.getByRole('link',{name:/부산 서면역/}).click();
+    assert.equal(page.url(),base+'/en-st-seomyun/');
     for (const width of [320, 1440]) {
       await page.setViewportSize({ width, height: width === 320 ? 844 : 1000 });
       for (const entry of cases) {

@@ -29,11 +29,15 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Test routing and source data
-        run: node --test scripts/test-stations.cjs scripts/test-routes.cjs scripts/test-layout.cjs scripts/test-categories.cjs scripts/test-favicon.cjs
+        run: node --test scripts/test-stations.cjs scripts/test-routes.cjs scripts/test-layout.cjs scripts/test-categories.cjs scripts/test-favicon.cjs scripts/test-english-local-content.cjs scripts/test-english-pages.cjs
       - name: Verify grouped source pages
         run: python3 scripts/check-generated.py
       - name: Build short-URL deployment
         run: node scripts/build-pages.cjs
+      - name: Verify English references and consultation links
+        run: |
+          python3 scripts/check-english-pages.py
+          python3 scripts/check-english-pages.py --directory _site
       - name: Verify deployment pages
         run: python3 scripts/check-generated.py --directory _site
       - name: Upload generated output only

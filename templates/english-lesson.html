@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="robots" content="{{ROBOTS}}">
+  {{HEAD_URLS}}
+  <meta name="theme-color" content="#eb5b22">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:site_name" content="{{SITE_NAME}}">
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="{{FAVICON}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ASSET_BASE}}icons/favicon-32.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="{{ASSET_BASE}}icons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ASSET_BASE}}icons/apple-touch-icon.png">
+  <link rel="preload" as="image" href="{{ASSET_BASE}}images/thumbnail-{{THUMBNAIL}}.webp">
+  <link rel="stylesheet" href="{{ASSET_BASE}}css/site.css">
+  <link rel="stylesheet" href="{{ASSET_BASE}}css/english.css">
+  <script id="course-data" type="application/json">{{COURSE_DATA}}</script>
+  <script src="{{ASSET_BASE}}js/site.js" defer></script>
+</head>
+<body data-subject="english" data-region-key="english/{{REGION_KEY}}">
+<div class="page-shell english-page">
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand site-brand" href="{{HOME_LINK}}" aria-label="{{SITE_NAME}} 홈"><span class="brand-symbol">{{SITE_NAME}}</span></a>
+    <nav class="navigation" aria-label="주요 메뉴" id="main-nav"><a href="#courses">학습 과정</a><a href="#curriculum">수업 안내</a><a href="#lesson-format">전화·화상수업</a><a href="#faq">자주 묻는 질문</a></nav>
+    <a class="button header-cta" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span></button>
+  </div></header>
+  <main id="main">
+    <section class="thumbnail-section" id="intro-media" aria-label="맞춤 외국어 학습 홍보 이미지"><figure class="learning-image"><img data-regional-thumbnail src="{{ASSET_BASE}}images/thumbnail-{{THUMBNAIL}}.webp" alt="{{THUMB_ALT}}" width="1024" height="1024" loading="eager" fetchpriority="high" decoding="async"></figure></section>
+    <section class="hero" aria-labelledby="hero-title"><div class="container hero-inner">
+      <p class="eyebrow">{{SITE_NAME}} · 1:1 전화·화상 영어수업</p>
+      <h1 id="hero-title">{{HEADING_PREFIX}}{{PRODUCT}}<span class="orange-dot">.</span></h1>
+      {{STATION_CONTEXT}}
+      <p class="hero-lead">{{HERO_LEAD}}</p><p class="hero-description">{{HERO_DESCRIPTION}}</p>
+      <p class="service-notice">전화·화상으로 진행되는 1:1 수업 상담입니다. 해당 지역의 오프라인 교실 안내가 아닙니다.</p>
+      <div class="hero-actions"><a class="button" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">나에게 맞는 영어수업 상담접수 <span aria-hidden="true">↗</span></a><a class="text-link" href="#local-guide">학습 상담 안내 <span aria-hidden="true">↓</span></a></div>
+    </div></section>
+    <section class="product-section" id="curriculum" aria-label="영어수업 상품 상세 안내">
+      <div class="english-poster">{{POSTER_IMAGES}}</div>
+      <div class="container poster-action"><a class="button" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">수업 상담·무료 레벨테스트 신청 <span aria-hidden="true">↗</span></a><a class="english-original" href="{{ORIGINAL_IMAGE}}" target="_blank" rel="noopener noreferrer">상품 안내 이미지 원본 보기 <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="section courses-section" id="courses" aria-labelledby="courses-title"><div class="container">
+      <div class="section-heading"><p class="section-label">목표에 맞는 학습 과정</p><h2 id="courses-title">준비하는 시험도,<br>영어를 쓰는 장면도 다르니까.</h2><p class="heading-aside">듣기 이해가 필요한지, 시간 안에 답해야 하는지, 근거를 갖춰 말해야 하는지부터 살펴보세요. 목표와 현재 수준에 맞는 과정을 상담합니다.</p></div>
+      <div class="course-tabs" role="tablist" aria-label="영어 학습 목적">{{COURSE_TABS}}</div>
+      <div class="course-panel" id="course-panel" role="tabpanel" aria-labelledby="tab-listening" tabindex="0" data-tone="listening">
+        <div class="course-copy"><p class="course-category" id="course-category">{{FIRST_CATEGORY}}</p><h3 id="course-title">{{FIRST_TITLE}}</h3><p id="course-description">{{FIRST_DESCRIPTION}}</p><a class="inline-cta" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer"><span id="course-cta">{{FIRST_CTA}}</span> <span aria-hidden="true">↗</span></a></div>
+        <div class="course-detail"><p class="course-book" id="course-book">{{FIRST_BOOK}}</p><ul id="course-points">{{FIRST_POINTS}}</ul><p class="course-fit" id="course-fit">{{FIRST_FIT}}</p></div>
+      </div>
+      <noscript><div class="english-noscript">{{COURSE_FALLBACK}}</div></noscript>
+    </div></section>
+    <section class="section approach-section" id="lesson-format" aria-labelledby="format-title"><div class="container">
+      <p class="section-label">내가 집중할 수 있는 수업 방식</p><h2 id="format-title">소리에 집중할지,<br>표정까지 함께 볼지.</h2>
+      <dl class="approach-list"><div><dt><span>01</span> 전화영어</dt><dd>시각 단서 없이 듣고 이해하며 답하는 연습에 집중합니다. 학습 목표와 전화로 대화할 수 있는 환경을 바탕으로 수업 방식을 상담합니다.</dd></div><div><dt><span>02</span> 화상영어</dt><dd>표정과 입모양, 시선 등 시각 정보를 함께 활용합니다. 면접처럼 상대를 마주하는 대화가 필요하다면 원하는 연습 장면을 알려주세요.</dd></div><div><dt><span>03</span> 수준에 맞는 강사 상담</dt><dd>한국어로 설명하는 Bilingual 전문강사와 원어민 강사 안내를 확인하고, 현재 수준과 목표에 맞는 선택지를 상담합니다.</dd></div></dl>
+    </div></section>
+    <section class="section english-support" aria-labelledby="support-title"><div class="container"><p class="section-label">한 번 배운 표현을 다음 대화로</p><h2 id="support-title">수업이 끝난 뒤에도,<br>복습은 이어지도록.</h2><dl class="approach-list">{{FEATURES}}</dl></div></section>
+    <section class="section local-section" id="local-guide" aria-labelledby="local-title" data-copy-variant="{{LOCAL_VARIANT}}"{{LOCAL_COPY_ATTRIBUTE}}><div class="container">
+      <p class="section-label">학습 상담 안내</p><h2 id="local-title">{{LOCAL_HEADING}}</h2><p class="local-description">{{LOCAL_PARAGRAPH}}</p>
+      <ul class="english-consult-list">{{LOCAL_PROMPTS}}</ul>
+      {{LOCAL_CONTEXT}}
+      <div class="local-consult"><a class="inline-cta" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">맞춤 영어수업 상담접수 <span aria-hidden="true">↗</span></a></div>
+    </div></section>
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title"><div class="container faq-grid"><div><p class="section-label">시작 전 궁금한 점</p><h2 id="faq-title">영어 학습의 출발점,<br>함께 확인해요.</h2></div><div class="faq-list">{{FAQ}}</div></div></section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-inner"><p class="section-label">{{SITE_NAME}} · 영어수업 상담</p><h2 id="contact-title">알고 있는 영어에서,<br>말할 수 있는 영어로.</h2><p>목표 시험과 지금의 수준을 알려주세요.<br>1:1 수업과 무료 레벨테스트를 상담해보세요.</p><a class="button button-dark" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">{{PRODUCT}} 상담접수 <span aria-hidden="true">↗</span></a><p class="english-contact-note">수강료·수업 일정·강사 배정 및 혜택의 세부 조건은 상담에서 확인해주세요.</p></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand site-brand" href="{{HOME_LINK}}" aria-label="{{SITE_NAME}} 홈"><span class="brand-symbol">{{SITE_NAME}}</span></a><p>{{PRODUCT}}</p>{{FOOTER_LINKS}}<a href="#main">맨 위로 <span aria-hidden="true">↑</span></a></div></footer>
+  <aside class="fixed-contact" aria-label="빠른 상담접수"><div class="container fixed-inner"><div><strong>{{REGION_LABEL}} {{PRODUCT}}</strong></div><a class="button" href="{{COUNSEL_URL}}" target="_blank" rel="noopener noreferrer">상담접수 <span aria-hidden="true">↗</span></a></div></aside>
+</div>
+</body>
+</html>

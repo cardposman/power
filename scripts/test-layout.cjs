@@ -6,10 +6,10 @@ const { createHash } = require('node:crypto');
 const { spawnSync } = require('node:child_process');
 const { ROOT } = require('./site-data.cjs');
 const { categories } = require('./category-pages.cjs');
-const expectedPages = 500 + categories.length;
+const expectedPages = 1000 + categories.length;
 
 const readManifest = (directory) => JSON.parse(fs.readFileSync(path.join(directory, 'data/generated-pages.json'), 'utf8'));
-const flatSourceFolders = () => fs.readdirSync(ROOT).filter((name) => /^(?:reg|st)-/.test(name));
+const flatSourceFolders = () => fs.readdirSync(ROOT).filter((name) => /^(?:en-)?(?:reg|st)-/.test(name));
 const run = (script, args = []) => spawnSync(process.execPath, [path.join(__dirname, script), ...args], { cwd: ROOT, encoding: 'utf8' });
 const fingerprint = (files) => Object.fromEntries(files.map((file) => [file, createHash('sha256').update(fs.readFileSync(path.join(ROOT, file))).digest('hex')]));
 

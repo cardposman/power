@@ -1,0 +1,43 @@
+{
+  "source": "assets/originals/english/product-detail.png",
+  "width": 1049,
+  "height": 23690,
+  "segments": [
+    {
+      "filename": "product-detail-1.webp",
+      "top": 0,
+      "width": 1049,
+      "height": 4096
+    },
+    {
+      "filename": "product-detail-2.webp",
+      "top": 4096,
+      "width": 1049,
+      "height": 4096
+    },
+    {
+      "filename": "product-detail-3.webp",
+      "top": 8192,
+      "width": 1049,
+      "height": 4096
+    },
+    {
+      "filename": "product-detail-4.webp",
+      "top": 12288,
+      "width": 1049,
+      "height": 4096
+    },
+    {
+      "filename": "product-detail-5.webp",
+      "top": 16384,
+      "width": 1049,
+      "height": 4096
+    },
+    {
+      "filename": "product-detail-6.webp",
+      "top": 20480,
+      "width": 1049,
+      "height": 3210
+    }
+  ]
+}

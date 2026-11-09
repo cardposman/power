@@ -3,6 +3,8 @@ const path = require('node:path');
 const { ROOT, site, source, schoolSource, districts, groups, escapeHtml: e, hash, origin, basePath, publicUrl, thumbnailAlts, localParagraph } = require('./site-data.cjs');
 const { stationSource, stations, stationGroups } = require('./station-data.cjs');
 const { categories, categoryFile, categoryNavigation, renderCategory } = require('./category-pages.cjs');
+const { englishDistricts, englishStations } = require('./english-data.cjs');
+const { generateEnglish } = require('./english-pages.cjs');
 
 const siteOrigin = origin();
 const args = process.argv.slice(2);
@@ -22,7 +24,7 @@ if (deployMode && outputRelative !== '_site' && !(outputParts[0] === 'verificati
 const template = fs.readFileSync(path.join(ROOT, 'templates', 'lesson.html'), 'utf8');
 const pages = [];
 const redirects = [];
-const details = [...districts, ...stations];
+const details = [...districts, ...stations, ...englishDistricts, ...englishStations];
 const deploymentFiles = new Map(details.map((entry) => [entry.file, entry.deployFile]));
 const publicRoutes = new Map(details.flatMap((entry) => [[entry.file, entry.url], [entry.deployFile, entry.url]]));
 const deployFileFor = (file) => deploymentFiles.get(file) || file;
@@ -34,7 +36,7 @@ const storageRoute = (file) => `/${file.replace(/index\.html$/, '')}`;
 const routeFor = (file) => publicRoutes.get(file) || storageRoute(file);
 
 function write(file, content) {
-  if (!deployMode && /^(?:reg|st)-[^/]+\//.test(file)) throw new Error('Short-route files may only be written to deployment output');
+  if (!deployMode && /^(?:en-)?(?:reg|st)-[^/]+\//.test(file)) throw new Error('Short-route files may only be written to deployment output');
   const target = path.resolve(outputRoot, file);
   const relative = path.relative(outputRoot, target);
   if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new Error(`Invalid output: ${file}`);
@@ -49,7 +51,7 @@ function headUrls(url, thumbnail = 3) {
 }
 
 function siteBrand(file) {
-  return `<a class="brand site-brand" href="${e(relativeTo(file, 'index.html'))}" aria-label="${e(site.name)} 홈"><span class="brand-symbol">${e(site.name)}</span></a>`;
+  return `<a class="brand site-brand" href="${e(relativeTo(file, file.startsWith('english/') ? 'english/index.html' : 'index.html'))}" aria-label="${e(site.name)} 홈"><span class="brand-symbol">${e(site.name)}</span></a>`;
 }
 
 function websiteIdentity() {
@@ -190,6 +192,8 @@ for (const category of categories) {
   pages.push({ kind: 'category', slug: category.slug, file, sourceFile: file, deployFile: file, url: routeFor(file), title: category.title, label: category.label });
 }
 
+generateEnglish({ write, pages, outputFileFor, relativeTo, headUrls, faviconLinks, siteBrand, assetBase });
+
 if (deployMode) fs.cpSync(path.join(ROOT, 'assets'), path.join(outputRoot, 'assets'), { recursive: true });
 
 write('.nojekyll', '');
@@ -208,5 +212,7 @@ write('robots.txt', siteOrigin ? `User-agent: *\nAllow: /\nSitemap: ${publicUrl(
 const publicFiles = ['.nojekyll', ...suppliedFiles, 'sitemap.xml', 'robots.txt'];
 write('data/generated-pages.json', `${JSON.stringify({ mode: deployMode ? 'deployment' : 'source', origin: siteOrigin, basePath: basePath(), districtCount: districts.length, groupCount: groups.length, stationCount: stations.length, stationGroupCount: stationGroups.length, redirectCount: redirects.length, publicFiles, sources: { regions: source.source, schools: schoolSource.source, supplements: 'data/school-supplements.json', stations: stationSource.source, stationReview: stationSource.reviewSource, slugs: 'data/route-slugs.json' }, pages, redirects }, null, 2)}\n`);
 write('data/generated-urls.txt', `${pages.map((page) => page.url).join('\n')}\n`);
+const englishOrder = (page) => page.kind === 'english-district' ? 0 : page.kind === 'english-station' ? 1 : 2;
+write('data/english-collection-urls.txt', `${pages.filter(page => page.kind.startsWith('english-')).sort((a,b) => englishOrder(a)-englishOrder(b)).map(page => publicUrl(page.url)).filter(Boolean).join('\n')}\n`);
 const thumbnails = districts.reduce((totals, district) => { totals[district.thumbnail] = (totals[district.thumbnail] || 0) + 1; return totals; }, {});
 console.log(JSON.stringify({ mode: deployMode ? 'deployment' : 'source', output: path.relative(ROOT, outputRoot) || '.', districts: districts.length, provinceDirectories: groups.length, stations: stations.length, stationDirectories: stationGroups.length + 1, totalPages: pages.length, legacyRedirects: redirects.length, basePath: basePath(), thumbnails, indexing: siteOrigin ? 'pages enabled' : 'disabled until SITE_ORIGIN is configured' }, null, 2));

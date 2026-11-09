@@ -1,0 +1,12 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const { ROOT, districts, groups } = require('./site-data.cjs');
+const { stations, stationGroups } = require('./station-data.cjs');
+const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/english.json'), 'utf8'));
+const places = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/english-places.json'), 'utf8'));
+const detail = (entry, kind) => ({ ...entry, kind: `english-${kind}`, key: kind === 'station' ? `station/${entry.key}` : entry.key, file: `english/${entry.file}`, deployFile: `en-${entry.deployFile}`, url: `/en-${entry.url.slice(1)}`, neighborhoods: places[kind === 'district' ? 'districts' : 'stations'][kind === 'district' ? entry.pathCode : entry.id].neighborhoods.map(area => area.name) });
+const englishDistricts = districts.map(entry => detail(entry, 'district'));
+const englishStations = stations.map(entry => detail(entry, 'station'));
+const englishGroups = groups.map(group => ({ ...group, districts: englishDistricts.filter(item => item.key.startsWith(`${group.slug}/`)) }));
+const englishStationGroups = stationGroups.map(group => ({ ...group, stations: englishStations.filter(item => item.regionSlug === group.slug) }));
+module.exports = { config, places, englishDistricts, englishStations, englishGroups, englishStationGroups };
