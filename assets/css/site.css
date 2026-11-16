@@ -26,7 +26,12 @@ body {
 .page-shell { width: min(100%, var(--page-width)); margin-inline: auto; padding-bottom: calc(80px + env(safe-area-inset-bottom)); background: white; }
 /* Keep the shared chat badge beside the centered mobile-width page. The
    loader sets --support-bottom from the existing fixed consultation bar. */
-unified-support-chat { --support-right: max(12px, calc((100vw - var(--page-width)) / 2 + 12px)); }
+unified-support-chat { --support-right: max(12px, calc((100% - var(--page-width)) / 2 + 12px)); }
+@media (max-width: 480px) {
+  /* The shared panel uses 100vw. Compensate when classic scrollbars make
+     the fixed-position containing block narrower than that viewport. */
+  unified-support-chat { --support-right: max(0px, calc(12px - (100vw - 100%) / 2)); }
+}
 .container { width: calc(100% - 40px); margin-inline: auto; }
 h1, h2, h3, p, figure { margin: 0; }
 a { color: inherit; text-decoration: none; }
