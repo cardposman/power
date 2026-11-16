@@ -5,6 +5,7 @@ const { stationSource, stations, stationGroups } = require('./station-data.cjs')
 const { categories, categoryFile, categoryNavigation, renderCategory } = require('./category-pages.cjs');
 const { englishDistricts, englishStations } = require('./english-data.cjs');
 const { generateEnglish } = require('./english-pages.cjs');
+const { sharedAssetUrl } = require('./shared-assets.cjs');
 
 const siteOrigin = origin();
 const args = process.argv.slice(2);
@@ -93,6 +94,7 @@ function lesson({ file: sourceFile, key, label = site.product, schools = [], hom
   const title = home ? site.titleProduct : `${label} ${site.titleProduct} | ${site.brand}`;
   const description = station ? `${label} 맨투맨 일본어회화 일대일 과외수업. ${station.content.description}` : `${home ? site.product : `${label} ${site.product} ${site.brand}`}. 기초 일본어부터 생활회화, JLPT, 비즈니스 일본어까지 나의 목표에 맞는 1:1 화상수업을 상담하세요.`;
   const fields = {
+    SITE_SCRIPT: sharedAssetUrl(assetBase(file), 'js/site.js'), SITE_STYLESHEET: sharedAssetUrl(assetBase(file), 'css/site.css'),
     TITLE: title, DESCRIPTION: description, ROBOTS: !siteOrigin ? 'noindex,nofollow' : 'index,follow',
     ASSET_BASE: assetBase(file), THUMBNAIL: thumbnail, THUMB_ALT: thumbnailAlts[thumbnail], PAGE_KEY: key,
     HOME_LINK: relativeTo(file, 'index.html'), REGIONS_LINK: relativeTo(file, 'region/index.html'),
@@ -157,8 +159,8 @@ function directory(group = null, mode = 'district') {
   <meta property="og:site_name" content="${e(site.name)}">
 ${headUrls(routeFor(file))}
 ${faviconLinks(file)}
-  <link rel="stylesheet" href="${e(base)}css/site.css">
-  <script src="${e(base)}js/site.js" defer></script>
+  <link rel="stylesheet" href="${e(sharedAssetUrl(base, 'css/site.css'))}">
+  <script src="${e(sharedAssetUrl(base, 'js/site.js'))}" defer></script>
 </head><body><div class="page-shell">
 <a class="skip-link" href="#main">본문 바로가기</a>
 <header class="site-header"><div class="container header-inner">

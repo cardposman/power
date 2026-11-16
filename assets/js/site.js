@@ -117,3 +117,39 @@
   });
 
 })();
+
+// TS맨투맨회화: append once to the site's shared JavaScript file.
+// Public URLs and site ID only. No administrator password or credentials.
+(() => {
+  if (!["https://tstudymate.com"].includes(location.origin)) return;
+  const start = () => {
+    if (document.getElementById('unified-support-loader') || document.querySelector('unified-support-chat')) return;
+    const script = document.createElement('script');
+    script.id = 'unified-support-loader';
+    script.src = "https://lxrjy-92bbd.web.app/widget.js";
+    script.dataset.config = "https://lxrjy-92bbd.web.app/config.json";
+    script.dataset.siteId = "tstudymate";
+    script.async = true;
+    script.addEventListener('load', () => {
+      const widget = document.querySelector('unified-support-chat');
+      if (!widget) return;
+      let frame;
+      const place = () => {
+        const footer = document.querySelector(".fixed-contact");
+        const rect = footer?.getBoundingClientRect();
+        const overlap = rect && rect.height > 0 && rect.width > 0 && rect.top < innerHeight && rect.bottom > 0
+          ? Math.max(0, innerHeight - Math.max(0, rect.top)) : 0;
+        widget.style.setProperty('--support-bottom', (overlap + 16) + 'px');
+      };
+      const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(place); };
+      const footer = document.querySelector(".fixed-contact");
+      if (footer && 'ResizeObserver' in window) new ResizeObserver(schedule).observe(footer);
+      addEventListener('resize', schedule, {passive:true});
+      addEventListener('scroll', schedule, {passive:true});
+      place();
+    }, {once:true});
+    document.body.append(script);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
+  else start();
+})();

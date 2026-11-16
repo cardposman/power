@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { ROOT, site, districts, thumbnailAlts, escapeHtml: e, hash, origin } = require('./site-data.cjs');
 const { englishLocalContent } = require('./english-local-content.cjs');
+const { sharedAssetUrl } = require('./shared-assets.cjs');
 
 const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/english.json'), 'utf8'));
 const counsel = new URL(config.counselUrl);
@@ -31,6 +32,7 @@ for (const part of image.segments) {
 if (offset !== image.height) throw new Error('English image segments do not cover the complete original');
 const first = entries[0][1];
 const fields = {
+  SITE_SCRIPT: sharedAssetUrl(assetBase, 'js/site.js'), SITE_STYLESHEET: sharedAssetUrl(assetBase, 'css/site.css'),
   TITLE: title, DESCRIPTION: `${home ? '' : `${district.label} `}${config.description}`, SITE_NAME: site.name,
   PRODUCT: config.product, REGION_LABEL: home ? '' : district.label, REGION_KEY: district.key, ROBOTS: origin() ? 'index,follow' : 'noindex,nofollow',
   COUNSEL_URL: config.counselUrl, ASSET_BASE: assetBase, FAVICON: relative('favicon.ico'),

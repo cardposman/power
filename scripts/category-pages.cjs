@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { ROOT, escapeHtml: e } = require('./site-data.cjs');
+const { sharedAssetUrl } = require('./shared-assets.cjs');
 
 const categories = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/categories.json'), 'utf8'));
 const template = fs.readFileSync(path.join(ROOT, 'templates/category.html'), 'utf8');
@@ -14,6 +15,7 @@ function categoryNavigation(file, relativeTo, active = '') {
 function renderCategory(category, { relativeTo, assetBase, headUrls, faviconLinks, siteBrand, siteOrigin, site }) {
   const file = categoryFile(category);
   const fields = {
+    SITE_SCRIPT: sharedAssetUrl(assetBase(file), 'js/site.js'), SITE_STYLESHEET: sharedAssetUrl(assetBase(file), 'css/site.css'),
     TITLE: category.title, DESCRIPTION: category.description, LABEL: category.label,
     SITE_NAME: site.name,
     ROBOTS: siteOrigin ? 'index,follow' : 'noindex,nofollow', SLUG: category.slug,

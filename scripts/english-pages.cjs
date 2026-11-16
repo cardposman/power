@@ -1,6 +1,7 @@
 const { site, origin, escapeHtml: e } = require('./site-data.cjs');
 const { config, englishDistricts, englishStations, englishGroups, englishStationGroups } = require('./english-data.cjs');
 const { renderEnglishLesson } = require('./english-lesson.cjs');
+const { sharedAssetUrl } = require('./shared-assets.cjs');
 
 function generateEnglish(ctx) {
   const { write, pages, outputFileFor, relativeTo, headUrls, faviconLinks, siteBrand, assetBase } = ctx;
@@ -26,7 +27,7 @@ function generateEnglish(ctx) {
 <title>${e(title)}</title><meta name="description" content="${e(description)}"><meta name="robots" content="${origin() ? 'index,follow' : 'noindex,nofollow'}">
 <meta name="theme-color" content="#eb5b22"><meta property="og:type" content="website"><meta property="og:title" content="${e(title)}"><meta property="og:description" content="${e(description)}"><meta property="og:site_name" content="${e(site.name)}">
 ${headUrls('/'+file.replace(/index\.html$/,''))}${faviconLinks(file)}
-<link rel="stylesheet" href="${e(assetBase(file))}css/site.css"><script src="${e(assetBase(file))}js/site.js" defer></script>
+<link rel="stylesheet" href="${e(sharedAssetUrl(assetBase(file),'css/site.css'))}"><script src="${e(sharedAssetUrl(assetBase(file),'js/site.js'))}" defer></script>
 </head><body data-subject="english"><div class="page-shell"><a class="skip-link" href="#main">본문 바로가기</a>
 <header class="site-header"><div class="container header-inner">${siteBrand(file)}<nav class="navigation" id="main-nav" aria-label="주요 메뉴"><a href="${e(relativeTo(file,'english/index.html'))}">영어수업</a><a href="${e(relativeTo(file,'index.html'))}">일본어수업</a></nav><a class="button header-cta" href="${e(config.counselUrl)}" target="_blank" rel="noopener noreferrer">상담접수 ↗</a><button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav"><span aria-hidden="true">☰</span></button></div></header>
 <main id="main"><section class="directory-heading container"><p class="section-label">${e(site.name)} · ${e(config.product)}</p><h1>${e(label)}</h1><p class="service-notice">전화·화상수업 안내입니다. 지역별 오프라인 교실 안내가 아닙니다.</p><nav class="directory-switch" aria-label="안내 목록 구분"><a href="${e(relativeTo(file,'english/region/index.html'))}">시·군·구</a><a href="${e(relativeTo(file,'english/station/index.html'))}">역별</a></nav>${group ? `<a class="inline-cta" href="${e(relativeTo(file,`english/${folder}/index.html`))}">← 전체 목록</a>` : ''}</section><p class="directory-count container">${items.length}곳</p><section class="directory-list container" aria-label="영어수업 안내 목록">${list}</section></main>
